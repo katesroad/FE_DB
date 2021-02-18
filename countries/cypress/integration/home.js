@@ -18,7 +18,7 @@ describe("home page integration testing", () => {
 		});
 		cy.findByText(/not found/i);
 	});
-	it.only("search country by region", () => {
+	it("search country by region", () => {
 		cy.visit("/");
 
 		// search country by region name
@@ -30,5 +30,18 @@ describe("home page integration testing", () => {
 		cy.findByRole("button", { name: /africa/i }).click();
 		cy.findByRole("option", { name: /filter by region/i }).click();
 		cy.findByRole("heading", { name: /Afghanistan/i });
+	});
+
+	it.only("page navigation", () => {
+		cy.visit("/");
+		cy.findByRole("heading", { name: /China/i }).click();
+		cy.location().should((loc) => {
+			expect(loc.pathname).to.eq("/country/China");
+		});
+
+		cy.findByText(/back/i).click();
+		cy.location().should((loc) => {
+			expect(loc.pathname).to.eq("/");
+		});
 	});
 });
