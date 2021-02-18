@@ -15,7 +15,15 @@
 /**
  * @type {Cypress.PluginConfig}
  */
+const isCI = require("is-ci");
+
 module.exports = (on, config) => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
-}
+	const isDev = config.watchForFileChanges;
+	if (!isCI) {
+		config.baseUrl = isDev
+			? "http://localhost:3000/"
+			: "http://localhost:8080/";
+	}
+
+	return config;
+};
