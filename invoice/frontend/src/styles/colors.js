@@ -19,8 +19,8 @@ export const bodyBgDark = "#141625";
 export const bodyBgLight = "#f2f2f2";
 
 // text color for heading elements, strong element
-export const titColorDark = "#0C0E16";
-export const titColorLight = colorWhite;
+export const titColorDark = colorWhite;
+export const titColorLight = "#0C0E16";
 
 // text color for elements
 export const elementColorDark = "#DFE3FA";

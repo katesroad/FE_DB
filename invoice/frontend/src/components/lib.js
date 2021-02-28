@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { variant } from "styled-system";
 import * as mediaQueries from "styles/media-queries";
 import * as colors from "styles/colors";
+import { cardStyle } from "styles/styles";
 
 export const Content = styled.section`
   box-sizing: border-box;
@@ -49,7 +50,5 @@ export const Button = styled(ButtonBase)(
 
 export const Card = styled.div`
   padding: 24px;
-  border-radius: 8px;
-  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
-  background-color: var(--element-background-color);
+  ${cardStyle}
 `;
