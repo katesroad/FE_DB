@@ -16,7 +16,9 @@ const GlobalStyles = createGlobalStyle`
   select,
   textarea,
   img {
-    outline: none
+    outline: none;
+    border:none;
+    appearance:none;
   }
 
   ul,
@@ -52,6 +54,8 @@ const GlobalStyles = createGlobalStyle`
   body[data-theme="dark"] {
     --element-text-color: ${colors.elementColorDark};
     --element-background-color: ${colors.elementBgDark};
+    --button-text-color: ${colors.buttonTextDark};
+    --button-background-color: ${colors.buttonBgDark};
     --title-text-color: ${colors.titColorDark};
     color: ${colors.elementColorDark};
     background-color: ${colors.bodyBgDark};
@@ -60,6 +64,8 @@ const GlobalStyles = createGlobalStyle`
     --element-text-color: ${colors.elementColorLight};
     --element-background-color:${colors.elementBgLight};
     --title-text-color: ${colors.titColorLight};
+    --button-text-color: ${colors.buttonTextLight};
+    --button-background-color: ${colors.buttonBgLight};
     --text-color: ${colors.elementColorLight};
     color: ${colors.elementColorLight};
     background-color: ${colors.bodyBgLight};

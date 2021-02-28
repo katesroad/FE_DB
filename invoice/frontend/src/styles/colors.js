@@ -48,3 +48,10 @@ export const redNormal = "#FF9797";
 export const colorGreen = "#33D69F";
 export const colorYello = "#FF8F00";
 export const colorGray = "#373B53";
+export const colorPrimary = "#7c5dfa";
+
+// button
+export const buttonBgDark = "#252945";
+export const buttonTextDark = "#dfe3fa";
+export const buttonBgLight = "#f9fafe";
+export const buttonTextLight = "#7e88c3";
