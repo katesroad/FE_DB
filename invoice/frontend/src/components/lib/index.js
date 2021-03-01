@@ -4,6 +4,8 @@ import * as mediaQueries from "styles/media-queries";
 import * as colors from "styles/colors";
 import { cardStyle } from "styles/styles";
 
+export * from "./modal";
+
 export const Content = styled.section`
   box-sizing: border-box;
   padding-left: 12px;
