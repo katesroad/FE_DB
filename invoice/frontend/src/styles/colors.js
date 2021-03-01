@@ -1,57 +1,65 @@
-/*
-const purple01 = "#7c5dfa";
-const purple02 = "#92277ff";
+// colors from styling guide
+const p00 = "#7c5dfa";
+const p01 = "#92277ff";
+const p02 = "#1E2139";
+const p03 = "#252945";
 
-const bluedark01 = "#1E2139";
-const bluedark02 = "#252945";
+const p10 = "#DFE3FA";
+const p11 = "#888EB0";
+const p12 = "#7E88C3";
+const p13 = "#0C0E16";
 
-const purple11 = "#DFE3FA";
-const purple12 = "#888EB0";
-const purple13 = "#7E88C3";
-const purple14 = "#0C0E16";
-*/
+const p20 = "#EC5757";
+const p21 = "#FF9797";
+const p22 = "#888EB0"; //modal content color
+const p23 = "#141625";
 
-// the global white color
-export const colorWhite = "#fff";
+export const colors = {
+  white: "#fff",
+  primary: p00,
+  p00,
+  p01,
+  p02,
+  p10,
+  p11,
+  p12,
+  p12,
+  p20,
+  p21,
+  p22,
+  p23,
+};
+// theme palette
+export const dark = {
+  element: { bg: p02, color: p10 },
+  body: { bg: p23 },
+  title: { color: colors.white },
+  input: { bg: p02, color: colors.white, border: colors.white },
+  button: { bg: p03, color: p10 },
+};
 
-// background color for body element
-export const bodyBgDark = "#141625";
-export const bodyBgLight = "#f2f2f2";
+export const light = {
+  element: { bg: colors.white, color: p11 },
+  body: { bg: "#f2f2f2" },
+  title: { color: p13 },
+  input: { bg: p02, color: colors.white, border: colors.white },
+  button: { bg: "#f9fafe", color: p12 },
+};
 
-// text color for heading elements, strong element
-export const titColorDark = colorWhite;
-export const titColorLight = "#0C0E16";
+export const red = { normal: p20, thin: p21 };
 
-// text color for elements
-export const elementColorDark = "#DFE3FA";
-export const elementColorLight = "#888eb0";
-export const elementColorLight2 = "#858bb2";
-
-// background  color for elements
-export const elementBgDark = "#1E2139";
-export const elementBgLight = colorWhite;
-
-// background color for text input elements
-export const inputBgDark = elementBgDark;
-export const inputBgLight = elementBgLight;
-
-// text color for text input elements
-export const inputTextDark = colorWhite;
-export const inputTextLight = titColorLight;
-
-/**************** text-color, background-color for utilities*******************************/
-// red colors
-export const redDeeper = "#EC5757";
-export const redNormal = "#FF9797";
-
-// invoice status button color
-export const colorGreen = "#33D69F";
-export const colorYello = "#FF8F00";
-export const colorGray = "#373B53";
-export const colorPrimary = "#7c5dfa";
-
-// button
-export const buttonBgDark = "#252945";
-export const buttonTextDark = "#dfe3fa";
-export const buttonBgLight = "#f9fafe";
-export const buttonTextLight = "#7e88c3";
+export const invoicesStatusColors = {
+  paid: {
+    color: `rgba(51, 214, 159, 1)`,
+    bg: `rgba(51, 214, 159, 0.006)`,
+  },
+  pending: {
+    color: "rgba(255, 143, 0, 1)",
+    bg: "rgba(255, 143, 0, 0.06)",
+  },
+  draft: {
+    color: "rgba(55, 59, 83, 1)",
+    bg: "rgba(55, 59, 83, .006)",
+  },
+  primary: "#7c5dfa",
+};

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { variant } from "styled-system";
 import * as mediaQueries from "styles/media-queries";
-import * as colors from "styles/colors";
+import { red, colors } from "styles/colors";
 import { cardStyle } from "styles/styles";
 
 export * from "./modal";
@@ -43,8 +43,8 @@ export const Button = styled(ButtonBase)(
   {},
   variant({
     variants: {
-      danger: { bg: colors.redDeeper, color: colors.colorWhite },
-      primary: { bg: colors.colorPrimary, color: colors.colorWhite },
+      danger: { bg: red.normal, color: colors.white },
+      primary: { bg: colors.primary, color: colors.white },
     },
   })
 );

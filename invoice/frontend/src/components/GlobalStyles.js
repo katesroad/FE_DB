@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import * as colors from "styles/colors";
+import { light, dark } from "styles/colors";
 import * as fonts from "styles/fonts";
 
 const GlobalStyles = createGlobalStyle`
@@ -52,23 +52,22 @@ const GlobalStyles = createGlobalStyle`
   }
  
   body[data-theme="dark"] {
-    --element-text-color: ${colors.elementColorDark};
-    --element-background-color: ${colors.elementBgDark};
-    --button-text-color: ${colors.buttonTextDark};
-    --button-background-color: ${colors.buttonBgDark};
-    --title-text-color: ${colors.titColorDark};
-    color: ${colors.elementColorDark};
-    background-color: ${colors.bodyBgDark};
+    --element-text-color: ${dark.element.color};
+    --element-background-color: ${dark.element.bg};
+    --button-text-color: ${dark.button.color};
+    --button-background-color: ${dark.button.bg};
+    --title-text-color: ${dark.title.color};
+    color: ${dark.element.color};
+    background-color: ${dark.body.bg};
   }
   body[data-theme="light"] {
-    --element-text-color: ${colors.elementColorLight};
-    --element-background-color:${colors.elementBgLight};
-    --title-text-color: ${colors.titColorLight};
-    --button-text-color: ${colors.buttonTextLight};
-    --button-background-color: ${colors.buttonBgLight};
-    --text-color: ${colors.elementColorLight};
-    color: ${colors.elementColorLight};
-    background-color: ${colors.bodyBgLight};
+   --element-text-color: ${light.element.color};
+    --element-background-color: ${light.element.bg};
+    --button-text-color: ${light.button.color};
+    --button-background-color: ${light.button.bg};
+    --title-text-color: ${light.title.color};
+    color: ${light.element.color};
+    background-color: ${light.body.bg};
   }
 
   h1, h2, h3, h4, h5, h6, strong {
