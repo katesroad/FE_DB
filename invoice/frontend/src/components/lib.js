@@ -26,7 +26,6 @@ export const Content = styled.section`
 // inherit the color from body element by default
 export const ButtonBase = styled.button`
   display: inline-block;
-  height: 48px;
   padding: 16px 24px;
   border-radius: 24px;
   font-size: 16px;
