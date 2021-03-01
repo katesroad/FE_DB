@@ -1,11 +1,11 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import { StatusButton, StatusDot } from "./styles";
+import { StatusButton, Dot } from "./styles";
 
 function InvoiceStatus({ status }) {
   return (
     <StatusButton variant={status}>
-      <StatusDot variant={status} />
+      <Dot>⬤</Dot>
       {status}
     </StatusButton>
   );
