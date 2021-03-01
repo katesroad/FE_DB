@@ -48,7 +48,7 @@ const GlobalStyles = createGlobalStyle`
   html {
     --font-weight-normal: ${fonts.fontWeightNormal};
     --font-weight-bold: ${fonts.fontWeightBold};
-    --font-font-bolder: ${fonts.fontWeightBolder}
+    --font-weight-bolder: ${fonts.fontWeightBolder}
   }
  
   body[data-theme="dark"] {

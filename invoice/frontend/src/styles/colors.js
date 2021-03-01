@@ -51,15 +51,21 @@ export const red = { normal: p20, thin: p21 };
 export const invoicesStatusColors = {
   paid: {
     color: `rgba(51, 214, 159, 1)`,
-    bg: `rgba(51, 214, 159, 0.006)`,
+    bg: `rgba(51, 214, 159, 0.06)`,
   },
   pending: {
     color: "rgba(255, 143, 0, 1)",
     bg: "rgba(255, 143, 0, 0.06)",
   },
   draft: {
-    color: "rgba(55, 59, 83, 1)",
-    bg: "rgba(55, 59, 83, .006)",
+    dark: {
+      color: "rgba(223,227,250, 1)",
+      bg: "rgba(223,227,250, .06)",
+    },
+    light: {
+      color: "rgba(55, 59, 83, 1)",
+      bg: "rgba(55, 59, 83, 0.06)",
+    },
   },
   primary: "#7c5dfa",
 };

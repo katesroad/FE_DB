@@ -33,7 +33,7 @@ export const ButtonBase = styled.button`
   font-size: 16px;
   text-align: center;
   text-transform: capitalize;
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-normal);
   ${"" /* edit button has this style */}
   background-color: var(--button-background-color);
   color: var(--button-text-color);

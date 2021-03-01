@@ -4,5 +4,6 @@ import { useParams } from "react-router-dom";
 // Invoice detail page
 export default function InvoiceScreen() {
   const { id } = useParams();
-  return null;
+  console.log(`invoice id:#${id}`);
+  return <div></div>;
 }
