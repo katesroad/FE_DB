@@ -1,11 +1,10 @@
 import styled from "styled-components";
-import { Card } from "components/lib";
+import { ButtonBase, Card } from "components/lib";
 import * as mediaQueries from "styles/media-queries";
 
 export const Wrapper = styled(Card)`
   display: flex;
   justify-content: space-between;
-  aling-items: center;
 `;
 
 export const InvoiceAmount = styled.strong`
@@ -13,35 +12,57 @@ export const InvoiceAmount = styled.strong`
 `;
 
 export const Column = styled.div`
+  position: "relative";
   display: flex;
   flex-direction: column;
-  ${mediaQueries.medium} {
+  ${mediaQueries.small} {
     flex-direction: row;
     align-items: center;
-    span {
-      margin-right: 24px;
-    }
+    justify-content: space-between;
+    width: 40%;
+    margin-right: 24px;
   }
 `;
 
 export const ClientName = styled.span`
-  margin-bottom: 24px;
+  margin-bottom: 18px;
   text-align: right;
-  ${mediaQueries.medium} {
+  font-size: 14px;
+  line-heigth: 20px;
+  ${mediaQueries.small} {
     margin-bottom: 0;
   }
 `;
 
 export const InvoiceId = styled.span`
-  margin-bottom: 24px;
-  ${mediaQueries.medium} {
+  margin-bottom: 18px;
+  font-size: 14px;
+  ${mediaQueries.small} {
     margin-bottom: 0;
   }
 `;
 
 export const DueDate = styled.span`
-  margin-bottom: 8px;
-  ${mediaQueries.medium} {
+  font-size: 14px;
+  line-height: 20px;
+  ${mediaQueries.small} {
     margin-bottom: 0;
+  }
+`;
+
+export const InvoiceTotal = styled.h3`
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.8px;
+`;
+
+export const ArrowButton = styled(ButtonBase)`
+  align-self: flex-end;
+  display: none;
+  padding: 16px 0;
+  border-radius: 0;
+  background-color: transparent;
+  ${mediaQueries.small} {
+    display: flex;
   }
 `;

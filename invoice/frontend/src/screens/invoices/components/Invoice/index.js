@@ -2,7 +2,15 @@
 import styled from "styled-components/macro";
 import * as React from "react";
 import PropTypes from "prop-types";
-import { Wrapper, Column, ClientName, InvoiceId, DueDate } from "./styles";
+import {
+  Wrapper,
+  Column,
+  ClientName,
+  InvoiceId,
+  DueDate,
+  InvoiceTotal,
+  ArrowButton,
+} from "./styles";
 import InvoiceStatus from "../InvoiceStatus";
 
 function Invoice({ ...invoice }) {
@@ -13,12 +21,15 @@ function Invoice({ ...invoice }) {
           # <strong>{invoice.id}</strong>
         </InvoiceId>
         <DueDate>Due {invoice.paymentDue}</DueDate>
-        <strong>$ {invoice.total}</strong>
+        <InvoiceTotal>
+          $ <span>{invoice.total}</span>
+        </InvoiceTotal>
       </Column>
       <Column>
         <ClientName>{invoice.clientName}</ClientName>
         <InvoiceStatus status={invoice.status} />
       </Column>
+      <ArrowButton>&gt;</ArrowButton>
     </Wrapper>
   );
 }
