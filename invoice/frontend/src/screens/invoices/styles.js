@@ -12,13 +12,6 @@ export const Header = styled.section`
   }
 `;
 
-export const CreateBtn = styled(Button)`
-  padding: 14px !important;
-  ${mediaQueries.medium} {
-    padding: 16px 24px !important;
-  }
-`;
-
 export const InvoiceOperations = styled.div`
   display: flex;
   justify-content: space-between;

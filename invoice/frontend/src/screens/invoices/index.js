@@ -4,7 +4,8 @@ import * as React from "react";
 import invoiceList from "./data";
 import Invoice from "./components/Invoice";
 import InvoiceFilter from "./components/InvoiceFilter";
-import { Header, CreateBtn, InvoiceOperations, Title } from "./styles";
+import { Button } from "components/lib";
+import { Header, InvoiceOperations, Title } from "./styles";
 import NoInvoice from "./components/NoInvoice";
 
 // Invoice list page
@@ -20,7 +21,7 @@ export default function InvoicesScreen() {
         </div>
         <InvoiceOperations>
           <InvoiceFilter value={status} onChange={onChange} />
-          <CreateBtn variant="primary"> + new invoice</CreateBtn>
+          <Button variant="primary"> + new invoice</Button>
         </InvoiceOperations>
       </Header>
       <NoInvoice />

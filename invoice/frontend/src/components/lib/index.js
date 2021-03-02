@@ -28,7 +28,7 @@ export const Content = styled.section`
 // inherit the color from body element by default
 export const ButtonBase = styled.button`
   display: inline-block;
-  padding: 16px 24px;
+  padding: 14px;
   border-radius: 24px;
   font-size: 16px;
   text-align: center;
@@ -37,6 +37,9 @@ export const ButtonBase = styled.button`
   ${"" /* edit button has this style */}
   background-color: var(--button-background-color);
   color: var(--button-text-color);
+  ${mediaQueries.medium} {
+    padding: 16px 24px;
+  }
 `;
 
 export const Button = styled(ButtonBase)(
