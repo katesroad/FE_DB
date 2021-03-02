@@ -5,6 +5,7 @@ import AppHeader from "components/header";
 import { Content } from "components/lib";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { ThemeProvider } from "./theme.context";
 
 const queryClient = new QueryClient();
 export default function AppProvider({ children }) {
@@ -12,22 +13,24 @@ export default function AppProvider({ children }) {
     <>
       <GlobalStyles />
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <AppHeader />
-          <Content
-            as="main"
-            css={`
-              flex-grow: 10;
-            `}
-          >
-            <Switch>
-              {children}
-              <Route path="*">
-                <Redirect to="/" />
-              </Route>
-            </Switch>
-          </Content>
-        </BrowserRouter>
+        <ThemeProvider>
+          <BrowserRouter>
+            <AppHeader />
+            <Content
+              as="main"
+              css={`
+                flex-grow: 10;
+              `}
+            >
+              <Switch>
+                {children}
+                <Route path="*">
+                  <Redirect to="/" />
+                </Route>
+              </Switch>
+            </Content>
+          </BrowserRouter>
+        </ThemeProvider>
       </QueryClientProvider>
     </>
   );
