@@ -26,7 +26,4 @@ export const Image = styled.img`
   width: 46%;
   min-width: 194px;
   margin-bottom: 40px;
-  ${mediaQueries.medium} {
-    margin-bottom: 54px;
-  }
 `;

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import * as mediaQueries from "styles/media-queries";
-import { Button } from "components/lib";
 
 export const Header = styled.section`
   display: flex;
@@ -9,13 +8,6 @@ export const Header = styled.section`
   margin: 32px 0;
   ${mediaQueries.medium} {
     margin: 56px 0;
-  }
-`;
-
-export const CreateBtn = styled(Button)`
-  padding: 14px !important;
-  ${mediaQueries.medium} {
-    padding: 16px 24px !important;
   }
 `;
 

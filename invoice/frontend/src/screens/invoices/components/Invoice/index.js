@@ -11,7 +11,7 @@ import {
   InvoiceTotal,
   ArrowButton,
 } from "./styles";
-import InvoiceStatus from "../InvoiceStatus";
+import InvoiceStatus from "components/InvoiceStatus";
 
 function Invoice({ ...invoice }) {
   return (
