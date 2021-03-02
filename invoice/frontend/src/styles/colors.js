@@ -23,7 +23,6 @@ export const colors = {
   p10,
   p11,
   p12,
-  p12,
   p20,
   p21,
   p22,
