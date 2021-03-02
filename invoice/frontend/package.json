@@ -4,6 +4,7 @@
 	"private": true,
 	"dependencies": {
 		"@reach/dialog": "^0.13.2",
+		"@reach/listbox": "^0.13.2",
 		"@reach/visually-hidden": "^0.13.2",
 		"@styled-system/css": "^5.1.5",
 		"react": "^17.0.1",
