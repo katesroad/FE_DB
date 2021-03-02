@@ -12,6 +12,7 @@ export const StatusButton = styled(ButtonBase)(
     width: "104px",
     height: "40px",
     borderRadius: "6px",
+    cursor: "inherit",
   },
   variant({
     variants: {
