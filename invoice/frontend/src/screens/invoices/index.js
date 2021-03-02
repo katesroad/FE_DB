@@ -5,6 +5,7 @@ import invoiceList from "./data";
 import Invoice from "./components/Invoice";
 import InvoiceFilter from "./components/InvoiceFilter";
 import { Header, CreateBtn, InvoiceOperations, Title } from "./styles";
+import NoInvoice from "./components/NoInvoice";
 
 // Invoice list page
 export default function InvoicesScreen() {
@@ -22,6 +23,7 @@ export default function InvoicesScreen() {
           <CreateBtn variant="primary"> + new invoice</CreateBtn>
         </InvoiceOperations>
       </Header>
+      <NoInvoice />
       <ul>
         {invoiceList.reverse().map((invoice) => (
           <li
