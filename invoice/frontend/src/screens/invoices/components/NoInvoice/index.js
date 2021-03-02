@@ -2,7 +2,7 @@ import * as React from "react";
 import { Title, Text, Wrapper, Image } from "./styles";
 import imgSrc from "./illustration-empty.svg";
 
-export default function () {
+export default function NoInvoices() {
   return (
     <Wrapper>
       <Image src={imgSrc} alt="No invoices" />
