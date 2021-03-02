@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import * as mediaQueries from "styles/media-queries";
-import { Button } from "components/lib";
 
 export const Header = styled.section`
   display: flex;
