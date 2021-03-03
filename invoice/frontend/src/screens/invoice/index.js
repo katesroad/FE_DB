@@ -10,14 +10,12 @@ import { useInvoice } from "hooks/invoice-hook";
 import InvoiceInfo from "./components/InvoiceInfo";
 import BillItems from "./components/BillItems";
 import GrandTotal from "./components/GrandTotal";
-import { Card } from "components/lib";
 
 // Invoice detail page
 export default function InvoiceScreen() {
   const { id } = useParams();
   useInvoice(id);
   const [invoice, setInvoice] = React.useState(invoices[0]);
-  console.log(invoice);
   return (
     <>
       <Header>

@@ -35,5 +35,3 @@ export const Header = styled(Card)`
 export const StatusLabel = styled.span`
   font-weight: 500;
 `;
-
-export const Wrapper = styled(Card)``;

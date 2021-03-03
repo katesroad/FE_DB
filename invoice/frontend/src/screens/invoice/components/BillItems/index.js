@@ -4,6 +4,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { Wrapper, ItemName, ItemQty, ItemTotal, ItemWrapper } from "./styles";
 import { THEME_MODE, useTheme } from "context/theme.context";
+
 function BillItem({ ...item }) {
   return (
     <ItemWrapper>
@@ -25,12 +26,11 @@ BillItem.propTypes = {
   total: PropTypes.number.isRequired,
 };
 
+const { light, dark } = THEME_MODE;
 export default function BillItems({ items }) {
-  const [themeMode] = useTheme();
+  const [theme] = useTheme();
   const bgColor =
-    themeMode === THEME_MODE.dark
-      ? "var( --button-background-color)"
-      : "#F9FAFE";
+    theme === dark ? "var( --button-background-color)" : "#f9fafe";
   return (
     <Wrapper
       css={`
