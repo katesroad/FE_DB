@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { Card } from "components/lib";
 import * as mediaQueries from "styles/media-queries";
 
-export const Wrapper = styled(Card)`
+export const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   text-transform: capitalize;
@@ -10,9 +9,6 @@ export const Wrapper = styled(Card)`
     font-size: 90%;
     line-height: 1.12;
     width: 290px;
-  }
-  ${mediaQueries.medium} {
-    padding: 32px;
   }
 `;
 
