@@ -4,9 +4,12 @@ import * as React from "react";
 import InvoiceOperations from "./components/InvoiceOperations";
 import { useParams } from "react-router-dom";
 import invoices from "./data";
-import { Header, StatusLabel } from "./styles";
+import { Header, StatusLabel, Wrapper } from "./styles";
 import StatusValue from "components/InvoiceStatus";
 import { useInvoice } from "hooks/invoice-hook";
+import InvoiceInfo from "./components/InvoiceInfo";
+import BillItems from "./components/BillItems";
+import GrandTotal from "./components/GrandTotal";
 
 // Invoice detail page
 export default function InvoiceScreen() {
@@ -14,7 +17,7 @@ export default function InvoiceScreen() {
   useInvoice(id);
   const [invoice, setInvoice] = React.useState(invoices[0]);
   return (
-    <div>
+    <>
       <Header>
         <p className="status">
           <StatusLabel>Status</StatusLabel>
@@ -24,6 +27,11 @@ export default function InvoiceScreen() {
           <InvoiceOperations id={invoice.id} />
         </p>
       </Header>
-    </div>
+      <>
+        <InvoiceInfo {...invoice} />
+        <BillItems items={invoice.items} />
+        <GrandTotal />
+      </>
+    </>
   );
 }

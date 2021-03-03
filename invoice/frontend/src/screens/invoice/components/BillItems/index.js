@@ -2,22 +2,8 @@
 import styled from "styled-components/macro";
 import * as React from "react";
 import PropTypes from "prop-types";
-import {
-  Wrapper,
-  ItemName,
-  ItemQty,
-  ItemTotal,
-  ItemWrapper,
-  ItemPrice,
-} from "./styles";
+import { Wrapper, ItemName, ItemQty, ItemTotal, ItemWrapper } from "./styles";
 import { THEME_MODE, useTheme } from "context/theme.context";
-
-const BillitemProps = {
-  name: PropTypes.string.isRequired,
-  quantity: PropTypes.number.isRequired,
-  price: PropTypes.number.isRequired,
-  total: PropTypes.number.isRequired,
-};
 
 function BillItem({ ...item }) {
   return (
@@ -33,14 +19,18 @@ function BillItem({ ...item }) {
   );
 }
 
-BillItem.propTypes = { ...BillitemProps };
+BillItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  quantity: PropTypes.number.isRequired,
+  price: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+};
 
+const { light, dark } = THEME_MODE;
 export default function BillItems({ items }) {
-  const [themeMode] = useTheme();
+  const [theme] = useTheme();
   const bgColor =
-    themeMode === THEME_MODE.dark
-      ? "var( --button-background-color)"
-      : "#F9FAFE";
+    theme === dark ? "var( --button-background-color)" : "#f9fafe";
   return (
     <Wrapper
       css={`
