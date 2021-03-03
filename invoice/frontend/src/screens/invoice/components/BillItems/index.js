@@ -1,9 +1,8 @@
 // eslint-disable-next-line
-import styled from "styled-components/macro";
-import * as React from "react";
-import PropTypes from "prop-types";
-import { Wrapper, ItemName, ItemQty, ItemTotal, ItemWrapper } from "./styles";
 import { THEME_MODE, useTheme } from "context/theme.context";
+import PropTypes from "prop-types";
+import * as React from "react";
+import { ItemName, ItemQty, ItemTotal, ItemWrapper, Wrapper } from "./styles";
 
 function BillItem({ ...item }) {
   return (
@@ -26,7 +25,7 @@ BillItem.propTypes = {
   total: PropTypes.number.isRequired,
 };
 
-const { light, dark } = THEME_MODE;
+const { dark } = THEME_MODE;
 export default function BillItems({ items }) {
   const [theme] = useTheme();
   const bgColor =

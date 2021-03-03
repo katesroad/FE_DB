@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { ButtonBase, Card } from "components/lib";
+import styled from "styled-components";
 import * as mediaQueries from "styles/media-queries";
 
 export const Wrapper = styled(Card)`
@@ -28,7 +28,7 @@ export const ClientName = styled.span`
   margin-bottom: 18px;
   text-align: right;
   font-size: 14px;
-  line-heigth: 20px;
+  line-height: 20px;
   ${mediaQueries.small} {
     margin-bottom: 0;
   }
