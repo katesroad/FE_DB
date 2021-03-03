@@ -1,5 +1,3 @@
-// eslint-disable-next-line
-import styled from "styled-components/macro";
 import * as React from "react";
 import { Button } from "components/lib";
 import {
@@ -8,7 +6,7 @@ import {
   ModalCloseBtn,
   ModalOpenBtn,
 } from "components/lib/modal";
-import { CofirmContent, ModalFooter } from "./styles";
+import { CofirmContent, ModalFooter, DeleteBtn } from "./styles";
 
 export default function ComfirmDeletion({ id }) {
   const handleDelete = () => {
@@ -18,14 +16,7 @@ export default function ComfirmDeletion({ id }) {
   return (
     <Modal>
       <ModalOpenBtn>
-        <Button
-          variant="danger"
-          css={`
-            margin: 0 8px;
-          `}
-        >
-          delete
-        </Button>
+        <DeleteBtn variant="danger">delete</DeleteBtn>
       </ModalOpenBtn>
       <ModalContent title="Comfirm Deletetion" arial-label="modal">
         <CofirmContent>

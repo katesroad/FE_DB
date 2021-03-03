@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "components/lib";
 
 export const CofirmContent = styled.p`
   margin: 12px 0 16px 0;
@@ -17,4 +18,8 @@ export const ModalFooter = styled.p`
   button {
     margin-left: 8px;
   }
+`;
+
+export const DeleteBtn = styled(Button)`
+  margin: 0 8px;
 `;
