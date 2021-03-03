@@ -10,7 +10,6 @@ const flexBetween = css`
 
 export const Wrapper = styled.div`
   ${flexBetween}
-  border-radius: 8px;
   ${"" /* item list for mobile version */}
   .items {
     width: 100%;

@@ -1,4 +1,5 @@
 // eslint-disable-next-line
+import styled from "styled-components/macro";
 import { THEME_MODE, useTheme } from "context/theme.context";
 import PropTypes from "prop-types";
 import * as React from "react";
@@ -28,8 +29,7 @@ BillItem.propTypes = {
 const { dark } = THEME_MODE;
 export default function BillItems({ items }) {
   const [theme] = useTheme();
-  const bgColor =
-    theme === dark ? "var( --button-background-color)" : "#f9fafe";
+  const bgColor = theme === dark ? "var(--button-background-color)" : "#f9fafe";
   return (
     <Wrapper
       css={`
