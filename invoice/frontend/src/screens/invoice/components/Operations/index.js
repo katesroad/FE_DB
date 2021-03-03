@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Button } from "components/lib";
 import PropTypes from "prop-types";
-import ConfirmDeletion from "../ComfirmDeletion";
+import ConfirmDeletion from "../ConfirmDeletion";
 
 function InvoiceOperations({ id, handelEdit, handleMark }) {
   return (
