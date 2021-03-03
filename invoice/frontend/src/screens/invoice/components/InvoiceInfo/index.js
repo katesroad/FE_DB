@@ -11,6 +11,7 @@ import {
   InfoItemValue,
   InvoiceId,
   ClientName,
+  InvoiceTopic,
 } from "./styles";
 
 function InvoiceInfo({ senderAddress, clientAddress, ...invoice }) {
@@ -22,17 +23,19 @@ function InvoiceInfo({ senderAddress, clientAddress, ...invoice }) {
         color: ${color};
       `}
     >
-      <InfoItem className="invoice-id">
+      {/* invoice id and sender's address */}
+      <InvoiceTopic>
         <InfoItem>
           <InvoiceId># {invoice.id}</InvoiceId>
           <small>{invoice.description}</small>
         </InfoItem>
-        <InfoItem>
+        <InfoItem className="">
           {Object.keys(senderAddress).map((key) => (
             <small key={key}>{senderAddress[key]}</small>
           ))}
         </InfoItem>
-      </InfoItem>
+      </InvoiceTopic>
+      {/* the invoice date */}
       <InfoItem>
         <InfoItem className="invoice-date">
           <InfoItemName>Invoice Date</InfoItemName>
@@ -43,6 +46,7 @@ function InvoiceInfo({ senderAddress, clientAddress, ...invoice }) {
           <InfoItemValue>{invoice.paymentDue}</InfoItemValue>
         </InfoItem>
       </InfoItem>
+      {/* client's address */}
       <InfoItem>
         <InfoItemName>Bill To</InfoItemName>
         <ClientName>{invoice.clientName}</ClientName>
@@ -50,6 +54,7 @@ function InvoiceInfo({ senderAddress, clientAddress, ...invoice }) {
           <small key={key}>{senderAddress[key]}</small>
         ))}
       </InfoItem>
+      {/* client's email address */}
       <InfoItem className="client-email">
         <InfoItemName>Send to</InfoItemName>
         <InfoItemValue>{invoice.clientEmail}</InfoItemValue>

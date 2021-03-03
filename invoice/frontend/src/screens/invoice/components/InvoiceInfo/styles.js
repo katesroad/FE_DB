@@ -8,7 +8,8 @@ export const Wrapper = styled(Card)`
   text-transform: capitalize;
   small {
     font-size: 90%;
-    line-height: 1.1;
+    line-height: 1.12;
+    width: 290px;
   }
   ${mediaQueries.medium} {
     padding: 32px;
@@ -20,14 +21,20 @@ export const InfoItem = styled.div`
   flex-direction: column;
   margin-bottom: 30px;
   width: 50%;
-  &.invoice-id {
-    width: 100%;
-  }
   &.client-email {
     width: 100%;
   }
   &.invoice-date {
     width: 100%;
+  }
+`;
+
+export const InvoiceTopic = styled(InfoItem)`
+  width: 100%;
+  margin-bottom: 0;
+  ${mediaQueries.medium} {
+    display: flex;
+    flex-direction: row;
   }
 `;
 
