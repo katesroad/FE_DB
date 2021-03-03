@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { light, dark } from "styles/colors";
+import { dark, light } from "styles/colors";
 import * as fonts from "styles/fonts";
 
 const GlobalStyles = createGlobalStyle`
@@ -28,7 +28,8 @@ const GlobalStyles = createGlobalStyle`
 
   a,
   button {
-    cursor: pointer
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
   }
 
   button[disabled] {

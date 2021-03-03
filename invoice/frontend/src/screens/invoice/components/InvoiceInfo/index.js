@@ -1,10 +1,9 @@
 // eslint-disable-next-line
-import styled from "styled-components/macro";
-import * as React from "react";
+import { THEME_MODE, useTheme } from "context/theme.context";
 import PropTypes from "prop-types";
-import { Wrapper } from "./styles";
-import { useTheme, THEME_MODE } from "context/theme.context";
+import * as React from "react";
 import { colors } from "styles/colors";
+import { Wrapper } from "./styles";
 
 function InvoiceInfo({ senderAddress, clientAddress, ...invoice }) {
   const [theme] = useTheme();
