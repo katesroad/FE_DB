@@ -32,16 +32,18 @@ export function ModalContent({ title, children, ...props }) {
   );
 }
 
-export function ModalCloseBtn({ children: child }) {
+export function ModalCloseBtn({ children: child, ...props }) {
   const [, setIsOpen] = React.useContext(ModalContext);
   return React.cloneElement(child, {
     onClick: callAll(() => setIsOpen(false), child.props.onClick),
+    ...props,
   });
 }
 
-export function ModalOpenBtn({ children: child }) {
+export function ModalOpenBtn({ children: child, ...props }) {
   const [, setIsOpen] = React.useContext(ModalContext);
   return React.cloneElement(child, {
     onClick: callAll(() => setIsOpen(true), child.props.onClick),
+    ...props,
   });
 }
