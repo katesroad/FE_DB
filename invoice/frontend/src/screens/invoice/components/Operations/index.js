@@ -3,10 +3,10 @@ import { Button } from "components/lib";
 import PropTypes from "prop-types";
 import ConfirmDeletion from "../ConfirmDeletion";
 
-function InvoiceOperations({ id, handelEdit, handleMark }) {
+function InvoiceOperations({ id, handleEdit, handleMark }) {
   return (
     <>
-      <Button onClick={handelEdit}>edit</Button>
+      <Button onClick={handleEdit}>edit</Button>
       <ConfirmDeletion id={id} />
       <Button variant="primary" onClick={handleMark}>
         mark as paid
@@ -17,7 +17,7 @@ function InvoiceOperations({ id, handelEdit, handleMark }) {
 
 InvoiceOperations.propTypes = {
   id: PropTypes.string.isRequired,
-  handelEdit: PropTypes.func.isRequired,
+  handleEdit: PropTypes.func.isRequired,
   handleMark: PropTypes.func.isRequired,
 };
 
