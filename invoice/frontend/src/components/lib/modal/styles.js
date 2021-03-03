@@ -7,6 +7,7 @@ import * as mediaQueries from "styles/media-queries";
 const Dialog = styled(DialogBase)`
   padding: 48px;
   max-width: 480px;
+  min-width: 292px;
   color: var(--element-text-color);
   ${cardStyle}
 `;
