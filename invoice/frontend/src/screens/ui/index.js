@@ -9,6 +9,7 @@ import {
   ModalOpenBtn,
 } from "components/lib/modal";
 import BillItem from "components/AddBillItem";
+import ItemList from "components/ItemList";
 
 // this screen is for testing ui lib components purpose
 
@@ -24,6 +25,10 @@ export default function UILibScreen() {
   const onChange = (update) => {
     setNewItem((newItem) => ({ ...newItem, ...update }));
   };
+  const [items, setItems] = React.useState([]);
+  const onAddItem = (item) => {
+    setItems([...items, item]);
+  };
   return (
     <div>
       <Button onClick={handleClick}>mode</Button>
@@ -32,6 +37,7 @@ export default function UILibScreen() {
       <Button>Edit</Button>
       <Card>this is card</Card>
       <BillItem {...newItem} onChange={onChange} />
+      <ItemList items={items} onAddItem={onAddItem} />
       <Modal>
         <ModalOpenBtn>
           <Button onClick={() => console.log("open")}>Edit</Button>

@@ -12,7 +12,8 @@ export default function InvoiceScreen() {
   const { id } = useParams();
   const handleEdit = () => {};
   const handleMark = () => {};
-  const [invoice] = React.useState(invoices[0]);
+  const [data] = React.useState(invoices[1]);
+  const { items = [], total, ...invoice } = data;
   return (
     <>
       <Header>
@@ -21,23 +22,15 @@ export default function InvoiceScreen() {
           <StatusValue status={invoice.status} />
         </p>
         <p className="operations tablet">
-          <Operations
-            id={invoice.id}
-            handleEdit={handleEdit}
-            handleMark={handleMark}
-          />
+          <Operations id={id} handleEdit={handleEdit} handleMark={handleMark} />
         </p>
       </Header>
       <Wrapper>
         <InvoiceInfo {...invoice} />
-        <InvoiceBillItems items={invoice.items} total={invoice.total} />
+        <InvoiceBillItems items={items} total={total} />
       </Wrapper>
       <Footer>
-        <Operations
-          id={invoice.id}
-          handleEdit={handleEdit}
-          handleMark={handleMark}
-        />
+        <Operations id={id} handleEdit={handleEdit} handleMark={handleMark} />
       </Footer>
     </>
   );
