@@ -18,6 +18,7 @@ export const InfoItem = styled.div`
   flex-direction: column;
   margin-bottom: 30px;
   width: 50%;
+  overflow: hidden;
   &.client-email {
     width: 100%;
   }
