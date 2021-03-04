@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import * as mediaQuries from "styles/media-queries";
 import { flexBettween } from "styles/styles";
 
@@ -36,9 +36,11 @@ export const GrandTotal = styled.div`
   border-bottom-right-radius: 8px;
   span {
     font-size: 16px;
+    color: var(--color-white);
   }
   strong {
     font-size: 20px;
+    color: var(--color-white);
   }
   ${mediaQuries.medium} {
     margin-top: -24px;
