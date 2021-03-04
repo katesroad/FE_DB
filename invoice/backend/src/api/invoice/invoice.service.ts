@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  UnsupportedMediaTypeException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Invoice, InvoiceDoc } from 'common/mongo';
 import { Model } from 'mongoose';
@@ -24,28 +28,18 @@ export class InvoiceService {
   }
 
   createInvoice(createInvoiceDto: any) {
-    const { items = [], ...data } = createInvoiceDto;
-    let total = 0;
-    items.map((item) => {
-      item.total = item.price * item.quantity;
-      total += item.total;
-    });
+    const items = createInvoiceDto.items;
+    const data = { ...createInvoiceDto, ...this.calcTotal(items) };
     return this.invoiceModel
-      .create({ ...data, total, items })
+      .create(data)
       .then((doc) => this.cleanDoc(doc))
       .catch((e) => e);
   }
 
   updateInvoice(id: string, updateInvoiceDto: any) {
-    const { items, ...update } = updateInvoiceDto;
+    let { items, ...update } = updateInvoiceDto;
     if (items) {
-      let total = 0;
-      items.map((item) => {
-        item.total = item.price * item.quantity;
-        total += item.total;
-      });
-      update.items = items;
-      update.total = total;
+      update = { ...update, ...this.calcTotal(items) };
     }
     return this.invoiceModel
       .updateOne({ _id: id }, update)
@@ -57,5 +51,14 @@ export class InvoiceService {
     if (!doc) return null;
     const { _id, ...data } = doc.toJSON();
     return { id: _id, ...data };
+  }
+
+  private calcTotal(items: any[]) {
+    let total = 0;
+    items.map((item) => {
+      item.total = item.price * item.quantity;
+      total += item.total;
+    });
+    return { items, total };
   }
 }
