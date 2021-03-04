@@ -20,6 +20,7 @@ export default function AppProvider({ children }) {
               as="main"
               css={`
                 flex-grow: 10;
+                padding-bottom: 100px;
               `}
             >
               <Switch>

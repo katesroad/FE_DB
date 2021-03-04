@@ -33,7 +33,7 @@ export const dark = {
   element: { bg: p02, color: p10 },
   body: { bg: p23 },
   title: { color: colors.white },
-  input: { bg: p02, color: colors.white, border: colors.white },
+  input: { bg: p02, color: colors.white, border: p03 },
   button: { bg: p03, color: p10 },
 };
 
@@ -41,7 +41,7 @@ export const light = {
   element: { bg: colors.white, color: p11 },
   body: { bg: "#f2f2f2" },
   title: { color: p13 },
-  input: { bg: p02, color: colors.white, border: colors.white },
+  input: { bg: colors.white, color: p13, border: p10 },
   button: { bg: "#f9fafe", color: p12 },
 };
 

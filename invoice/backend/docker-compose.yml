@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  main:
+    container_name: main
+    build:
+      context: .
+      target: production
+    environment:
+      NODE_ENV: production
+    command: node dist/main
+    ports:
+      - 8080:3000
