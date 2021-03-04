@@ -8,6 +8,7 @@ import {
   ModalCloseBtn,
   ModalOpenBtn,
 } from "components/lib/modal";
+import BillItem from "components/AddBillItem";
 
 // this screen is for testing ui lib components purpose
 
@@ -19,6 +20,10 @@ export default function UILibScreen() {
   React.useEffect(() => {
     document.body.dataset.theme = mode;
   }, [mode]);
+  const [newItem, setNewItem] = React.useState({});
+  const onChange = (update) => {
+    setNewItem((newItem) => ({ ...newItem, ...update }));
+  };
   return (
     <div>
       <Button onClick={handleClick}>mode</Button>
@@ -26,11 +31,12 @@ export default function UILibScreen() {
       <Button variant="primary"> mark as paid</Button>
       <Button>Edit</Button>
       <Card>this is card</Card>
+      <BillItem {...newItem} onChange={onChange} />
       <Modal>
         <ModalOpenBtn>
           <Button onClick={() => console.log("open")}>Edit</Button>
         </ModalOpenBtn>
-        <ModalContent title="Comfirm Deletetion" arial-label="modal">
+        <ModalContent title="Comfirm Deletetion" aria-label="modal">
           <section
             css={`
               margin-bottom: 16px;
