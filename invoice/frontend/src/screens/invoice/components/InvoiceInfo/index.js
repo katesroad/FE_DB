@@ -1,9 +1,18 @@
 // eslint-disable-next-line
+import styled from "styled-components/macro";
 import { THEME_MODE, useTheme } from "context/theme.context";
 import PropTypes from "prop-types";
 import * as React from "react";
 import { colors } from "styles/colors";
-import { Wrapper } from "./styles";
+import {
+  Wrapper,
+  InfoItem,
+  InfoItemName,
+  InfoItemValue,
+  InvoiceId,
+  ClientName,
+  InvoiceTopic,
+} from "./styles";
 
 function InvoiceInfo({ senderAddress, clientAddress, ...invoice }) {
   const [theme] = useTheme();
@@ -14,40 +23,42 @@ function InvoiceInfo({ senderAddress, clientAddress, ...invoice }) {
         color: ${color};
       `}
     >
-      <div>
-        <p>
-          <strong># {invoice.id}</strong>
-          <span>{invoice.description}</span>
-        </p>
-        <p>
+      {/* invoice id and sender's address */}
+      <InvoiceTopic>
+        <InfoItem>
+          <InvoiceId># {invoice.id}</InvoiceId>
+          <small>{invoice.description}</small>
+        </InfoItem>
+        <InfoItem className="">
           {Object.keys(senderAddress).map((key) => (
-            <span key={key}>{senderAddress[key]}</span>
+            <small key={key}>{senderAddress[key]}</small>
           ))}
-        </p>
-      </div>
-      <div>
-        <p>
-          <span>Invoice Date</span>
-          <strong>{invoice.createdAt}</strong>
-        </p>
-        <p>
-          <span>Payment Due</span>
-          <strong>{invoice.paymentDue}</strong>
-        </p>
-      </div>
-      <div>
-        <span>Bill To</span>
-        <strong>{invoice.clientName}</strong>
-        <p>
-          {Object.keys(senderAddress).map((key) => (
-            <span key={key}>{senderAddress[key]}</span>
-          ))}
-        </p>
-      </div>
-      <div>
-        <span>Send to</span>
-        <strong>{invoice.clientEmail}</strong>
-      </div>
+        </InfoItem>
+      </InvoiceTopic>
+      {/* the invoice date */}
+      <InfoItem>
+        <InfoItem className="invoice-date">
+          <InfoItemName>Invoice Date</InfoItemName>
+          <InfoItemValue>{invoice.createdAt}</InfoItemValue>
+        </InfoItem>
+        <InfoItem className="invoice-date">
+          <InfoItemName>Payment Due</InfoItemName>
+          <InfoItemValue>{invoice.paymentDue}</InfoItemValue>
+        </InfoItem>
+      </InfoItem>
+      {/* client's address */}
+      <InfoItem>
+        <InfoItemName>Bill To</InfoItemName>
+        <ClientName>{invoice.clientName}</ClientName>
+        {Object.keys(senderAddress).map((key) => (
+          <small key={key}>{senderAddress[key]}</small>
+        ))}
+      </InfoItem>
+      {/* client's email address */}
+      <InfoItem className="client-email">
+        <InfoItemName>Send to</InfoItemName>
+        <InfoItemValue>{invoice.clientEmail}</InfoItemValue>
+      </InfoItem>
     </Wrapper>
   );
 }

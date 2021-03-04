@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { dark, light } from "styles/colors";
+import { dark, light, colors } from "styles/colors";
 import * as fonts from "styles/fonts";
 
 const GlobalStyles = createGlobalStyle`
@@ -49,7 +49,8 @@ const GlobalStyles = createGlobalStyle`
   html {
     --font-weight-normal: ${fonts.fontWeightNormal};
     --font-weight-bold: ${fonts.fontWeightBold};
-    --font-weight-bolder: ${fonts.fontWeightBolder}
+    --font-weight-bolder: ${fonts.fontWeightBolder};
+    --color-white: ${colors.white};
   }
  
   body[data-theme="dark"] {

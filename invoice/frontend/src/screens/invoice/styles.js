@@ -35,3 +35,11 @@ export const Header = styled(Card)`
 export const StatusLabel = styled.span`
   font-weight: 500;
 `;
+
+export const Wrapper = styled(Card)`
+  padding-top: 32px;
+  padding-bottom: 32px;
+  ${mediaQueries.medium} {
+    padding: 48px;
+  }
+`;
