@@ -6,6 +6,6 @@ export declare class InvoiceService {
     getInvoices(): Promise<any[]>;
     getInvoice(id: string): Promise<any>;
     createInvoice(createInvoiceDto: any): Promise<any>;
-    updateInvoice(id: string, updateInvoiceDto: any): import("mongoose").Query<InvoiceDoc, InvoiceDoc>;
+    updateInvoice(id: string, updateInvoiceDto: any): Promise<any>;
     private cleanDoc;
 }

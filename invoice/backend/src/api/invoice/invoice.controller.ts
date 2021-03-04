@@ -21,7 +21,7 @@ export class InvoiceController {
   }
 
   @Patch(':id')
-  updateInvoice(@Param('id') id: string, update: any) {
+  updateInvoice(@Param('id') id: string, @Body() update: any) {
     return this.invoiceService.updateInvoice(id, update);
   }
 }

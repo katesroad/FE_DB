@@ -37,10 +37,24 @@ export class InvoiceService {
   }
 
   updateInvoice(id: string, updateInvoiceDto: any) {
-    return this.invoiceModel.findOneAndUpdate({ _id: id }, updateInvoiceDto);
+    const { items, ...update } = updateInvoiceDto;
+    if (items) {
+      let total = 0;
+      items.map((item) => {
+        item.total = item.price * item.quantity;
+        total += item.total;
+      });
+      update.items = items;
+      update.total = total;
+    }
+    return this.invoiceModel
+      .updateOne({ _id: id }, update)
+      .then(() => this.invoiceModel.findOne({ _id: id }))
+      .then((doc) => this.cleanDoc(doc));
   }
 
   private cleanDoc(doc) {
+    if (!doc) return null;
     const { _id, ...data } = doc.toJSON();
     return { id: _id, ...data };
   }

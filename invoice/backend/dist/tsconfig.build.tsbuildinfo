@@ -1637,13 +1637,13 @@
         "affectsGlobalScope": false
       },
       "../src/api/invoice/invoice.service.ts": {
-        "version": "c19b83527e5aca4e970c154902e694aa766b393bffc2a6c10b28373fc8524fa9",
-        "signature": "9dd022212a4e1d5a792afe3148e45e0e500a9c23babe85cce17cdff11cf4599a",
+        "version": "d2ad1555ec04805c7f6bc2e8489490f61fc5a5a6e4819b885361efe2a768e4ca",
+        "signature": "0ca8576234e1ad271fc6ff61d1efa6b4737f419a18f539555f8c60c24d7c9a24",
         "affectsGlobalScope": false
       },
       "../src/api/invoice/invoice.controller.ts": {
-        "version": "ca9cf977702d4dd1c0a009b413ced2165286002daf2f67ca4a2a48770385c75c",
-        "signature": "b7b4473440ad392671c57be1dff7c6a6982f11ad35ae92bd4dd3fe9d30366be1",
+        "version": "11fb1fbceea89a1617e2b6f55cc207ae38aec6c7a033b66120a2bc6c91ca1617",
+        "signature": "bbe11f0bd21206faa017f633c8681e2e37531e78f22c9a21c1bd74f1bfed518e",
         "affectsGlobalScope": false
       },
       "../src/api/invoice/invoice.module.ts": {
@@ -5346,9 +5346,7 @@
         "../node_modules/rxjs/internal/types.d.ts"
       ],
       "../src/api/invoice/invoice.controller.ts": [
-        "../node_modules/mongoose/index.d.ts",
-        "../src/api/invoice/invoice.service.ts",
-        "../src/common/mongo/index.ts"
+        "../src/api/invoice/invoice.service.ts"
       ],
       "../src/api/invoice/invoice.service.ts": [
         "../node_modules/mongoose/index.d.ts",

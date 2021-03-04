@@ -54,7 +54,7 @@ __decorate([
 ], InvoiceController.prototype, "getInvoice", null);
 __decorate([
     common_1.Patch(':id'),
-    __param(0, common_1.Param('id')),
+    __param(0, common_1.Param('id')), __param(1, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", void 0)
