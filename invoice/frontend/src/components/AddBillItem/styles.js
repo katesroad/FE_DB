@@ -1,8 +1,13 @@
 import { FormControl } from "components/lib";
 import styled from "styled-components";
+import * as mediaQueries from "styles/media-queries";
 
 export const ItemName = styled(FormControl)`
   widtth: 100%;
+  ${mediaQueries.medium} {
+    max-width: 214px;
+    margin-right: 16px;
+  }
 `;
 
 export const ItemQty = styled(FormControl)`
@@ -28,4 +33,13 @@ export const ItemCost = styled(FormControl)`
 export const DelBtn = styled.span`
   width: 16px;
   height: 16px;
+`;
+
+export const Wrapper = styled.div`
+  margin-bottom: 24px;
+  overflow: hidden;
+  ${mediaQueries.medium} {
+    display: flex;
+    margin-bottom: 18px;
+  }
 `;

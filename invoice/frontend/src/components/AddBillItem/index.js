@@ -2,7 +2,14 @@
 import styled from "styled-components/macro";
 import * as React from "react";
 import { Input, Label } from "components/lib";
-import { ItemName, ItemQty, ItemPrice, ItemCost, DelBtn } from "./styles";
+import {
+  ItemName,
+  ItemQty,
+  ItemPrice,
+  ItemCost,
+  DelBtn,
+  Wrapper,
+} from "./styles";
 import PropTypes from "prop-types";
 
 function BillItem({ onChange, ...item }) {
@@ -19,8 +26,8 @@ function BillItem({ onChange, ...item }) {
     onChange({ [name]: value });
   };
   return (
-    <div>
-      <ItemName>
+    <Wrapper>
+      <ItemName className="item-name">
         <Label>Item Name</Label>
         <Input value={item.name} name="name" onChange={handleChange} />
       </ItemName>
@@ -52,7 +59,7 @@ function BillItem({ onChange, ...item }) {
         </ItemCost>
         <DelBtn>Del</DelBtn>
       </div>
-    </div>
+    </Wrapper>
   );
 }
 

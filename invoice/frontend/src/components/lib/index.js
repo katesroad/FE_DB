@@ -67,17 +67,19 @@ export const Label = styled.label`
   align-self: flex-start;
   margin-bottom: 10px;
   display: block;
+  color: var(--element-text-color);
 `;
 
 export const Input = styled.input`
   width: 100%;
   padding: 16px 16px;
-  border: 1px solid #252945;
+  border: 1px solid;
+  border-color: var(--input-border-color);
   box-sizing: border-box;
   border-radius: 4px;
   font-size: 16px;
-  color: var(--element-text-color);
-  background-color: var(--element-background-color);
+  color: var(--input-text-color);
+  background-color: var(--input-background-color);
   &:disabled {
     width: auto;
     border: 0;

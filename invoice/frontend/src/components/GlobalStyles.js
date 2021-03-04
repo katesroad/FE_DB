@@ -59,6 +59,9 @@ const GlobalStyles = createGlobalStyle`
     --button-text-color: ${dark.button.color};
     --button-background-color: ${dark.button.bg};
     --title-text-color: ${dark.title.color};
+    --input-background-color: ${dark.element.bg};
+    --input-text-color: ${dark.title.color};
+    --input-border-color: ${dark.input.border};
     color: ${dark.element.color};
     background-color: ${dark.body.bg};
   }
@@ -68,6 +71,9 @@ const GlobalStyles = createGlobalStyle`
     --button-text-color: ${light.button.color};
     --button-background-color: ${light.button.bg};
     --title-text-color: ${light.title.color};
+    --input-background-color: ${light.element.bg};
+    --input-text-color: ${light.title.color};
+    --input-border-color: ${light.input.border};
     color: ${light.element.color};
     background-color: ${light.body.bg};
   }
