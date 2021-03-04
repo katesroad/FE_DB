@@ -1,0 +1,8 @@
+db:
+  Mongo:
+    uri: <your mongodb provider url>
+app:
+  port: 3000
+  cors:
+    # allowed origins for API server
+    origin: https://www.example.com/, https://example.com/ 
