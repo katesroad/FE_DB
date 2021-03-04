@@ -1,7 +1,6 @@
 import {
   Injectable,
   NotFoundException,
-  UnsupportedMediaTypeException,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Invoice, InvoiceDoc } from 'common/mongo';
@@ -21,7 +20,7 @@ export class InvoiceService {
   }
 
   getInvoice(id: string) {
-    return this.invoiceModel.findOne({ tag: id }).then((doc) => {
+    return this.invoiceModel.findOne({ _id: id }).then((doc) => {
       if (!doc) throw new NotFoundException(`Can't find invoice with id#${id}`);
       return this.cleanDoc(doc);
     });
