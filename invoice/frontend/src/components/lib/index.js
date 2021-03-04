@@ -56,3 +56,31 @@ export const Card = styled.div`
   padding: 24px;
   ${cardStyle}
 `;
+
+export const FormControl = styled.p`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+`;
+
+export const Label = styled.label`
+  align-self: flex-start;
+  margin-bottom: 10px;
+  display: block;
+`;
+
+export const Input = styled.input`
+  width: 100%;
+  padding: 16px 16px;
+  border: 1px solid #252945;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 16px;
+  color: var(--element-text-color);
+  background-color: var(--element-background-color);
+  &:disabled {
+    width: auto;
+    border: 0;
+    background-color: transparent;
+  }
+`;
