@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 import styled from "styled-components/macro";
 import * as React from "react";
-import { Input, FormControl, Label } from "components/lib";
+import { Input, Label } from "components/lib";
 import { ItemName, ItemQty, ItemPrice, ItemCost, DelBtn } from "./styles";
 import PropTypes from "prop-types";
 
