@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
     line-height: 1.12;
     width: 290px;
   }
+  margin-bottom: 35px;
 `;
 
 export const InfoItem = styled.div`
