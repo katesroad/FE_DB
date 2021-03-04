@@ -15,8 +15,8 @@ export const Header = styled(Card)`
     flex-grow: 1;
   }
   .operations {
-    display: none;
     font-weight: var(font-weight-bold);
+    display: none;
   }
   ${mediaQueries.small} {
     padding: 20px 32px;
@@ -38,8 +38,23 @@ export const StatusLabel = styled.span`
 
 export const Wrapper = styled(Card)`
   padding-top: 32px;
-  padding-bottom: 32px;
+  padding-bottom: 64px;
   ${mediaQueries.medium} {
     padding: 48px;
+  }
+`;
+
+export const Footer = styled.p`
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin-top: 24px;
+  padding: 21px 0;
+  background: #1e2139;
+  box-shadow: 0px 10px 10px -10px rgb(72 84 159 / 10%);
+  text-align: center;
+  ${mediaQueries.small} {
+    display: none;
   }
 `;

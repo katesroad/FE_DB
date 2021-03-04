@@ -2,9 +2,8 @@ import * as React from "react";
 import Operations from "./components/Operations";
 import { useParams } from "react-router-dom";
 import invoices from "./data";
-import { Header, StatusLabel, Wrapper } from "./styles";
+import { Header, StatusLabel, Wrapper, Footer } from "./styles";
 import StatusValue from "components/InvoiceStatus";
-import { useInvoice } from "hooks/invoice-hook";
 import InvoiceInfo from "./components/InvoiceInfo";
 import InvoiceBillItems from "./components/InvoiceBillItems";
 
@@ -13,8 +12,7 @@ export default function InvoiceScreen() {
   const { id } = useParams();
   const handleEdit = () => {};
   const handleMark = () => {};
-  useInvoice(id);
-  const [invoice, setInvoice] = React.useState(invoices[0]);
+  const [invoice] = React.useState(invoices[0]);
   return (
     <>
       <Header>
@@ -22,7 +20,7 @@ export default function InvoiceScreen() {
           <StatusLabel>Status</StatusLabel>
           <StatusValue status={invoice.status} />
         </p>
-        <p className="operations">
+        <p className="operations tablet">
           <Operations
             id={invoice.id}
             handleEdit={handleEdit}
@@ -34,6 +32,13 @@ export default function InvoiceScreen() {
         <InvoiceInfo {...invoice} />
         <InvoiceBillItems items={invoice.items} total={invoice.total} />
       </Wrapper>
+      <Footer>
+        <Operations
+          id={invoice.id}
+          handleEdit={handleEdit}
+          handleMark={handleMark}
+        />
+      </Footer>
     </>
   );
 }
