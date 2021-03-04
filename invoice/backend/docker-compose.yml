@@ -1,7 +1,7 @@
 version: "3.7"
 services:
-  main:
-    container_name: main
+  invoice:
+    container_name: invoice
     build:
       context: .
       target: production
