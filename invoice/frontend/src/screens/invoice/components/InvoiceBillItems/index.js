@@ -64,10 +64,12 @@ function InvoiceBillItems({ items, total }) {
         {/* item list for tablet and desktop version */}
         <MediumView>
           <thead>
-            <th width="35%">Item Name</th>
-            <th width="15%">QTY.</th>
-            <th width="20%">Price</th>
-            <th width="35%%">Total</th>
+            <tr>
+              <th width="35%">Item Name</th>
+              <th width="15%">QTY.</th>
+              <th width="20%">Price</th>
+              <th width="35%%">Total</th>
+            </tr>
           </thead>
           <tbody>
             {items.map((item) => (

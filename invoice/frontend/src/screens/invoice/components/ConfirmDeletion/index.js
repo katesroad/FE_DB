@@ -18,7 +18,7 @@ export default function ComfirmDeletion({ id }) {
       <ModalOpenBtn>
         <DeleteBtn variant="danger">delete</DeleteBtn>
       </ModalOpenBtn>
-      <ModalContent title="Comfirm Deletetion" arial-label="modal">
+      <ModalContent title="Comfirm Deletetion" aria-label="modal">
         <CofirmContent>
           Are you sure you want to delete invoice <span>#{id}? </span>
           This action cannot be undone.
