@@ -34,9 +34,7 @@ function notifcationReducer(notifications, action) {
 }
 
 function NotificationProvider({ children }) {
-  const [notifications, dispatch] = React.useReducer(notifcationReducer, [
-    generateNotification({ variant: "danger", msg: "Danger" }),
-  ]);
+  const [notifications, dispatch] = React.useReducer(notifcationReducer, []);
   const value = [notifications, dispatch];
   return (
     <NotificationContext.Provider value={value}>
