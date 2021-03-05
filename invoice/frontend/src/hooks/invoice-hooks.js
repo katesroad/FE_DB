@@ -1,7 +1,7 @@
 import axios from "axios";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 
-function getInvoice({ queryKey }) {
+export function getInvoice({ queryKey }) {
   const [, id] = queryKey;
   return axios.get(`invoices/${id}`);
 }
@@ -11,4 +11,20 @@ export function useInvoice(id) {
     queryKey: ["invoice", id],
     queryFn: getInvoice,
   });
+}
+
+/**
+ *  update invoice
+ * @param {object} invoice the update data. Invoice id must be provided
+ */
+export function updateInvoice(invoice) {
+  const id = invoice.id;
+  return axios.patch(`invoices/${id}`, invoice);
+}
+/**
+ *  update invoice
+ * @param {object} invoice the update data. Invoice id must be provided
+ */
+export function useUpdateInvoice() {
+  return useMutation((invoice) => updateInvoice(invoice));
 }

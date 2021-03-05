@@ -2,12 +2,11 @@ import * as React from "react";
 import { Button } from "components/lib";
 import PropTypes from "prop-types";
 import DeleteBtn from "../ConfirmDeletion";
+import { useUpdateInvoice } from "hooks/invoice-hooks";
 
 function MarkButton({ id }) {
-  const handleClick = (e) => {
-    console.log(`Marking invoice #${id}...`);
-    return false;
-  };
+  const mutation = useUpdateInvoice();
+  const handleClick = (e) => mutation.mutate({ id, status: "paid" });
   return (
     <Button onClick={handleClick} variant="primary">
       mark as paid
