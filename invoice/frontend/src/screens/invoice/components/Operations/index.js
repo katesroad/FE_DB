@@ -5,7 +5,7 @@ import DeleteBtn from "../ConfirmDeletion";
 import { useUpdateInvoice } from "hooks/invoice-hooks";
 
 function MarkButton({ id }) {
-  const mutation = useUpdateInvoice();
+  const mutation = useUpdateInvoice({ id });
   const handleClick = (e) => mutation.mutate({ id, status: "paid" });
   return (
     <Button onClick={handleClick} variant="primary">
