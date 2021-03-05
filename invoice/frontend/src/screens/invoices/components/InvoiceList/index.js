@@ -29,7 +29,7 @@ function Invoice({ ...invoice }) {
     dueDate = new Date(invoice.paymentDue).toLocaleDateString();
   }, [invoice]);
   return (
-    <Wrapper>
+    <Wrapper to={`/invoice/${invoice.id}`}>
       <Column>
         <InvoiceId>
           # <strong>{invoice.tag}</strong>
