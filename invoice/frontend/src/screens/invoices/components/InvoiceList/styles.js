@@ -1,8 +1,8 @@
-import { ButtonBase, Card } from "components/lib";
+import { ButtonBase, LinkCard } from "components/lib";
 import styled from "styled-components";
 import * as mediaQueries from "styles/media-queries";
 
-export const Wrapper = styled(Card)`
+export const Wrapper = styled(LinkCard)`
   display: flex;
   justify-content: space-between;
 `;

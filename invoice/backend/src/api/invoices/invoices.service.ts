@@ -1,27 +1,35 @@
-import {
-  BadRequestException,
-  Injectable,
-} from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Invoice, InvoiceDoc } from 'common/mongo';
+import { Invoice, InvoiceDoc, Status } from 'common/mongo';
 import { Model } from 'mongoose';
 
 @Injectable()
-export class InvoiceService {
+export class InvoicesService {
   constructor(
     @InjectModel(Invoice.name)
     private readonly invoiceModel: Model<InvoiceDoc>,
   ) {}
 
-  getInvoices() {
+  getInvoices(status?: Status) {
+    let filter: Record<string, string> = null;
+    if (status) {
+      filter = { status };
+    }
     return this.invoiceModel
-      .find()
+      .find(filter, {
+        status: 1,
+        paymentDue: 1,
+        clientName: 1,
+        tag: 1,
+        total: 1,
+      })
       .then((docs) => docs.map((doc) => this.cleanDoc(doc)));
   }
 
   getInvoice(id: string) {
     return this.invoiceModel.findOne({ _id: id }).then((doc) => {
-      if (!doc) throw new BadRequestException(`Can't find invoice with id#${id}`);
+      if (!doc)
+        throw new BadRequestException(`Can't find invoice with id#${id}`);
       return this.cleanDoc(doc);
     });
   }

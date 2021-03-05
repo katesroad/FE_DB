@@ -17,6 +17,7 @@ class Item {
   total: number;
 }
 
+export type Status = 'paid' | 'pending' | 'draft';
 @Schema({ versionKey: false, timestamps: true })
 export class Invoice {
   // coordindate id in data
@@ -28,6 +29,9 @@ export class Invoice {
 
   @Prop({ default: 1 })
   paymentTerms: number;
+
+  @Prop({ required: true })
+  paymentDue: number; //timestamp
 
   @Prop({ required: true })
   clientName: string;
@@ -46,6 +50,9 @@ export class Invoice {
 
   @Prop({ required: true })
   total: number;
+
+  @Prop({ required: true })
+  status: Status;
 }
 
 export const InvoiceSchema = SchemaFactory.createForClass(Invoice);
