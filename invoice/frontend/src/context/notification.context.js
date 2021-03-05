@@ -48,7 +48,7 @@ function NotificationProvider({ children }) {
         `}
       >
         {notifications.map(({ variant, msg, id }) => (
-          <Notification varaint={variant} key={id}>
+          <Notification variant={variant} key={id}>
             {msg}
           </Notification>
         ))}

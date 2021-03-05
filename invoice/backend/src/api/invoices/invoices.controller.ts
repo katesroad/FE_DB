@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Patch,
@@ -32,5 +33,10 @@ export class InvoicesController {
   @Patch(':id')
   updateInvoice(@Param('id') id: string, @Body() update: any) {
     return this.invoiceService.updateInvoice(id, update);
+  }
+
+  @Delete(':id')
+  deleteInvoice(@Param('id') id: string) {
+    return this.invoiceService.deleteInvoice(id);
   }
 }

@@ -1,5 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
+import { useDeleteInvoice } from "hooks/invoice-hooks";
 import {
   Modal,
   ModalContent,
@@ -10,10 +11,8 @@ import {
 import { CofirmContent, ModalFooter, DeleteBtn, InvoiceTag } from "./styles";
 
 function ComfirmDeletion({ id, tag }) {
-  const handleDelete = () => {
-    console.log(`Delete invoice #${id}`);
-    return false;
-  };
+  const mutation = useDeleteInvoice();
+  const handleDelete = () => mutation.mutate({ id, tag });
   return (
     <Modal>
       <ModalOpenBtn>
@@ -28,11 +27,13 @@ function ComfirmDeletion({ id, tag }) {
           <ModalCloseBtn>
             <Button>Cancle</Button>
           </ModalCloseBtn>
-          <ModalCloseBtn>
-            <Button variant="danger" onClick={handleDelete}>
-              Delete
-            </Button>
-          </ModalCloseBtn>
+          <Button
+            variant="danger"
+            onClick={handleDelete}
+            disabled={mutation.isLoading}
+          >
+            Delete
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
