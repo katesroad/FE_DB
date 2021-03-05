@@ -1,42 +1,36 @@
-// eslint-disable-next-line
-import styled from "styled-components/macro";
 import * as React from "react";
-import invoiceList from "./data";
-import Invoice from "./components/Invoice";
-import InvoiceFilter from "./components/InvoiceFilter";
 import { Button } from "components/lib";
+import InvoiceList from "./components/InvoiceList";
+import InvoiceFilter from "./components/InvoiceFilter";
+import InvoicesStats from "./components/InvoicesStats";
+import { useInvoices } from "hooks/invoices-hook";
 import { Header, InvoiceOperations, Title } from "./styles";
-import NoInvoice from "./components/NoInvoice";
 
 // Invoice list page
 export default function InvoicesScreen() {
-  const [status, setStatus] = React.useState("all");
-  const onChange = (value) => setStatus(value);
+  const [invoiceStatus, setInvoiceStatus] = React.useState("all");
+  const onChange = (value) => setInvoiceStatus(value);
+  const { data: invoices, status, error } = useInvoices(invoiceStatus);
   return (
     <>
       <Header>
         <div>
           <Title>Invoices</Title>
-          <small>there are 7 total invocies</small>
+          <InvoicesStats
+            status={status}
+            total={invoices?.length ? invoices.length : 0}
+          />
         </div>
         <InvoiceOperations>
-          <InvoiceFilter value={status} onChange={onChange} />
+          <InvoiceFilter value={invoiceStatus} onChange={onChange} />
           <Button variant="primary"> + new invoice</Button>
         </InvoiceOperations>
       </Header>
-      <NoInvoice />
-      <ul>
-        {invoiceList.reverse().map((invoice) => (
-          <li
-            key={invoice.id}
-            css={`
-              margin-bottom: 16px;
-            `}
-          >
-            <Invoice {...invoice} />
-          </li>
-        ))}
-      </ul>
+      <>
+        {status === "loading" ? <p>loading...</p> : null}
+        {status === "success" ? <InvoiceList invoices={invoices} /> : null}
+        {status === "error" ? <p> {JSON.stringify(error)} </p> : null}
+      </>
     </>
   );
 }
