@@ -6,6 +6,7 @@ import { red, colors } from "styles/colors";
 import { cardStyle } from "styles/styles";
 
 export * from "./modal";
+export * from "./spinner";
 
 export const Content = styled.section`
   box-sizing: border-box;
