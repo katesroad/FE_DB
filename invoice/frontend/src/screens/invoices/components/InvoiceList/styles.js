@@ -5,6 +5,7 @@ import * as mediaQueries from "styles/media-queries";
 export const Wrapper = styled(LinkCard)`
   display: flex;
   justify-content: space-between;
+  text-decoration: none;
 `;
 
 export const InvoiceAmount = styled.strong`
