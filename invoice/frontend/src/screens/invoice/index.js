@@ -12,8 +12,6 @@ import { Header, StatusLabel, Wrapper, Footer } from "./styles";
 export default function InvoiceScreen() {
   const { id } = useParams();
   const { data: invoice, status, error } = useInvoice(id);
-  const handleEdit = () => {};
-  const handleMark = () => {};
   return (
     <>
       <Header>
@@ -31,11 +29,7 @@ export default function InvoiceScreen() {
         <p className="operations tablet">
           {/* we can only know if the invoice is a valid one after data has been loaded */}
           {status === "success" && invoice?.status ? (
-            <Operations
-              id={id}
-              handleEdit={handleEdit}
-              handleMark={handleMark}
-            />
+            <Operations {...invoice} />
           ) : null}
         </p>
       </Header>
@@ -53,15 +47,9 @@ export default function InvoiceScreen() {
       </Wrapper>
       {/* render operation buttons for mobile version after loading invoice successfully*/}
       {status === "success" && invoice ? (
-        <>
-          <Footer>
-            <Operations
-              id={id}
-              handleEdit={handleEdit}
-              handleMark={handleMark}
-            />
-          </Footer>
-        </>
+        <Footer>
+          <Operations {...invoice} />
+        </Footer>
       ) : null}
     </>
   );

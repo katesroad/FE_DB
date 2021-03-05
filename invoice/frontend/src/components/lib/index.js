@@ -7,6 +7,7 @@ import { cardStyle } from "styles/styles";
 
 export * from "./modal";
 export * from "./spinner";
+export * from "./notification";
 
 export const Content = styled.section`
   box-sizing: border-box;

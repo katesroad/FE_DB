@@ -57,6 +57,10 @@ export class InvoicesService {
       });
   }
 
+  deleteInvoice(id: string) {
+    return this.invoiceModel.findOneAndDelete({ _id: id });
+  }
+
   private cleanDoc(doc) {
     if (!doc) return null;
     const { _id, ...data } = doc.toJSON();

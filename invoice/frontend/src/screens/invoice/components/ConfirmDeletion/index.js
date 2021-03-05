@@ -1,18 +1,18 @@
 import * as React from "react";
-import { Button } from "components/lib";
+import PropTypes from "prop-types";
+import { useDeleteInvoice } from "hooks/invoice-hooks";
 import {
   Modal,
   ModalContent,
   ModalCloseBtn,
   ModalOpenBtn,
-} from "components/lib/modal";
-import { CofirmContent, ModalFooter, DeleteBtn } from "./styles";
+  Button,
+} from "components/lib";
+import { CofirmContent, ModalFooter, DeleteBtn, InvoiceTag } from "./styles";
 
-export default function ComfirmDeletion({ id }) {
-  const handleDelete = () => {
-    console.log(`Delete invoice #${id}`);
-    return false;
-  };
+function ComfirmDeletion({ id, tag }) {
+  const mutation = useDeleteInvoice();
+  const handleDelete = () => mutation.mutate({ id, tag });
   return (
     <Modal>
       <ModalOpenBtn>
@@ -20,20 +20,29 @@ export default function ComfirmDeletion({ id }) {
       </ModalOpenBtn>
       <ModalContent title="Comfirm Deletetion" aria-label="modal">
         <CofirmContent>
-          Are you sure you want to delete invoice <span>#{id}? </span>
-          This action cannot be undone.
+          Are you sure you want to delete invoice
+          <InvoiceTag>#{tag}</InvoiceTag>? This action cannot be undone.
         </CofirmContent>
         <ModalFooter>
           <ModalCloseBtn>
-            <Button onClick={() => console.log("clsoe")}>Cancle</Button>
+            <Button>Cancle</Button>
           </ModalCloseBtn>
-          <ModalCloseBtn>
-            <Button variant="danger" onClick={handleDelete}>
-              Delete
-            </Button>
-          </ModalCloseBtn>
+          <Button
+            variant="danger"
+            onClick={handleDelete}
+            disabled={mutation.isLoading}
+          >
+            Delete
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
   );
 }
+
+ComfirmDeletion.propTypes = {
+  id: PropTypes.string.isRequired,
+  tag: PropTypes.string.isRequired,
+};
+
+export default ComfirmDeletion;
