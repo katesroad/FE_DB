@@ -82,7 +82,7 @@ function addNotification(dispatch, notification) {
  */
 function deleteNotification(dispatch, notification, time) {
   if (time) {
-    let t1 = -setTimeout(() => {
+    let t1 = setTimeout(() => {
       dispatch({
         type: "delete",
         payload: notification,
