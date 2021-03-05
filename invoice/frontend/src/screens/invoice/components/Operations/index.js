@@ -17,9 +17,11 @@ EditButton.propTypes = {
 function Operations({ id, status, tag }) {
   return (
     <>
-      <EditButton id={id} />
+      {status === "paid" ? null : <EditButton id={id} />}
       <DeleteBtn id={id} tag={tag} />
-      {status !== "paid" ? <MarkButton id={id}>Mark As Paid</MarkButton> : null}
+      {status === "pending" ? (
+        <MarkButton id={id}>Mark As Paid</MarkButton>
+      ) : null}
     </>
   );
 }
