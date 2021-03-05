@@ -61,6 +61,7 @@ export function useUpdateInvoice() {
         msg: `Updated invoice  #${id}.`,
       });
       addNotification(dispatch, okNotification);
+      deleteNotification(dispatch, okNotification, 500);
       queryClient.setQueryData(["invoice", id], data);
     },
     onSettled: (data, error, variables, context) => {
