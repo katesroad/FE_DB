@@ -33,6 +33,7 @@ export default function InvoiceScreen() {
           {status === "success" && invoice?.status ? (
             <Operations
               id={id}
+              tag={invoice.tag}
               handleEdit={handleEdit}
               handleMark={handleMark}
             />
@@ -57,6 +58,7 @@ export default function InvoiceScreen() {
           <Footer>
             <Operations
               id={id}
+              tag={invoice.tag}
               handleEdit={handleEdit}
               handleMark={handleMark}
             />

@@ -23,3 +23,8 @@ export const ModalFooter = styled.p`
 export const DeleteBtn = styled(Button)`
   margin: 0 8px;
 `;
+
+export const InvoiceTag = styled.span`
+  margin: 0 4px;
+  font-weight: var(--font-weight-bolder);
+`;
