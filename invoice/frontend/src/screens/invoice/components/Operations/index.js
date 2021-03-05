@@ -1,25 +1,49 @@
 import * as React from "react";
 import { Button } from "components/lib";
 import PropTypes from "prop-types";
-import ConfirmDeletion from "../ConfirmDeletion";
+import DeleteBtn from "../ConfirmDeletion";
 
-function InvoiceOperations({ id, tag, handleEdit, handleMark }) {
+function MarkButton({ id }) {
+  const handleClick = (e) => {
+    console.log(`Marking invoice #${id}...`);
+    return false;
+  };
+  return (
+    <Button onClick={handleClick} variant="primary">
+      mark as paid
+    </Button>
+  );
+}
+MarkButton.propTypes = {
+  id: PropTypes.string.isRequired,
+};
+
+function EditButton({ id }) {
+  const handleClick = (e) => {
+    console.log(`Editting invoice #${id}...`);
+    return false;
+  };
+  return <Button onClick={handleClick}>Edit</Button>;
+}
+EditButton.propTypes = {
+  id: PropTypes.string.isRequired,
+};
+
+function Operations({ id, status, tag }) {
   return (
     <>
-      <Button onClick={handleEdit}>edit</Button>
-      <ConfirmDeletion id={id} tag={tag} />
-      <Button variant="primary" onClick={handleMark}>
-        mark as paid
-      </Button>
+      <EditButton id={id} />
+      <DeleteBtn id={id} tag={tag} />
+      {status !== "paid" ? <MarkButton id={id} /> : null}
     </>
   );
 }
-
-InvoiceOperations.propTypes = {
+Operations.propTypes = {
   id: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
   tag: PropTypes.string.isRequired,
-  handleEdit: PropTypes.func.isRequired,
-  handleMark: PropTypes.func.isRequired,
 };
 
-export default InvoiceOperations;
+export { DeleteBtn, MarkButton, EditButton };
+
+export default Operations;
