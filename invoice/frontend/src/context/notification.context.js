@@ -76,11 +76,28 @@ function addNotification(dispatch, notification) {
   });
 }
 
-function deleteNotification(dispatch, notification) {
-  dispatch({
-    type: "delete",
-    payload: notification,
-  });
+/**
+ * Delete a notification
+ * @param{Dispatch} -dispatch the dispatch got from userReducer
+ * @param{Notification} -notification the notification to delete
+ * @param{number} - time if time is provided, will trigger notification after that time
+ */
+function deleteNotification(dispatch, notification, time) {
+  if (time) {
+    let t1 = -setTimeout(() => {
+      dispatch({
+        type: "delete",
+        payload: notification,
+      });
+      clearTimeout(t1);
+      t1 = null;
+    }, time);
+  } else {
+    dispatch({
+      type: "delete",
+      payload: notification,
+    });
+  }
 }
 
 export {
