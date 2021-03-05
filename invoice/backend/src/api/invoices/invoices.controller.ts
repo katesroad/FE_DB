@@ -1,13 +1,22 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
-import { InvoiceService } from './invoice.service';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Query,
+} from '@nestjs/common';
+import { Status } from 'common/mongo';
+import { InvoicesService } from './invoices.service';
 
 @Controller('api/invoices')
-export class InvoiceController {
-  constructor(private invoiceService: InvoiceService) {}
+export class InvoicesController {
+  constructor(private invoiceService: InvoicesService) {}
 
   @Get()
-  getInvoices() {
-    return this.invoiceService.getInvoices();
+  getInvoices(@Query('status') status?: Status) {
+    return this.invoiceService.getInvoices(status);
   }
 
   @Post()
