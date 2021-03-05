@@ -67,11 +67,27 @@ function useNotification() {
   return context;
 }
 
-function addNotification(dispatch, notification) {
+/**
+ * Add a notification to notification list
+ * @param{Dispatch} -dispatch the dispatch got from userReducer
+ * @param{Notification} -notification the notification to delete
+ * @param{autoDelete} -delete the notification automatically afer 500ms
+ */
+function addNotification(dispatch, notification, autoDelete = true) {
   dispatch({
     type: "add",
     payload: notification,
   });
+  if (autoDelete) {
+    let t1 = setTimeout(() => {
+      dispatch({
+        type: "delete",
+        payload: notification,
+      });
+      clearTimeout(t1);
+      t1 = null;
+    }, 500);
+  }
 }
 
 /**
