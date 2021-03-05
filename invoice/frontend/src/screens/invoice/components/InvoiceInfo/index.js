@@ -26,7 +26,7 @@ function InvoiceInfo({ senderAddress, clientAddress, ...invoice }) {
       {/* invoice id and sender's address */}
       <InvoiceTopic>
         <InfoItem>
-          <InvoiceId># {invoice.id}</InvoiceId>
+          <InvoiceId># {invoice.tag}</InvoiceId>
           <small>{invoice.description}</small>
         </InfoItem>
         <InfoItem className="">
@@ -39,11 +39,15 @@ function InvoiceInfo({ senderAddress, clientAddress, ...invoice }) {
       <InfoItem>
         <InfoItem className="invoice-date">
           <InfoItemName>Invoice Date</InfoItemName>
-          <InfoItemValue>{invoice.createdAt}</InfoItemValue>
+          <InfoItemValue>
+            {new Date(invoice.createdAt).toLocaleDateString()}
+          </InfoItemValue>
         </InfoItem>
         <InfoItem className="invoice-date">
           <InfoItemName>Payment Due</InfoItemName>
-          <InfoItemValue>{invoice.paymentDue}</InfoItemValue>
+          <InfoItemValue>
+            {new Date(invoice.paymentDue).toLocaleDateString()}
+          </InfoItemValue>
         </InfoItem>
       </InfoItem>
       {/* client's address */}
