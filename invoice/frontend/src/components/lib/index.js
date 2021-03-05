@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { variant } from "styled-system";
 import * as mediaQueries from "styles/media-queries";
 import { red, colors } from "styles/colors";
@@ -55,6 +56,12 @@ export const Button = styled(ButtonBase)(
 export const Card = styled.div`
   padding: 24px;
   ${cardStyle}
+`;
+
+export const LinkCard = styled(Link)`
+  padding: 24px;
+  ${cardStyle};
+  color: inherit;
 `;
 
 export const FormControl = styled.p`
