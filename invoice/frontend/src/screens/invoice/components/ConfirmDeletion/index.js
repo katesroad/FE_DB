@@ -1,6 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import { useAlert } from "context/notification.context";
+import { useFailedAlert } from "context/notification.context";
 import { useDeleteInvoice } from "hooks/invoice-hooks";
 import {
   Modal,
@@ -14,12 +14,7 @@ import { CofirmContent, ModalFooter, DeleteBtn, InvoiceTag } from "./styles";
 function ComfirmDeletion({ id, tag }) {
   const { status, mutate } = useDeleteInvoice();
   const handleDelete = () => mutate({ id, tag });
-  const msgs = [
-    `Deleting invoice #${tag}.`,
-    "Deleted invoice #${tag}.",
-    `Failed to delete invoice #${tag}.`,
-  ];
-  useAlert(msgs, status);
+  useFailedAlert(status, `Failed to delete invoice #${tag}.`);
   return (
     <Modal>
       <ModalOpenBtn>
