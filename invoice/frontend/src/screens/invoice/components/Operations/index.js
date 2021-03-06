@@ -1,3 +1,5 @@
+// eslint-disable-next-line
+import styled from "styled-components/macro";
 import * as React from "react";
 import { Button } from "components/lib";
 import MarkButton from "components/MarkButton";
@@ -9,19 +11,39 @@ function EditButton({ id }) {
     console.log(`Editting invoice #${id}...`);
     return false;
   };
-  return <Button onClick={handleClick}>Edit</Button>;
+  return (
+    <Button
+      onClick={handleClick}
+      css={`
+        margin-right: 8px;
+      `}
+    >
+      Edit
+    </Button>
+  );
 }
 EditButton.propTypes = {
   id: PropTypes.string.isRequired,
 };
 
-function Operations({ id, status, tag }) {
+/**
+ * mark as paid, delete, and edit an invoice based on its status
+ * An invoice is editable when the status is draft
+ * An invoice can be marked as paid when the status is pending
+ * An invoice can be deleted when the status is either draft or pending
+ */
+function Operations({ status, ...invoice }) {
+  if (status === "paid") return <DeleteBtn {...invoice} />;
   return (
-    <>
-      {status === "paid" ? null : <EditButton id={id} />}
-      <DeleteBtn id={id} tag={tag} />
-      {status === "pending" ? <MarkButton id={id} /> : null}
-    </>
+    <p>
+      {status === "draft" ? (
+        <>
+          <EditButton id={invoice.id} />
+          <MarkButton id={invoice.id} />
+        </>
+      ) : null}
+      {status === "pending" ? <MarkButton id={invoice.id} /> : null}
+    </p>
   );
 }
 Operations.propTypes = {
