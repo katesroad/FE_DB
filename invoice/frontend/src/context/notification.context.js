@@ -8,9 +8,10 @@ import { Notification } from "components/lib";
  * - The data schema for a notification: msg, variant, id
  * @param{object} notification - notification {msg:string, variant:string}
  */
-function generateNotification(notification) {
+function generateNotification({ variant, msg }) {
+  console.log(variant, msg);
   const id = Date.now();
-  return { id, ...notification };
+  return { id, variant, msg };
 }
 
 const NotificationContext = React.createContext();
@@ -114,10 +115,22 @@ function deleteNotification(dispatch, notification, time) {
   }
 }
 
+function addSuccesNotification(dispatch, msg) {
+  const notification = generateNotification({ variant: "success", msg });
+  addNotification(dispatch, notification);
+}
+
+function addFailedNotification(dispatch, msg) {
+  const notification = generateNotification({ variant: "danger", msg });
+  addNotification(dispatch, notification);
+}
+
 export {
   NotificationProvider,
   useNotification,
   generateNotification,
   addNotification,
+  addSuccesNotification,
+  addFailedNotification,
   deleteNotification,
 };
