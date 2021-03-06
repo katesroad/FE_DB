@@ -5,11 +5,9 @@ import { Button } from "components/lib";
 import PropTypes from "prop-types";
 import DeleteBtn from "../ConfirmDeletion";
 import { useUpdateInvoice } from "hooks/invoice-hooks";
-import { useFailedAlert } from "context/notification.context";
 
 function MarkInvoiceBtn({ id, tag, toStatus, ...props }) {
-  const { status, mutate } = useUpdateInvoice();
-  useFailedAlert(status, `Failed to update inovice#${tag}`);
+  const { status, mutate } = useUpdateInvoice({ id, tag, toStatus });
   return (
     <Button
       onClick={() => mutate({ id, status: toStatus })}

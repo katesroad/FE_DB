@@ -1,5 +1,6 @@
 // eslint-disable-next-line
 import styled from "styled-components/macro";
+import { v4 as uuid } from "uuid";
 import * as React from "react";
 import { Notification } from "components/lib";
 
@@ -9,12 +10,13 @@ function notifcationReducer(notifications, action) {
   const { type, payload } = action;
   switch (type) {
     case "delete": {
-      delete notifications[payload.msg];
-      return { ...notifications };
+      const newNotifications = notifications.filter(
+        (notification) => notification.id !== payload.id
+      );
+      return [...newNotifications];
     }
     case "add": {
-      notifications[payload.msg] = payload;
-      return { ...notifications };
+      return [...notifications, payload];
     }
     default: {
       throw new Error(`Unknown action type:${type}`);
@@ -23,10 +25,12 @@ function notifcationReducer(notifications, action) {
 }
 
 function NotificationProvider({ children }) {
-  const [notifications, dispatch] = React.useReducer(notifcationReducer, {});
+  const [notifications, dispatch] = React.useReducer(notifcationReducer, []);
   const value = [notifications, dispatch];
+  const ref = React.useRef(value);
+  ref.current = value;
   return (
-    <NotificationContext.Provider value={value}>
+    <NotificationContext.Provider value={ref}>
       {/* place global notifications here */}
       <div
         css={`
@@ -36,10 +40,10 @@ function NotificationProvider({ children }) {
           z-index: 999;
         `}
       >
-        {Object.keys(notifications).map((key) => {
-          const { variant, msg } = notifications[key];
+        {notifications.map((notification) => {
+          const { id, variant, msg } = notification;
           return (
-            <Notification variant={variant} key={key}>
+            <Notification variant={variant} key={id}>
               {msg}
             </Notification>
           );
@@ -51,16 +55,43 @@ function NotificationProvider({ children }) {
 }
 
 function useFailedAlert(status, msg) {
-  const [, dispatch] = React.useContext(NotificationContext);
+  const { current } = React.useContext(NotificationContext);
+  const [, dispatch] = current;
   React.useEffect(() => {
     if (status === "error") {
-      const alert = { msg: msg, variant: "danger" };
+      const alert = { msg: msg, variant: "danger", id: uuid() };
       dispatch({ type: "add", payload: alert });
       setTimeout(() => {
-        dispatch({ type: "delete", payload: alert });
+        dispatch({ type: "delete", payload: alert, id: uuid() });
       }, 2500);
     }
   }, [status, msg, dispatch]);
 }
 
-export { NotificationProvider, useFailedAlert };
+function useNotification() {
+  const ref = React.useContext(NotificationContext);
+  return ref.current;
+}
+
+function createNotification(
+  dispatch,
+  { variant, msg },
+  { autoDelete, duration } = { autoDelete: true, duration: 2500 }
+) {
+  const notification = { id: uuid(), variant: variant || "primary", msg };
+  dispatch({ type: "add", payload: notification });
+  if (autoDelete) {
+    let t1 = setTimeout(() => {
+      dispatch({ type: "delete", payload: notification });
+      clearTimeout(t1);
+      t1 = null;
+    }, duration);
+  }
+}
+
+export {
+  NotificationProvider,
+  useFailedAlert,
+  useNotification,
+  createNotification,
+};

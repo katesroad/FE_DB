@@ -4,10 +4,10 @@ import { variant } from "styled-system";
 import { red, colors, invoicesStatusColors } from "styles/colors";
 
 export const NotificationBase = styled.div`
-  max-width: 292px;
-  min-width: 180px;
+  max-width: 302px;
+  min-width: 182px;
   width: 40vw;
-  padding: 8px 16px;
+  padding: 8px;
   margin-bottom: 16px;
   border-left: 2px solid;
   border-radius: 4px;

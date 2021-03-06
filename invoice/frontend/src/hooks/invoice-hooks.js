@@ -1,6 +1,30 @@
+import * as React from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "react-query";
+import {
+  useNotification,
+  createNotification,
+} from "context/notification.context";
+
+function useInvoiceMutation(queryFn, conf = {}) {
+  const { onSuccess, errorMsg, loadingMsg } = conf;
+  const mutation = useMutation(queryFn, {
+    onSuccess: async (data, { tag, id }, ctx) => {
+      onSuccess && onSuccess(data, { tag, id }, ctx);
+    },
+  });
+  const [, dispatch] = useNotification();
+  React.useEffect(() => {
+    if (errorMsg && mutation.status === "error") {
+      createNotification(dispatch, {
+        msg: errorMsg,
+        variant: "danger",
+      });
+    }
+  }, [mutation.status]);
+  return mutation;
+}
 
 export function getInvoice({ queryKey }) {
   const [, id] = queryKey;
@@ -26,26 +50,39 @@ function updateInvoice(invoice) {
   const id = invoice.id;
   return axios.patch(`invoices/${id}`, invoice);
 }
-export function useUpdateInvoice() {
+export function useUpdateInvoice({ tag, toStatus }) {
   const queryClient = useQueryClient();
-  return useMutation((invoice) => updateInvoice(invoice), {
-    onSuccess: (data, { id }) => {
+  let errorMsg = `Failed to update invoice#${tag}`;
+  if (toStatus) {
+    errorMsg = `${errorMsg} as ${toStatus}`;
+  }
+  errorMsg += ".";
+  const conf = {
+    errorMsg,
+    onSuccess: (data, { id }, ctx) => {
       queryClient.setQueryData(["invoice", id], data);
     },
-  });
+  };
+  const mutation = useInvoiceMutation(
+    (invoice) => updateInvoice(invoice),
+    conf
+  );
+  return mutation;
 }
 
 // Delete invoice by id
 function deleteInvoice(id) {
   return axios.delete(`/invoices/${id}`);
 }
-export function useDeleteInvoice() {
+export function useDeleteInvoice({ id, tag }) {
   const history = useHistory();
   const queryClient = useQueryClient();
-  return useMutation(({ id, tag }) => deleteInvoice(id), {
-    onSuccess: async (data, { tag }, context) => {
+  const mutation = useInvoiceMutation(({ id }) => deleteInvoice(id), {
+    errorMsg: `Failed to delete invoice#${tag}.`,
+    onSuccess: async () => {
       await queryClient.refetchQueries(["invoices", "all"]);
       history.push("/");
     },
   });
+  return mutation;
 }
