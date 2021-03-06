@@ -1,53 +1,15 @@
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import {
-  useMutation as userQueryMutation,
-  useQuery,
-  useQueryClient,
-} from "react-query";
-import {
-  useNotification,
-  generateNotification,
-  addNotification,
-  deleteNotification,
-  addSuccesNotification,
-  addFailedNotification,
-} from "context/notification.context";
-
-function useInvoiceMutation(queryFn, conf = {}) {
-  const [, dispatch] = useNotification();
-  const { operations, onSuccess, invoice } = {
-    operations: [],
-    invoice: {},
-    ...conf,
-  };
-  const [
-    operating = "Updating",
-    failed = "update",
-    done = "Updated",
-  ] = operations;
-  const msg = `${operating} #${invoice.tag || invoice.id}`;
-  const notification = generateNotification({ variant: "primary", msg: msg });
-  return userQueryMutation(queryFn, {
-    onMutate: (v) => addNotification(dispatch, notification),
-    onError: (e, { tag, id }) => {
-      const msg = `Failed to ${failed} invoice #${tag || id}`;
-      addFailedNotification(dispatch, msg);
-    },
-    onSuccess: async (data, { tag, id }) => {
-      const msg = `${done} invoice #${tag || id}`;
-      addSuccesNotification(dispatch, msg);
-      if (onSuccess) onSuccess(data, { tag });
-    },
-    onSettled: deleteNotification(dispatch, notification, 500),
-  });
-}
+import { useMutation, useQuery, useQueryClient } from "react-query";
 
 export function getInvoice({ queryKey }) {
   const [, id] = queryKey;
   return axios.get(`invoices/${id}`);
 }
-// get invoice by its id
+/**
+ * get invoice by its id
+ * @param(string) -id the invoice id
+ * */
 export function useInvoice(id) {
   return useQuery({
     queryKey: ["invoice", id],
@@ -55,20 +17,21 @@ export function useInvoice(id) {
   });
 }
 
+/**
+ * Update invoice by invoice id
+ * @param(object) - invoice, the data to be updated.
+ * Invoice's id must be provided
+ */
 function updateInvoice(invoice) {
   const id = invoice.id;
   return axios.patch(`invoices/${id}`, invoice);
 }
-/**
- *  update invoice
- * @param {object} invoice the update data. Invoice id must be provided
- */
-export function useUpdateInvoice({ id, tag }) {
+export function useUpdateInvoice() {
   const queryClient = useQueryClient();
-  return useInvoiceMutation(updateInvoice, {
-    opertions: ["Updating", "update", "Updated"],
-    invoice: { id, tag },
-    onSuccess: (data) => queryClient.setQueryData(["invoice", id], data),
+  return useMutation((invoice) => updateInvoice(invoice), {
+    onSuccess: (data, { id }) => {
+      queryClient.setQueryData(["invoice", id], data);
+    },
   });
 }
 
@@ -76,13 +39,11 @@ export function useUpdateInvoice({ id, tag }) {
 function deleteInvoice(id) {
   return axios.delete(`/invoices/${id}`);
 }
-export function useDeleteInvoice({ id, tag }) {
+export function useDeleteInvoice() {
   const history = useHistory();
   const queryClient = useQueryClient();
-  return useInvoiceMutation(({ id, tag }) => deleteInvoice(id), {
-    invoice: { id, tag },
-    operations: ["Deleting", "delete", "Deleted"],
-    onSuccess: async () => {
+  return useMutation(({ id, tag }) => deleteInvoice(id), {
+    onSuccess: async (data, { tag }, context) => {
       await queryClient.refetchQueries(["invoices", "all"]);
       history.push("/");
     },

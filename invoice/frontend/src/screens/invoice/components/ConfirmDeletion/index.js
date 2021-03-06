@@ -1,5 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
+import { useFailedAlert } from "context/notification.context";
 import { useDeleteInvoice } from "hooks/invoice-hooks";
 import {
   Modal,
@@ -11,8 +12,9 @@ import {
 import { CofirmContent, ModalFooter, DeleteBtn, InvoiceTag } from "./styles";
 
 function ComfirmDeletion({ id, tag }) {
-  const mutation = useDeleteInvoice({ id, tag });
-  const handleDelete = () => mutation.mutate({ id, tag });
+  const { status, mutate } = useDeleteInvoice();
+  const handleDelete = () => mutate({ id, tag });
+  useFailedAlert(status, `Failed to delete invoice #${tag}.`);
   return (
     <Modal>
       <ModalOpenBtn>
@@ -30,9 +32,9 @@ function ComfirmDeletion({ id, tag }) {
           <Button
             variant="danger"
             onClick={handleDelete}
-            disabled={mutation.isLoading}
+            disabled={status === "loading"}
           >
-            Delete
+            {status === "loading" ? "Deleting..." : "Delete"}
           </Button>
         </ModalFooter>
       </ModalContent>

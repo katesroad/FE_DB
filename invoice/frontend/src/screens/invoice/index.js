@@ -14,6 +14,7 @@ export default function InvoiceScreen() {
   const { data: invoice, status, error } = useInvoice(id);
   return (
     <>
+      {/* the page header */}
       <Header>
         <p className="status">
           <StatusLabel>Status</StatusLabel>
@@ -22,35 +23,33 @@ export default function InvoiceScreen() {
             <Spinner />
           ) : status === "success" ? (
             <StatusValue status={invoice?.status} />
-          ) : status === "error" ? (
-            <p>{JSON.stringify(error)}</p>
           ) : null}
         </p>
-        <p className="operations tablet">
-          {/* we can only know if the invoice is a valid one after data has been loaded */}
-          {status === "success" && invoice?.status ? (
+        {/* show opeations when invoice has been loaded */}
+        {status === "success" ? (
+          <p className="operations tablet">
             <Operations {...invoice} />
-          ) : null}
-        </p>
-      </Header>
-      <Wrapper>
-        {/* show loading spinner for invoice information section */}
-        {status === "loading" ? <Spinner /> : null}
-        {/* show information  after loading invocie successfully */}
-        {status === "success" && invoice ? (
-          <>
-            <InvoiceInfo {...invoice} />
-            <InvoiceBillItems items={invoice?.items} total={invoice?.total} />
-          </>
+          </p>
         ) : null}
-        {status === "error" ? <p>{JSON.stringify(error)}</p> : null}
-      </Wrapper>
-      {/* render operation buttons for mobile version after loading invoice successfully*/}
-      {status === "success" && invoice ? (
-        <Footer>
-          <Operations {...invoice} />
-        </Footer>
-      ) : null}
+      </Header>
+      {/* the page main content */}
+      <>
+        {status === "loading" ? (
+          <Spinner />
+        ) : status === "success" ? (
+          <>
+            <Wrapper>
+              <InvoiceInfo {...invoice} />
+              <InvoiceBillItems items={invoice?.items} total={invoice?.total} />
+            </Wrapper>
+            <Footer>
+              <Operations {...invoice} />
+            </Footer>
+          </>
+        ) : status === "error" ? (
+          <Wrapper>{error.message}</Wrapper>
+        ) : null}
+      </>
     </>
   );
 }
