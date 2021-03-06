@@ -11,7 +11,7 @@ import {
 import { CofirmContent, ModalFooter, DeleteBtn, InvoiceTag } from "./styles";
 
 function ComfirmDeletion({ id, tag }) {
-  const mutation = useDeleteInvoice();
+  const mutation = useDeleteInvoice({ id, tag });
   const handleDelete = () => mutation.mutate({ id, tag });
   return (
     <Modal>

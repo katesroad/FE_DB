@@ -24,7 +24,7 @@ const NotificationUI = styled(NotificationBase)(
   variant({
     variants: {
       danger: { bg: red.normal },
-      success: { bg: invoicesStatusColors.paid.bg },
+      success: { bg: invoicesStatusColors.paid.color },
       primary: { bg: colors.primary },
     },
   })

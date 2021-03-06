@@ -2,21 +2,7 @@ import * as React from "react";
 import { Button } from "components/lib";
 import PropTypes from "prop-types";
 import DeleteBtn from "../ConfirmDeletion";
-import { useUpdateInvoice } from "hooks/invoice-hooks";
-
-function MarkButton({ id }) {
-  const mutation = useUpdateInvoice({ id });
-  const handleClick = (e) => mutation.mutate({ id, status: "paid" });
-  return (
-    <Button onClick={handleClick} variant="primary">
-      mark as paid
-    </Button>
-  );
-}
-MarkButton.propTypes = {
-  id: PropTypes.string.isRequired,
-};
-
+import MarkButton from "components/MarkButton";
 function EditButton({ id }) {
   const handleClick = (e) => {
     console.log(`Editting invoice #${id}...`);
@@ -31,9 +17,11 @@ EditButton.propTypes = {
 function Operations({ id, status, tag }) {
   return (
     <>
-      <EditButton id={id} />
+      {status === "paid" ? null : <EditButton id={id} />}
       <DeleteBtn id={id} tag={tag} />
-      {status !== "paid" ? <MarkButton id={id} /> : null}
+      {status === "pending" ? (
+        <MarkButton id={id}>Mark As Paid</MarkButton>
+      ) : null}
     </>
   );
 }

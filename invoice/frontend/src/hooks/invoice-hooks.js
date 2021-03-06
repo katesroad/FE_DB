@@ -1,12 +1,47 @@
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import {
+  useMutation as userQueryMutation,
+  useQuery,
+  useQueryClient,
+} from "react-query";
 import {
   useNotification,
   generateNotification,
   addNotification,
   deleteNotification,
+  addSuccesNotification,
+  addFailedNotification,
 } from "context/notification.context";
+
+function useInvoiceMutation(queryFn, conf = {}) {
+  const [, dispatch] = useNotification();
+  const { operations, onSuccess, invoice } = {
+    operations: [],
+    invoice: {},
+    ...conf,
+  };
+  const [
+    operating = "Updating",
+    failed = "update",
+    done = "Updated",
+  ] = operations;
+  const msg = `${operating} #${invoice.tag || invoice.id}`;
+  const notification = generateNotification({ variant: "primary", msg: msg });
+  return userQueryMutation(queryFn, {
+    onMutate: (v) => addNotification(dispatch, notification),
+    onError: (e, { tag, id }) => {
+      const msg = `Failed to ${failed} invoice #${tag || id}`;
+      addFailedNotification(dispatch, msg);
+    },
+    onSuccess: async (data, { tag, id }) => {
+      const msg = `${done} invoice #${tag || id}`;
+      addSuccesNotification(dispatch, msg);
+      if (onSuccess) onSuccess(data, { tag });
+    },
+    onSettled: deleteNotification(dispatch, notification, 500),
+  });
+}
 
 export function getInvoice({ queryKey }) {
   const [, id] = queryKey;
@@ -20,11 +55,7 @@ export function useInvoice(id) {
   });
 }
 
-/**
- *  update invoice
- * @param {object} invoice the update data. Invoice id must be provided
- */
-export function updateInvoice(invoice) {
+function updateInvoice(invoice) {
   const id = invoice.id;
   return axios.patch(`invoices/${id}`, invoice);
 }
@@ -32,84 +63,28 @@ export function updateInvoice(invoice) {
  *  update invoice
  * @param {object} invoice the update data. Invoice id must be provided
  */
-export function useUpdateInvoice() {
+export function useUpdateInvoice({ id, tag }) {
   const queryClient = useQueryClient();
-  const [, dispatch] = useNotification();
-  const loadingNotification = generateNotification({
-    variant: "primary",
-    msg: "Updating invoice...",
-  });
-  return useMutation((invoice) => updateInvoice(invoice), {
-    onMutate: (variables) => {
-      addNotification(dispatch, loadingNotification);
-      return variables;
-    },
-    onError: (error, { id }, context) => {
-      const failedNotification = generateNotification({
-        variant: "danger",
-        msg: `Failed to update invoice #${id}...`,
-      });
-      addNotification(dispatch, failedNotification);
-      deleteNotification(dispatch, failedNotification, 500);
-      // @todo,an error happened!
-      console.log(`rolling back optimistic update with id ${context.id}`);
-      console.warn(error);
-    },
-    onSuccess: (data, { id }, context) => {
-      const okNotification = generateNotification({
-        variant: "success",
-        msg: `Updated invoice  #${id}.`,
-      });
-      addNotification(dispatch, okNotification);
-      queryClient.setQueryData(["invoice", id], data);
-    },
-    onSettled: (data, error, variables, context) => {
-      deleteNotification(dispatch, loadingNotification, 250);
-    },
+  return useInvoiceMutation(updateInvoice, {
+    opertions: ["Updating", "update", "Updated"],
+    invoice: { id, tag },
+    onSuccess: (data) => queryClient.setQueryData(["invoice", id], data),
   });
 }
 
 // Delete invoice by id
-export function deleteInvoice(id) {
+function deleteInvoice(id) {
   return axios.delete(`/invoices/${id}`);
 }
-
-export function useDeleteInvoice() {
+export function useDeleteInvoice({ id, tag }) {
   const history = useHistory();
   const queryClient = useQueryClient();
-  const [, dispatch] = useNotification();
-  const loadingNotification = generateNotification({
-    variant: "primary",
-    msg: "Deleting invoice...",
-  });
-  return useMutation(({ id, tag }) => deleteInvoice(id), {
-    onMutate: (variables) => {
-      addNotification(dispatch, loadingNotification);
-      return variables;
-    },
-    onError: (error, { tag }, context) => {
-      const failedNotification = generateNotification({
-        variant: "danger",
-        msg: `Failed to delete invoice #${tag}...`,
-      });
-      addNotification(dispatch, failedNotification);
-      deleteNotification(dispatch, failedNotification, 500);
-      // @todo,an error happened!
-      console.log(`rolling back optimistic update with id ${context.id}`);
-      console.warn(error);
-    },
-    onSuccess: async (data, { tag }, context) => {
-      const okNotification = generateNotification({
-        variant: "success",
-        msg: `Deleted invoice #${tag}.`,
-      });
-      addNotification(dispatch, okNotification);
-      deleteNotification(dispatch, okNotification, 500);
+  return useInvoiceMutation(({ id, tag }) => deleteInvoice(id), {
+    invoice: { id, tag },
+    operations: ["Deleting", "delete", "Deleted"],
+    onSuccess: async () => {
       await queryClient.refetchQueries(["invoices", "all"]);
       history.push("/");
-    },
-    onSettled: (data, error, variables, context) => {
-      deleteNotification(dispatch, loadingNotification);
     },
   });
 }

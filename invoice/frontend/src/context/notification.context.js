@@ -8,9 +8,10 @@ import { Notification } from "components/lib";
  * - The data schema for a notification: msg, variant, id
  * @param{object} notification - notification {msg:string, variant:string}
  */
-function generateNotification(notification) {
+function generateNotification({ variant, msg }) {
+  console.log(variant, msg);
   const id = Date.now();
-  return { id, ...notification };
+  return { id, variant, msg };
 }
 
 const NotificationContext = React.createContext();
@@ -67,11 +68,27 @@ function useNotification() {
   return context;
 }
 
-function addNotification(dispatch, notification) {
+/**
+ * Add a notification to notification list
+ * @param{Dispatch} -dispatch the dispatch got from userReducer
+ * @param{Notification} -notification the notification to delete
+ * @param{autoDelete} -delete the notification automatically afer 500ms
+ */
+function addNotification(dispatch, notification, autoDelete = true) {
   dispatch({
     type: "add",
     payload: notification,
   });
+  if (autoDelete) {
+    let t1 = setTimeout(() => {
+      dispatch({
+        type: "delete",
+        payload: notification,
+      });
+      clearTimeout(t1);
+      t1 = null;
+    }, 500);
+  }
 }
 
 /**
@@ -98,10 +115,22 @@ function deleteNotification(dispatch, notification, time) {
   }
 }
 
+function addSuccesNotification(dispatch, msg) {
+  const notification = generateNotification({ variant: "success", msg });
+  addNotification(dispatch, notification);
+}
+
+function addFailedNotification(dispatch, msg) {
+  const notification = generateNotification({ variant: "danger", msg });
+  addNotification(dispatch, notification);
+}
+
 export {
   NotificationProvider,
   useNotification,
   generateNotification,
   addNotification,
+  addSuccesNotification,
+  addFailedNotification,
   deleteNotification,
 };
