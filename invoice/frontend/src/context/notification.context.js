@@ -28,7 +28,6 @@ function NotificationProvider({ children }) {
   const [notifications, dispatch] = React.useReducer(notifcationReducer, []);
   const value = [notifications, dispatch];
   const ref = React.useRef(value);
-  ref.current = value;
   return (
     <NotificationContext.Provider value={ref}>
       {/* place global notifications here */}
