@@ -1,11 +1,11 @@
-import * as React from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
-import { useMutation, useQuery, useQueryClient } from "react-query";
 import {
-  useNotification,
   createNotification,
+  useNotification,
 } from "context/notification.context";
+import * as React from "react";
+import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useHistory } from "react-router-dom";
 
 function useInvoiceMutation(queryFn, conf = {}) {
   const { onSuccess, errorMsg, successMsg } = conf;
@@ -17,19 +17,16 @@ function useInvoiceMutation(queryFn, conf = {}) {
   const [, dispatch] = useNotification();
   React.useEffect(() => {
     if (errorMsg && mutation.status === "error") {
-      createNotification(dispatch, {
-        msg: errorMsg,
-        variant: "danger",
-      });
+      createNotification(dispatch, { msg: errorMsg, variant: "success" });
     }
     if (successMsg && mutation.status === "success") {
       createNotification(
         dispatch,
         { msg: successMsg, variant: "success" },
-        { autoDelete: true, duration: 1000 }
+        { duration: 1000 }
       );
     }
-  }, [mutation.status, dispatch, errorMsg]);
+  }, [mutation.status, dispatch, errorMsg, successMsg]);
   return mutation;
 }
 
@@ -86,7 +83,7 @@ export function useDeleteInvoice({ id, tag }) {
   const queryClient = useQueryClient();
   const mutation = useInvoiceMutation(({ id }) => deleteInvoice(id), {
     errorMsg: `Failed to delete invoice#${tag}.`,
-    successMsg: `Deleted invoice#${tag}`,
+    successMsg: `Deleted invoice#${tag}.`,
     onSuccess: async () => {
       await queryClient.refetchQueries(["invoices", "all"]);
       setTimeout(() => {

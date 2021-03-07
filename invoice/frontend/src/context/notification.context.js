@@ -1,8 +1,7 @@
 // eslint-disable-next-line
-import styled from "styled-components/macro";
-import { v4 as uuid } from "uuid";
-import * as React from "react";
 import { Notification } from "components/lib";
+import * as React from "react";
+import { v4 as uuid } from "uuid";
 
 const NotificationContext = React.createContext();
 
@@ -53,44 +52,26 @@ function NotificationProvider({ children }) {
   );
 }
 
-function useFailedAlert(status, msg) {
-  const { current } = React.useContext(NotificationContext);
-  const [, dispatch] = current;
-  React.useEffect(() => {
-    if (status === "error") {
-      const alert = { msg: msg, variant: "danger", id: uuid() };
-      dispatch({ type: "add", payload: alert });
-      setTimeout(() => {
-        dispatch({ type: "delete", payload: alert, id: uuid() });
-      }, 2500);
-    }
-  }, [status, msg, dispatch]);
-}
-
 function useNotification() {
   const ref = React.useContext(NotificationContext);
   return ref.current;
 }
 
-function createNotification(
-  dispatch,
-  { variant, msg },
-  { autoDelete, duration } = { autoDelete: true, duration: 2500 }
-) {
-  const notification = { id: uuid(), variant: variant || "primary", msg };
+function createNotification(dispatch, notification, conf = {}) {
+  const alert = { id: uuid(), variant: "primary", ...notification };
   dispatch({ type: "add", payload: notification });
+  const { duration, autoDelete } = {
+    autoDelete: true,
+    duration: 2500,
+    ...conf,
+  };
   if (autoDelete) {
     let t1 = setTimeout(() => {
-      dispatch({ type: "delete", payload: notification });
+      dispatch({ type: "delete", payload: alert });
       clearTimeout(t1);
       t1 = null;
     }, duration);
   }
 }
 
-export {
-  NotificationProvider,
-  useFailedAlert,
-  useNotification,
-  createNotification,
-};
+export { NotificationProvider, useNotification, createNotification };
