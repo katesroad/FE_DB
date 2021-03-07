@@ -8,7 +8,7 @@ import {
 } from "context/notification.context";
 
 function useInvoiceMutation(queryFn, conf = {}) {
-  const { onSuccess, errorMsg } = conf;
+  const { onSuccess, errorMsg, successMsg } = conf;
   const mutation = useMutation(queryFn, {
     onSuccess: async (data, { tag, id }, ctx) => {
       onSuccess && onSuccess(data, { tag, id }, ctx);
@@ -21,6 +21,13 @@ function useInvoiceMutation(queryFn, conf = {}) {
         msg: errorMsg,
         variant: "danger",
       });
+    }
+    if (successMsg && mutation.status === "success") {
+      createNotification(
+        dispatch,
+        { msg: successMsg, variant: "success" },
+        { autoDelete: true, duration: 1000 }
+      );
     }
   }, [mutation.status, dispatch, errorMsg]);
   return mutation;
@@ -79,9 +86,12 @@ export function useDeleteInvoice({ id, tag }) {
   const queryClient = useQueryClient();
   const mutation = useInvoiceMutation(({ id }) => deleteInvoice(id), {
     errorMsg: `Failed to delete invoice#${tag}.`,
+    successMsg: `Deleted invoice#${tag}`,
     onSuccess: async () => {
       await queryClient.refetchQueries(["invoices", "all"]);
-      history.push("/");
+      setTimeout(() => {
+        history.push("/");
+      }, 1000);
     },
   });
   return mutation;
