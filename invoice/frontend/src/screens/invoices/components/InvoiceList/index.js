@@ -12,11 +12,10 @@ import {
   ArrowButton,
 } from "./styles";
 import InvoiceStatus from "components/InvoiceStatus";
-import NoInvoice from "../NoInvoice";
+import NoInvoice from "./NoInvoice";
 
 const InvoiceType = {
   tag: PropTypes.string.isRequired,
-  createdAt: PropTypes.string.isRequired,
   paymentDue: PropTypes.number.isRequired,
   status: PropTypes.string.isRequired,
   total: PropTypes.number.isRequired,
