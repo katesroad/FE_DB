@@ -1,11 +1,11 @@
-import axios from "axios";
-import {
-  createNotification,
-  useNotification,
-} from "context/notification.context";
 import * as React from "react";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { useMutation, useQuery, useQueryClient } from "react-query";
+import {
+  useNotification,
+  createNotification,
+} from "context/notification.context";
 
 function useInvoiceMutation(queryFn, conf = {}) {
   const { onSuccess, errorMsg, successMsg } = conf;
@@ -17,13 +17,16 @@ function useInvoiceMutation(queryFn, conf = {}) {
   const [, dispatch] = useNotification();
   React.useEffect(() => {
     if (errorMsg && mutation.status === "error") {
-      createNotification(dispatch, { msg: errorMsg, variant: "error" });
+      createNotification(dispatch, {
+        msg: errorMsg,
+        variant: "danger",
+      });
     }
     if (successMsg && mutation.status === "success") {
       createNotification(
         dispatch,
         { msg: successMsg, variant: "success" },
-        { duration: 1000 }
+        { autoDelete: true, duration: 1000 }
       );
     }
   }, [mutation.status, dispatch, errorMsg, successMsg]);
@@ -83,7 +86,7 @@ export function useDeleteInvoice({ id, tag }) {
   const queryClient = useQueryClient();
   const mutation = useInvoiceMutation(({ id }) => deleteInvoice(id), {
     errorMsg: `Failed to delete invoice#${tag}.`,
-    successMsg: `Deleted invoice#${tag}.`,
+    successMsg: `Deleted invoice#${tag}`,
     onSuccess: async () => {
       await queryClient.refetchQueries(["invoices", "all"]);
       setTimeout(() => {
@@ -92,4 +95,22 @@ export function useDeleteInvoice({ id, tag }) {
     },
   });
   return mutation;
+}
+
+export function useCreateInvoice() {
+  const queryClient = useQueryClient();
+  const [, dispatch] = useNotification().current;
+  return useInvoiceMutation((invoice) => axios.post("invoices", invoice), {
+    errorMsg: `Failed to create a new invoice.`,
+    onSuccess: (data, { id }, ctx) => {
+      queryClient.setQueryData(["invoice", id], data);
+      queryClient.refetchQueries(["invoices", "all"]);
+      queryClient.refetchQueries(["invoices", data.status]);
+      createNotification(
+        dispatch,
+        { variant: "success", msg: `Created invoice#${data.tag}.` },
+        { autoDelete: true, duration: 1500 }
+      );
+    },
+  });
 }
