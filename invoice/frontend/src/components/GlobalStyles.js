@@ -9,6 +9,18 @@ const GlobalStyles = createGlobalStyle`
     line-height:1;
     box-sizing:border-box;
   }
+  body::-webkit-scrollbar {
+    width: 1em;
+  }
+  
+  body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+  }
 
   a,
   button,
@@ -63,6 +75,7 @@ const GlobalStyles = createGlobalStyle`
     --input-background-color: ${dark.element.bg};
     --input-text-color: ${dark.title.color};
     --input-border-color: ${dark.input.border};
+    --body-bg: ${dark.body.bg};
     color: ${dark.element.color};
     background-color: ${dark.body.bg};
   }
@@ -76,6 +89,7 @@ const GlobalStyles = createGlobalStyle`
     --input-text-color: ${light.title.color};
     --input-border-color: ${light.input.border};
     color: ${light.element.color};
+    --body-bg: ${light.body.bg};
     background-color: ${light.body.bg};
   }
 

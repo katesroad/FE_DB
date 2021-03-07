@@ -5,6 +5,9 @@ import { Button } from "components/lib";
 import PropTypes from "prop-types";
 import DeleteBtn from "../ConfirmDeletion";
 import { useUpdateInvoice } from "hooks/invoice-hooks";
+import SuspenseBoundary from "components/SuspenseBoundary";
+
+const InoiceEditModal = React.lazy(() => import("../EditInvoice"));
 
 function MarkInvoiceBtn({ id, tag, toStatus, ...props }) {
   const { status, mutate } = useUpdateInvoice({ id, tag, toStatus });
@@ -35,7 +38,9 @@ function Operations({ status, ...invoice }) {
   if (status === "draft")
     return (
       <>
-        <Button>Edit</Button>
+        <SuspenseBoundary>
+          {invoice ? <InoiceEditModal id={invoice.id} /> : null}
+        </SuspenseBoundary>
         <MarkInvoiceBtn
           css={`
             margin: 0 8px;
