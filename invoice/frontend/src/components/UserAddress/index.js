@@ -13,7 +13,7 @@ function UserAddress({ userAddress, type, onChange, children }) {
   };
   return (
     <>
-      <Title>Bill {type == "sender" ? "From" : "To"}</Title>
+      <Title>Bill {type === "sender" ? "From" : "To"}</Title>
       {children}
       <FormControl>
         <Label>Street Address</Label>
