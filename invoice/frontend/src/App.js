@@ -1,16 +1,21 @@
 import * as React from "react";
 import AppProvider from "context";
-import InvoiceScreen from "screens/invoice";
 import InvoicesScreen from "screens/invoices";
 import { Route } from "react-router-dom";
-import UILibScreen from "screens/ui";
+import SuspenseErrorBoundary, {
+  RouteFallbackComponent,
+} from "components/SuspenseBoundary";
+
+const InvoiceScreen = React.lazy(() => import("screens/invoice"));
 
 function App() {
   return (
     <AppProvider>
-      <Route path="/" exact component={InvoicesScreen} />
-      <Route path="/invoice/:id" component={InvoiceScreen} />
-      <Route path="/ui" exact component={UILibScreen} />
+      <SuspenseErrorBoundary ErrorFallback={RouteFallbackComponent}>
+        <Route path="/" exact component={InvoicesScreen} />
+        <Route path="/invoices" exact component={InvoicesScreen} />
+        <Route path="/invoice/:id" exact component={InvoiceScreen} />
+      </SuspenseErrorBoundary>
     </AppProvider>
   );
 }
