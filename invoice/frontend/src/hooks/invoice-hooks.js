@@ -8,7 +8,7 @@ import {
 } from "context/notification.context";
 
 function useInvoiceMutation(queryFn, conf = {}) {
-  const { onSuccess, errorMsg, loadingMsg } = conf;
+  const { onSuccess, errorMsg } = conf;
   const mutation = useMutation(queryFn, {
     onSuccess: async (data, { tag, id }, ctx) => {
       onSuccess && onSuccess(data, { tag, id }, ctx);
@@ -22,7 +22,7 @@ function useInvoiceMutation(queryFn, conf = {}) {
         variant: "danger",
       });
     }
-  }, [mutation.status]);
+  }, [mutation.status, dispatch, errorMsg]);
   return mutation;
 }
 
