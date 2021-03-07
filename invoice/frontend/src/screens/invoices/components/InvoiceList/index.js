@@ -17,24 +17,22 @@ import NoInvoice from "../NoInvoice";
 const InvoiceType = {
   tag: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
-  paymentDue: PropTypes.string.isRequired,
+  paymentDue: PropTypes.number.isRequired,
   status: PropTypes.string.isRequired,
   total: PropTypes.number.isRequired,
   clientName: PropTypes.string.isRequired,
 };
 
 function Invoice({ ...invoice }) {
-  let dueDate;
-  React.useEffect(() => {
-    dueDate = new Date(invoice.paymentDue).toLocaleDateString();
-  }, [invoice]);
   return (
     <Wrapper to={`/invoice/${invoice.id}`}>
       <Column>
         <InvoiceId>
           # <strong>{invoice.tag}</strong>
         </InvoiceId>
-        <DueDate>Due {dueDate}</DueDate>
+        <DueDate>
+          Due {new Date(invoice.paymentDue).toLocaleDateString()}
+        </DueDate>
         <InvoiceTotal>
           $ <span>{invoice.total}</span>
         </InvoiceTotal>
