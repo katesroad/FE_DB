@@ -66,7 +66,7 @@ export const LinkCard = styled(Link)`
   color: inherit;
 `;
 
-export const FormControl = styled.p`
+export const FormControl = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 24px;
