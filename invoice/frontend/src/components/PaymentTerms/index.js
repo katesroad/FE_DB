@@ -30,6 +30,7 @@ function PaymentTerms({ value, onChange }) {
           css={`
             width: 100%;
             padding: 8px 16px;
+            height: 48px;
             border: 1px solid;
             border-color: var(--input-border-color);
             box-sizing: border-box;

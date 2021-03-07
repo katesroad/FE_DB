@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import * as mediaQuries from "styles/media-queries";
 import {
   ListboxInput,
   ListboxButton,
@@ -38,21 +37,8 @@ export const DropdownPopover = styled(ListboxPopover)`
 `;
 
 export const DropdownInput = styled(ListboxInput)`
-  display: none;
   font-size: 16px;
   color: var(--title-text-color);
-  font-weight: var(--font-weight-bold);
-  ${mediaQuries.small} {
-    display: block;
-    margin-right: 20px;
-  }
-`;
-
-export const ExtraText = styled.span`
-  display: none;
-  ${mediaQuries.small} {
-    display: inline;
-  }
 `;
 
 export const DropdownList = styled(ListboxList)`
