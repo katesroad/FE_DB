@@ -51,6 +51,7 @@ const GlobalStyles = createGlobalStyle`
     --font-weight-bold: ${fonts.fontWeightBold};
     --font-weight-bolder: ${fonts.fontWeightBolder};
     --color-white: ${colors.white};
+    --color-primary: ${colors.p00}
   }
  
   body[data-theme="dark"] {
