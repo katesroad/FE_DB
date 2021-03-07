@@ -66,7 +66,7 @@ export const LinkCard = styled(Link)`
   color: inherit;
 `;
 
-export const FormControl = styled.p`
+export const FormControl = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 24px;
@@ -81,7 +81,8 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   width: 100%;
-  padding: 16px 16px;
+  padding: 8px 16px;
+  height: 48px;
   border: 1px solid;
   border-color: var(--input-border-color);
   box-sizing: border-box;

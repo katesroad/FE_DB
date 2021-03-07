@@ -10,6 +10,9 @@ import {
 } from "components/lib/modal";
 import BillItem from "components/AddBillItem";
 import ItemList from "components/ItemList";
+import PaymentTerms from "components/PaymentTerms";
+import UserAddress from "components/UserAddress";
+import { FormControl, Input, Label } from "components/lib";
 
 // this screen is for testing ui lib components purpose
 
@@ -29,8 +32,35 @@ export default function UILibScreen() {
   const onAddItem = (item) => {
     setItems([...items, item]);
   };
+  const [paymentTerms, setPaymentTerms] = React.useState("7");
+  const [senderAddress, setSenderAddress] = React.useState({});
   return (
     <div>
+      <UserAddress
+        type="sender"
+        userAddress={senderAddress}
+        onChange={(value) => setSenderAddress(value)}
+      />
+      <>
+        <UserAddress
+          type="client"
+          userAddress={senderAddress}
+          onChange={(value) => setSenderAddress(value)}
+        >
+          <FormControl>
+            <Label>Client's Name</Label>
+            <Input name="clientName" onChange={() => {}} />
+          </FormControl>
+          <FormControl>
+            <Label>Client's Email</Label>
+            <Input name="clientName" onChange={() => {}} />
+          </FormControl>
+        </UserAddress>
+      </>
+      <PaymentTerms
+        value={paymentTerms}
+        onChange={(value) => setPaymentTerms(value)}
+      />
       <Button onClick={handleClick}>mode</Button>
       <Button variant="danger">Delete</Button>
       <Button variant="primary"> mark as paid</Button>

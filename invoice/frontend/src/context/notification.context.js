@@ -1,7 +1,8 @@
 // eslint-disable-next-line
-import { Notification } from "components/lib";
-import * as React from "react";
+import styled from "styled-components/macro";
 import { v4 as uuid } from "uuid";
+import * as React from "react";
+import { Notification } from "components/lib";
 
 const NotificationContext = React.createContext();
 
@@ -57,13 +58,16 @@ function useNotification() {
   return ref.current;
 }
 
-function createNotification(dispatch, notification, conf = {}) {
-  const alert = { id: uuid(), variant: "primary", ...notification };
+function createNotification(
+  dispatch,
+  { variant, msg },
+  { autoDelete, duration } = { autoDelete: true, duration: 2500 }
+) {
+  const notification = { id: uuid(), variant: variant || "primary", msg };
   dispatch({ type: "add", payload: notification });
-  const { duration = 2500, autoDelete = true } = conf;
   if (autoDelete) {
     let t1 = setTimeout(() => {
-      dispatch({ type: "delete", payload: alert });
+      dispatch({ type: "delete", payload: notification });
       clearTimeout(t1);
       t1 = null;
     }, duration);

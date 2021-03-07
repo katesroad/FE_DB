@@ -70,7 +70,7 @@ function InvoiceInfo({ senderAddress, clientAddress, ...invoice }) {
 InvoiceInfo.propTypes = {
   id: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
-  paymentDue: PropTypes.string.isRequired,
+  paymentDue: PropTypes.number.isRequired,
   clientName: PropTypes.string.isRequired,
   clientEmail: PropTypes.string.isRequired,
   clientAddress: PropTypes.object.isRequired,
