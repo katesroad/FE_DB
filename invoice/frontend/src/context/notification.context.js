@@ -60,11 +60,7 @@ function useNotification() {
 function createNotification(dispatch, notification, conf = {}) {
   const alert = { id: uuid(), variant: "primary", ...notification };
   dispatch({ type: "add", payload: notification });
-  const { duration, autoDelete } = {
-    autoDelete: true,
-    duration: 2500,
-    ...conf,
-  };
+  const { duration = 2500, autoDelete = true } = conf;
   if (autoDelete) {
     let t1 = setTimeout(() => {
       dispatch({ type: "delete", payload: alert });

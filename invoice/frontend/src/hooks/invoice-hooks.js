@@ -17,7 +17,7 @@ function useInvoiceMutation(queryFn, conf = {}) {
   const [, dispatch] = useNotification();
   React.useEffect(() => {
     if (errorMsg && mutation.status === "error") {
-      createNotification(dispatch, { msg: errorMsg, variant: "success" });
+      createNotification(dispatch, { msg: errorMsg, variant: "error" });
     }
     if (successMsg && mutation.status === "success") {
       createNotification(
