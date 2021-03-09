@@ -22,8 +22,11 @@ export const Column = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 44%;
-    margin-right: 24px;
+    width: 50%;
+    &:nth-child(2) {
+      margin-left: 24px;
+      width: 40%;
+    }
   }
 `;
 
@@ -60,13 +63,9 @@ export const InvoiceTotal = styled.h3`
 `;
 
 export const ArrowButton = styled(IconArrawRight)`
-  align-self: flex-end;
   display: none;
-  padding: 16px 0;
-  border-radius: 0;
-  background-color: transparent;
   ${mediaQueries.medium} {
-    display: flex;
+    display: block;
   }
 `;
 

@@ -40,8 +40,8 @@ function Invoice({ ...invoice }) {
       <Column>
         <ClientName>{invoice.clientName}</ClientName>
         <InvoiceStatus status={invoice.status} />
+        <ArrowButton />
       </Column>
-      <ArrowButton />
     </InvoiceWrap>
   );
 }
