@@ -1,5 +1,5 @@
 import * as React from "react";
-import InvoiceStatus from "./InvoiceStatus";
+import InvoiceStatus from ".";
 
 const Template = (args) => <InvoiceStatus {...args} />;
 

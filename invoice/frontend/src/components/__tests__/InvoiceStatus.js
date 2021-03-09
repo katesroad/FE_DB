@@ -1,5 +1,5 @@
 import { render, screen } from "test/render-utils";
-import InvoiceStatus from "../InvoiceStatus/InvoiceStatus";
+import InvoiceStatus from "../InvoiceStatus";
 
 test("InvoiceStatus", () => {
   render(
