@@ -10,6 +10,7 @@ export * from "./spinner";
 export * from "./notification";
 
 export const Content = styled.section`
+  position: relative;
   box-sizing: border-box;
   padding-left: 12px;
   padding-right: 12px;
