@@ -97,3 +97,7 @@ export const InputBase = styled.input`
     background-color: transparent;
   }
 `;
+
+export const Error = styled.div`
+  color: ${red.normal};
+`;
