@@ -1,0 +1,11 @@
+node_modules
+dist
+data
+redis
+nest-readme.md
+README.md
+.eslintrc.js
+config.yml.example
+Dockerfile
+docker-compose.yml
+dist

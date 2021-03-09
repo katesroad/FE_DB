@@ -1,0 +1,6 @@
+db:
+  Mongo:
+    uri: <your mongodb provider url>
+app:
+  port: 3000
+ 
