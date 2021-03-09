@@ -6,7 +6,7 @@ export const StatusBase = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 104px;
+  width: 94px;
   height: 40px;
   border-radius: 6px;
   font-weight: var(--font-weight-normal);
