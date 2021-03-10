@@ -102,6 +102,17 @@ export const InputBase = styled(Field)`
   }
 `;
 
+export const Input = styled(InputBase)(
+  {},
+  variant({
+    variants: {
+      error: {
+        border: `1px solid ${red.normal}`,
+      },
+    },
+  })
+);
+
 export const Error = styled.div`
   color: ${red.normal};
 `;
