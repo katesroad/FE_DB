@@ -10,3 +10,10 @@ export const Wrapper = styled.section`
     margin-bottom: 56px;
   }
 `;
+export const InvoiceText = styled.span`
+  display: none;
+  ${mediaQueries.small} {
+    display: inline;
+  }
+`;
+
