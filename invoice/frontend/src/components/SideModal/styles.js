@@ -57,5 +57,7 @@ export const CloseBtn = styled(ButtonBase)`
 
 export const Content = styled.div`
   position: relative;
+  height: 89vh;
+  padding-bottom: 24vh;
   overflow: scroll;
 `;
