@@ -16,6 +16,7 @@ export const invoice = {
   clientName: "",
   description: "",
   paymentTerms: "",
+  paymentDue: new Date(),
   items: [],
 };
 
