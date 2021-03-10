@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Field } from "formik";
 import { variant } from "styled-system";
 import * as mediaQueries from "styles/media-queries";
 import { red, colors } from "styles/colors";
@@ -41,6 +42,7 @@ export const ButtonBase = styled.button`
   ${"" /* edit button has this style */}
   background-color: var(--button-background-color);
   color: var(--button-text-color);
+  cursor: pointer;
   ${mediaQueries.medium} {
     padding: 16px 24px;
   }
@@ -80,7 +82,7 @@ export const Label = styled.label`
   color: var(--element-text-color);
 `;
 
-export const InputBase = styled.input`
+export const InputBase = styled(Field)`
   width: 100%;
   padding: 8px 16px;
   height: 48px;
@@ -96,7 +98,21 @@ export const InputBase = styled.input`
     border: 0;
     background-color: transparent;
   }
+  &:focus {
+    border: 1px solid var(--color-primary);
+  }
 `;
+
+export const Input = styled(InputBase)(
+  {},
+  variant({
+    variants: {
+      error: {
+        border: `1px solid ${red.normal}`,
+      },
+    },
+  })
+);
 
 export const Error = styled.div`
   color: ${red.normal};

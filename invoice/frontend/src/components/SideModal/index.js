@@ -1,7 +1,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { ModalCloseBtn, Modal, ModalOpenBtn } from "components/lib";
-import { IconArrowLeft } from "components/Icon";
+import GobackBtn from "components/GobackBtn";
 import {
   Title,
   CloseBtn,
@@ -20,8 +20,7 @@ export const ModalContent = ({ title, children, ...props }) => (
     <Title>
       <ModalCloseBtn>
         <CloseBtn>
-          <IconArrowLeft />
-          <span style={{ marginLeft: "6px" }}>Go Back</span>
+          <GobackBtn />
         </CloseBtn>
       </ModalCloseBtn>
       <h3>{title}</h3>
