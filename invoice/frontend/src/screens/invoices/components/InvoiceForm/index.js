@@ -1,8 +1,9 @@
 // eslint-disable-next-line
 import styled from "styled-components/macro";
 import * as React from "react";
-import { Formik, Form, FieldArray } from "formik";
+import { Formik, Form, FieldArray, Field } from "formik";
 import UserAddress from "components/UserAddress";
+import Datepicker from "components/Datepicker";
 import { FormControl, Label, Input, Button } from "components/lib";
 import ItemList, { BillItem } from "../ItemList";
 import { invoice, getItem } from "./invoice.template";
@@ -27,10 +28,16 @@ function InvoiceForm({ children }) {
   return (
     <Formik
       initialValues={invoice}
-      render={({ values }) => (
+      render={({ values, setFieldValue, ...rest }) => (
         <>
           <Form>
             <InvoiceBasic values={values} />
+            <Datepicker
+              label="Invoice Date"
+              name="paymentDue"
+              onChange={setFieldValue}
+              value={values.paymentDue}
+            />
             <FieldArray
               name="items"
               render={(arrayHelpers) => (
@@ -55,7 +62,7 @@ function InvoiceForm({ children }) {
           </Form>
         </>
       )}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) => console.log(new Date(values.paymentDue).getTime())}
     />
   );
 }
