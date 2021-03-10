@@ -2,6 +2,8 @@
 import styled from "styled-components/macro";
 import * as React from "react";
 import PropTypes from "prop-types";
+import InvoiceStatus from "components/InvoiceStatus";
+import { Card, Spinner, Error } from "components/lib";
 import {
   InvoiceWrap,
   Column,
@@ -15,7 +17,6 @@ import {
   Text,
   EmptyImage,
 } from "./styles";
-import InvoiceStatus from "components/InvoiceStatus";
 
 export const InvoiceShape = {
   tag: PropTypes.string.isRequired,
@@ -25,7 +26,7 @@ export const InvoiceShape = {
   clientName: PropTypes.string.isRequired,
 };
 
-function Invoice({ ...invoice }) {
+const Invoice = React.memo(({ ...invoice }) => {
   return (
     <InvoiceWrap to={`/invoice/${invoice.id}`}>
       <Column>
@@ -44,10 +45,24 @@ function Invoice({ ...invoice }) {
       </Column>
     </InvoiceWrap>
   );
-}
+});
 Invoice.propTypes = InvoiceShape;
 
-function InvoiceList({ invoices }) {
+function InvoiceList({ invoices, status }) {
+  if (["idle", "loading"].includes(status))
+    return (
+      <Spinner
+        css={`
+          font-size: 2rem;
+        `}
+      />
+    );
+  if (status === "error")
+    return (
+      <Card>
+        <Error>Failed to load invoices.</Error>
+      </Card>
+    );
   if (invoices?.length) {
     return (
       <ul>
@@ -75,9 +90,10 @@ function InvoiceList({ invoices }) {
     </NoInvoice>
   );
 }
-InvoiceList.defaultPropTypes = { invoices: [] };
+InvoiceList.defaultPropTypes = { invoices: [], status: "idle" };
 InvoiceList.propTypes = {
-  invoices: PropTypes.arrayOf(PropTypes.shape(InvoiceShape)),
+  status: PropTypes.oneOf(["idle", "loading", "error", "success"]).isRequired,
+  invoices: PropTypes.arrayOf(PropTypes.any),
 };
 
-export default InvoiceList;
+export default React.memo(InvoiceList);

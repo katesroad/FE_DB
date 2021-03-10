@@ -6,7 +6,10 @@ import { NotificationProvider } from "./notification.context";
 import GlobalStyles from "components/GlobalStyles";
 import { AppHeader, AppMain } from "components/layout";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  cacheTime: 2500,
+  staleTime: 2000,
+});
 export default function AppProvider({ children }) {
   return (
     <>
