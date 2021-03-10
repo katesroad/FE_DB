@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Field } from "formik";
 import { variant } from "styled-system";
 import * as mediaQueries from "styles/media-queries";
 import { red, colors } from "styles/colors";
@@ -80,7 +81,7 @@ export const Label = styled.label`
   color: var(--element-text-color);
 `;
 
-export const InputBase = styled.input`
+export const InputBase = styled(Field)`
   width: 100%;
   padding: 8px 16px;
   height: 48px;
@@ -95,6 +96,9 @@ export const InputBase = styled.input`
     width: auto;
     border: 0;
     background-color: transparent;
+  }
+  &:focus {
+    border: 1px solid var(--color-primary);
   }
 `;
 
