@@ -19,7 +19,7 @@ export const IconArrowLeft = ({ alt, ...props }) => (
 export const IconArrawRight = ({ alt, ...props }) => (
   <img src={arrawRight} alt={alt} {...props} />
 );
-export const IconArrawDelete = ({ alt, ...props }) => (
+export const IconDelete = ({ alt, ...props }) => (
   <img src={deleteIcon} alt={alt} {...props} />
 );
 export const IconCalenddar = ({ alt, ...props }) => (
