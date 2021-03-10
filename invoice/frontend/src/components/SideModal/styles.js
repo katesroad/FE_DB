@@ -59,5 +59,9 @@ export const Content = styled.div`
   position: relative;
   height: 89vh;
   padding-bottom: 24vh;
+  padding-right: 8px;
   overflow-y: scroll;
+  ${mediaQueries.large} {
+    padding-bottom: 240px;
+  }
 `;
