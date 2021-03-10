@@ -16,3 +16,4 @@ export const InvoiceText = styled.span`
     display: inline;
   }
 `;
+
