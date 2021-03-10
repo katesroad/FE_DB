@@ -42,6 +42,7 @@ export const ButtonBase = styled.button`
   ${"" /* edit button has this style */}
   background-color: var(--button-background-color);
   color: var(--button-text-color);
+  cursor: pointer;
   ${mediaQueries.medium} {
     padding: 16px 24px;
   }

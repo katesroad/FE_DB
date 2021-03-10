@@ -1,7 +1,8 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { Button } from "components/lib";
-import SideModal from "components/SideModal";
+import InvoiceForm from "../InvoiceForm";
+import SideModal, { ModalCloseBtn } from "components/SideModal";
 import { Wrapper, InvoiceText } from "./styles";
 
 const NewInvoiceBtn = (props) => (
@@ -15,7 +16,11 @@ function Header({ children }) {
     <Wrapper>
       {children}
       <SideModal title="Create Invoice" openBtn={<NewInvoiceBtn />}>
-        hahdhdah
+        <InvoiceForm>
+          <ModalCloseBtn>
+            <Button>Discard</Button>
+          </ModalCloseBtn>
+        </InvoiceForm>
       </SideModal>
     </Wrapper>
   );
@@ -27,4 +32,3 @@ Header.propTypes = {
   ]).isRequired,
 };
 export default Header;
-
