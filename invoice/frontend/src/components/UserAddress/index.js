@@ -26,7 +26,7 @@ function UserAddress({ address, type, children }) {
         </FormControl>
         <FormControl className="code">
           <Label>Post Code</Label>
-          <Input name={type + ".postCode"} value={address.postCode} />
+          <Input name={type + ".postcode"} value={address.postCode} />
           <FieldError>
             <ErrorMessage name={type + ".postcode"} />
           </FieldError>
