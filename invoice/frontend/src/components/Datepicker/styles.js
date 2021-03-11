@@ -7,6 +7,7 @@ export const DatepickerCompo = styled(ReactDatepicker)`
   width: 100%;
   padding: 8px 16px;
   height: 48px;
+  max-width: 130px;
   border: 1px solid;
   border-color: var(--input-border-color);
   box-sizing: border-box;
@@ -24,13 +25,13 @@ export const DatepickerCompo = styled(ReactDatepicker)`
   }
 `;
 
-export const Button = styled(ButtonBase)`
+export const Button = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 8px 16px;
   height: 48px;
-  min-width: 48px;
+  max-width: 140px;
   border: 1px solid;
   border-color: var(--input-border-color);
   box-sizing: border-box;
@@ -38,6 +39,7 @@ export const Button = styled(ButtonBase)`
   font-size: 16px;
   color: var(--input-text-color);
   background-color: var(--input-background-color);
+  cursor: pointer;
   &:disabled {
     width: auto;
     border: 0;
@@ -50,11 +52,5 @@ export const Button = styled(ButtonBase)`
 
 export const DateValue = styled.span`
   margin-top: 2px;
-  margin-left: 16px;
-`;
-
-export const DatepickerWrapper = styled(FormControl)`
-  .react-datepicker-popper {
-    background: red;
-  }
+  margin-left: 8px;
 `;
