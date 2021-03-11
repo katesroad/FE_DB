@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Field } from "formik";
 import { variant } from "styled-system";
 import * as mediaQueries from "styles/media-queries";
 import { red, colors } from "styles/colors";
@@ -9,6 +8,7 @@ import { cardStyle } from "styles/styles";
 export * from "./modal";
 export * from "./spinner";
 export * from "./notification";
+export * from "./form";
 
 export const Content = styled.section`
   position: relative;
@@ -68,51 +68,6 @@ export const LinkCard = styled(Link)`
   ${cardStyle};
   color: inherit;
 `;
-
-export const FormControl = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 24px;
-`;
-
-export const Label = styled.label`
-  align-self: flex-start;
-  margin-bottom: 10px;
-  display: block;
-  color: var(--element-text-color);
-`;
-
-export const InputBase = styled(Field)`
-  width: 100%;
-  padding: 8px 16px;
-  height: 48px;
-  border: 1px solid;
-  border-color: var(--input-border-color);
-  box-sizing: border-box;
-  border-radius: 4px;
-  font-size: 16px;
-  color: var(--input-text-color);
-  background-color: var(--input-background-color);
-  &:disabled {
-    width: auto;
-    border: 0;
-    background-color: transparent;
-  }
-  &:focus {
-    border: 1px solid var(--color-primary);
-  }
-`;
-
-export const Input = styled(InputBase)(
-  {},
-  variant({
-    variants: {
-      error: {
-        border: `1px solid ${red.normal}`,
-      },
-    },
-  })
-);
 
 export const Error = styled.div`
   color: ${red.normal};

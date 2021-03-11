@@ -1,6 +1,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import { FormControl, Label, Input } from "components/lib";
+import { FormControl, Label, Input, FieldError } from "components/lib/form";
+import { ErrorMessage } from "formik";
 import { Title, Column } from "./styles";
 
 function UserAddress({ address, type, children }) {
@@ -11,19 +12,31 @@ function UserAddress({ address, type, children }) {
       <FormControl>
         <Label>Street Address</Label>
         <Input name={type + ".street"} value={address.address} />
+        <FieldError>
+          <ErrorMessage name={type + ".street"} />
+        </FieldError>
       </FormControl>
       <Column>
         <FormControl>
           <Label>City</Label>
           <Input name={type + ".city"} value={address.city} />
+          <FieldError>
+            <ErrorMessage name={type + ".city"} />
+          </FieldError>
         </FormControl>
         <FormControl className="code">
           <Label>Post Code</Label>
           <Input name={type + ".postCode"} value={address.postCode} />
+          <FieldError>
+            <ErrorMessage name={type + ".postcode"} />
+          </FieldError>
         </FormControl>
         <FormControl>
           <Label>Country</Label>
           <Input name={type + ".country"} value={address.country} />
+          <FieldError>
+            <ErrorMessage name={type + ".country"} />
+          </FieldError>
         </FormControl>
       </Column>
     </>
