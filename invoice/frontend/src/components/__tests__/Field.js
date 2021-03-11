@@ -2,7 +2,7 @@ import { render, screen, act } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { TextField } from "components/Field";
+import TextField from "components/Field";
 
 const renderUI = ({ ele, ...props }) => {
   render(

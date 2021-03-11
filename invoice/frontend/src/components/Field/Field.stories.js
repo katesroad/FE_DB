@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
-import { TextField } from ".";
+import TextField from ".";
 
 const Template = ({ name, label, type, ...formik }) => (
   <Formik {...formik}>

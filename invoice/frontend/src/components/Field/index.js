@@ -1,14 +1,14 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { useField, ErrorMessage } from "formik";
-import { Label, FormControl, FieldError, Input } from "./styles";
+import { Label, FormControl, FieldError, Input } from "components/lib/form";
 
-export const TextField = React.memo(({ label, children, name, ...props }) => {
+const TextField = React.memo(({ label, name, children, ...props }) => {
   const [field, meta] = useField({ name, ...props });
   const error = meta.touched && meta.error;
   return (
     <FormControl>
-      <Label htmlFor={props.name}>{label || props.name}</Label>
+      <Label htmlFor={name}>{label}</Label>
       <Input
         {...field}
         {...props}
@@ -23,12 +23,10 @@ export const TextField = React.memo(({ label, children, name, ...props }) => {
     </FormControl>
   );
 });
-
 TextField.defaultPropTypes = {
   type: "text",
   value: "",
 };
-
 TextField.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -38,3 +36,5 @@ TextField.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
   ]),
 };
+
+export default TextField;

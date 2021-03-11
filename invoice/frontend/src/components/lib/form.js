@@ -1,23 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Field } from "formik";
 import { variant } from "styled-system";
 import { red } from "styles/colors";
 
-export const FormControl = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 24px;
-`;
-
-export const Label = styled.label`
-  align-self: flex-start;
-  margin-bottom: 10px;
-  display: block;
-  color: var(--element-text-color);
-`;
-
-export const InputBase = styled(Field)`
-  width: 100%;
+export const inputStyles = css`
   padding: 8px 16px;
   height: 48px;
   border: 1px solid;
@@ -35,6 +21,24 @@ export const InputBase = styled(Field)`
   &:focus {
     border: 1px solid var(--color-primary);
   }
+`;
+
+export const FormControl = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+`;
+
+export const Label = styled.label`
+  align-self: flex-start;
+  margin-bottom: 10px;
+  display: block;
+  color: var(--element-text-color);
+`;
+
+export const InputBase = styled(Field)`
+  width: 100%;
+  ${inputStyles}
 `;
 
 export const Input = styled(InputBase)(
