@@ -3,7 +3,8 @@ import { Field } from "formik";
 import { variant } from "styled-system";
 import { red } from "styles/colors";
 
-export const inputStyles = css`
+export const inputStyle = css`
+  width: 100%;
   padding: 8px 16px;
   height: 48px;
   border: 1px solid;
@@ -13,6 +14,7 @@ export const inputStyles = css`
   font-size: 16px;
   color: var(--input-text-color);
   background-color: var(--input-background-color);
+  text-transform: capitalize;
   &:disabled {
     width: auto;
     border: 0;
@@ -37,8 +39,7 @@ export const Label = styled.label`
 `;
 
 export const InputBase = styled(Field)`
-  width: 100%;
-  ${inputStyles}
+  ${inputStyle}
 `;
 
 export const Input = styled(InputBase)(
