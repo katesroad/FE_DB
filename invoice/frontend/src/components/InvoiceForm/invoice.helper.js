@@ -17,9 +17,10 @@ export const invoice = {
   clientEmail: "",
   clientName: "",
   description: "",
-  paymentTerms: "",
-  paymentDue: new Date(),
+  paymentTerms: "1",
+  paymentDue: "",
   items: [],
+  status: "",
 };
 
 export const getItem = () => ({ id: uuid(), name: "", quantity: "", price: 0 });
@@ -58,19 +59,20 @@ export const InvoiceSchema = Yup.object().shape({
     .max(20, "The description/project is too long.")
     .required("The description/project is required."),
   paymentDue: Yup.date().required("Payment due is required."),
-  paymentTerms: Yup.number().required("Payment terms is required."),
-  items: Yup.array().of(
-    Yup.object().shape({
-      name: Yup.string()
-        .max(50, "Item name is too long.")
-        .required(`Item name is required.`),
-      price: Yup.number()
-        .positive("Price must be positive.")
-        .required("Item price is required."),
-      quantity: Yup.number()
-        .positive(`Quantity should be positive.`)
-        .integer("Quantity must be integer.")
-        .required("Quantity is required."),
-    })
-  ),
+  items: Yup.array()
+    .of(
+      Yup.object().shape({
+        name: Yup.string()
+          .max(50, "Item name is too long.")
+          .required(`Item name is required.`),
+        price: Yup.number()
+          .positive("Price must be positive.")
+          .required("Item price is required."),
+        quantity: Yup.number()
+          .positive(`Quantity should be positive.`)
+          .integer("Quantity must be integer.")
+          .required("Quantity is required."),
+      })
+    )
+    .required("Items is required."),
 });

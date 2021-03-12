@@ -22,5 +22,6 @@ export const Column = styled.div`
 
 export const Title = styled.h3`
   margin-bottom: 24px;
-  color: var(--color-primary); ;
+  color: var(--color-primary);
+  text-transform: capitalize;
 `;
