@@ -4,7 +4,6 @@ import ReactDatepicker from "react-datepicker";
 require("react-datepicker/dist/react-datepicker.css");
 
 export const DatepickerCompo = styled(ReactDatepicker)`
-  width: 100%;
   padding: 8px 16px;
   height: 48px;
   max-width: 130px;
