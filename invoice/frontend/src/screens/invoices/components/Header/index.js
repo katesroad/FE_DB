@@ -1,7 +1,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { Button } from "components/lib";
-import InvoiceForm from "../InvoiceForm";
+import InvoiceForm from "components/InvoiceForm";
 import SideModal, { ModalCloseBtn } from "components/SideModal";
 import { Wrapper, InvoiceText } from "./styles";
 
