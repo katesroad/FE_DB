@@ -2,13 +2,24 @@
 @import "@reach/listbox/styles.css";
 
 /* Hide the input element that stores the payment terms value */
-
-input[name="paymentTerms"] {
+input.select-value {
   display: none !important;
   visibility: hidden;
 }
+/* select placeholder */
+.select-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-transform: none;
+}
 /* style copied from components/lib/form inputStyle  */
 [data-reach-listbox-button] {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   padding-left: 20px;
   padding-right: 20px;
@@ -21,6 +32,7 @@ input[name="paymentTerms"] {
   text-transform: capitalize;
   background-color: var(--input-background-color);
   font-weight: var(--font-weight-bold);
+  text-transform: none;
 }
 
 [data-reach-listbox-popover],
@@ -53,18 +65,24 @@ input[name="paymentTerms"] {
   background-color: var(--input-background-color);
   cursor: pointer;
 }
-
 [data-reach-listbox-option]:first-child {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
-
 [data-reach-listbox-option]:last-child {
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 }
-
-[data-reach-listbox-option]:hover {
+[data-reach-listbox-option]:hover,
+[data-reach-listbox-option][data-current] {
   color: var(--color-primary);
   background-color: var(--input-background-color);
+}
+
+[data-reach-listbox-arrow] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  font-size: 16px;
 }
