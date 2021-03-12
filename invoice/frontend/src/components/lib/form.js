@@ -36,6 +36,7 @@ export const Label = styled.label`
   margin-bottom: 10px;
   display: block;
   color: var(--element-text-color);
+  text-transform: capitalize;
 `;
 
 export const InputBase = styled(Field)`
