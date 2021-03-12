@@ -12,10 +12,10 @@ export const Column = styled.div`
     flex-wrap: nowrap;
     div {
       width: 33.333%;
-    }
-    .code {
-      margin-left: 23px;
-      margin-right: 23px;
+      &:nth-child(2) {
+        margin-left: 23px;
+        margin-right: 23px;
+      }
     }
   } ;
 `;
