@@ -1,7 +1,8 @@
 // eslint-disable-next-line
 import styled from "styled-components/macro";
 import * as React from "react";
-import { Input, Label } from "components/lib";
+import { Input, Label, FieldError } from "components/lib/form";
+import { ErrorMessage } from "formik";
 import PropTypes from "prop-types";
 import {
   ItemName,
@@ -20,6 +21,9 @@ export function BillItem({ onDelete, index, ...item }) {
       <ItemName className="item-name">
         <Label>Item Name</Label>
         <Input value={item.name} name={`items[${index}].name`} />
+        <FieldError>
+          <ErrorMessage name={`items[${index}].name`} />
+        </FieldError>
       </ItemName>
       <div
         css={`
@@ -31,10 +35,16 @@ export function BillItem({ onDelete, index, ...item }) {
         <ItemQty>
           <Label>Qty.</Label>
           <Input value={item.quantity} name={`items[${index}].quantity`} />
+          <FieldError>
+            <ErrorMessage name={`items[${index}].quantity`} />
+          </FieldError>
         </ItemQty>
         <ItemPrice>
           <Label>Price</Label>
           <Input value={item.price} name={`items[${index}].price`} />
+          <FieldError>
+            <ErrorMessage name={`items[${index}].price`} />
+          </FieldError>
         </ItemPrice>
         <ItemCost>
           <Label>Total</Label>

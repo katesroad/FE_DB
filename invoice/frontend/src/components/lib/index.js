@@ -1,14 +1,11 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { variant } from "styled-system";
 import * as mediaQueries from "styles/media-queries";
-import { red, colors } from "styles/colors";
-import { cardStyle } from "styles/styles";
 
 export * from "./modal";
 export * from "./spinner";
 export * from "./notification";
 export * from "./form";
+export * from "./button";
 
 export const Content = styled.section`
   position: relative;
@@ -28,47 +25,4 @@ export const Content = styled.section`
     margin-left: auto;
     margin-right: auto;
   }
-`;
-
-// inherit the color from body element by default
-export const ButtonBase = styled.button`
-  display: inline-block;
-  padding: 14px;
-  border-radius: 24px;
-  font-size: 16px;
-  text-align: center;
-  text-transform: capitalize;
-  font-weight: var(--font-weight-normal);
-  ${"" /* edit button has this style */}
-  background-color: var(--button-background-color);
-  color: var(--button-text-color);
-  cursor: pointer;
-  ${mediaQueries.medium} {
-    padding: 16px 24px;
-  }
-`;
-
-export const Button = styled(ButtonBase)(
-  {},
-  variant({
-    variants: {
-      danger: { bg: red.normal, color: colors.white },
-      primary: { bg: colors.primary, color: colors.white },
-    },
-  })
-);
-
-export const Card = styled.div`
-  padding: 24px;
-  ${cardStyle}
-`;
-
-export const LinkCard = styled(Link)`
-  padding: 24px;
-  ${cardStyle};
-  color: inherit;
-`;
-
-export const Error = styled.div`
-  color: ${red.normal};
 `;

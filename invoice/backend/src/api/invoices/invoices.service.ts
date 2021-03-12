@@ -2,12 +2,14 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Invoice, InvoiceDoc, Status } from 'common/mongo';
 import { Model } from 'mongoose';
+import { HelperService } from './helper.service';
 
 @Injectable()
 export class InvoicesService {
   constructor(
     @InjectModel(Invoice.name)
     private readonly invoiceModel: Model<InvoiceDoc>,
+    private readonly helperService: HelperService,
   ) {}
 
   getInvoices(status?: Status) {
@@ -36,7 +38,8 @@ export class InvoicesService {
 
   createInvoice(createInvoiceDto: any) {
     const items = createInvoiceDto.items;
-    const data = { ...createInvoiceDto, ...this.calcTotal(items) };
+    const tag = this.helperService.makeTag();
+    const data = { ...createInvoiceDto, tag, ...this.calcTotal(items) };
     return this.invoiceModel
       .create(data)
       .then((doc) => this.cleanDoc(doc))
