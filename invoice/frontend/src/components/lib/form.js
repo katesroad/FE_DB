@@ -13,8 +13,9 @@ export const inputStyle = css`
   border-radius: 4px;
   font-size: 16px;
   color: var(--input-text-color);
-  background-color: var(--input-background-color);
   text-transform: capitalize;
+  background-color: var(--input-background-color);
+  font-weight: var(--font-weight-bold);
   &:disabled {
     width: auto;
     border: 0;
