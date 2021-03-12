@@ -5,11 +5,10 @@ import { red } from "styles/colors";
 
 export const inputStyle = css`
   width: 100%;
-  padding: 8px 16px;
+  padding-left: 20px;
+  padding-right: 20px;
   height: 48px;
-  border: 1px solid;
-  border-color: var(--input-border-color);
-  box-sizing: border-box;
+  border: 1px solid var(--input-border-color);
   border-radius: 4px;
   font-size: 16px;
   color: var(--input-text-color);
