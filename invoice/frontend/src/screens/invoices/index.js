@@ -9,7 +9,6 @@ import Header from "./components/Header";
 
 // Invoice detail page
 export default function InvoicesScreen() {
-  const { status, data: invoices } = useInvoices();
   const [statusList, setStatusList] = React.useState([]);
   const onSelect = (status) => {
     const statusSet = new Set(statusList);
@@ -18,6 +17,7 @@ export default function InvoicesScreen() {
     } else statusSet.add(status);
     setStatusList([...statusSet]);
   };
+  const { status, data: invoices } = useInvoices(statusList.join(","));
   return (
     <>
       {/* page header */}
