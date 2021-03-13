@@ -1,35 +1,14 @@
-// eslint-disable-next-line
-import styled from "styled-components/macro";
 import * as React from "react";
 import PropTypes from "prop-types";
-import { Formik, Form, FieldArray } from "formik";
-import { Button, FieldError } from "components/lib";
-import UserAddress from "components/UserAddress";
+import { Formik, FieldArray } from "formik";
+import { FieldError } from "components/lib";
+import UserAddress, { AddressShape } from "components/UserAddress";
 import Datepicker from "components/Datepicker";
 import Select, { Option } from "components/Select";
 import Field from "components/Field";
 import ItemList, { BillItem } from "components/ItemList";
-import {
-  invoice,
-  getItem,
-  InvoiceSchema,
-  PAYMENT_TERMS,
-} from "./invoice.helper";
-import {
-  FormError,
-  ButtonGroup,
-  SaveButton,
-  FormFooter,
-  Column,
-} from "./styles";
-
-const AddressTypes = {
-  street: PropTypes.string,
-  city: PropTypes.string,
-  postcode: PropTypes.string,
-  country: PropTypes.string,
-};
-
+import { getItem, InvoiceSchema, PAYMENT_TERMS } from "./invoice.helper";
+import { FormError, FormFooter, Column, Form } from "./styles";
 function InvoiceForm({ children, onSubmit, ...invoice }) {
   const [itemsError, setItemsError] = React.useState(null);
   return (
@@ -44,7 +23,8 @@ function InvoiceForm({ children, onSubmit, ...invoice }) {
           onsubmit({ paymentDue: new Date(paymentDue).getTime(), ...data });
         }
       }}
-      render={({ values, setFieldValue, errors }) => (
+    >
+      {({ values, setFieldValue }) => (
         <Form>
           {/* sender address */}
           <UserAddress type="senderAddress" address={values.senderAddress} />
@@ -96,34 +76,26 @@ function InvoiceForm({ children, onSubmit, ...invoice }) {
               </ItemList>
             )}
           />
-          <FormError>
-            {itemsError ? (
-              <FieldError>- An Item must be added</FieldError>
-            ) : null}
-          </FormError>
-          {/* to place discard button */}
-          <FormFooter>
-            {children}
-            <ButtonGroup>
-              <SaveButton>save</SaveButton>
-              <Button type="submit" variant="primary">
-                Send
-              </Button>
-            </ButtonGroup>
-          </FormFooter>
+          {itemsError ? (
+            <FormError>
+              <FieldError>- An Item must be added.</FieldError>
+            </FormError>
+          ) : null}
+          {/* to place custmized button group based on need */}
+          <FormFooter>{children}</FormFooter>
         </Form>
       )}
-    />
+    </Formik>
   );
 }
 InvoiceForm.propTypes = {
-  senderAddress: PropTypes.shape(AddressTypes),
-  clientAddress: PropTypes.shape(AddressTypes),
+  senderAddress: PropTypes.shape(AddressShape),
+  clientAddress: PropTypes.shape(AddressShape),
   clientName: PropTypes.string,
   clientEmail: PropTypes.string,
   descritpion: PropTypes.string,
   paymentDue: PropTypes.string,
-  paymentTerms: PropTypes.oneOf(["1", "7", "14", "30"]),
+  paymentTerms: PropTypes.oneOf(["", "1", "7", "14", "30"]),
 };
 
 export default InvoiceForm;
