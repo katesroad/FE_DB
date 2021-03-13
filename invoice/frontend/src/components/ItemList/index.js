@@ -1,57 +1,32 @@
 // eslint-disable-next-line
 import styled from "styled-components/macro";
 import * as React from "react";
-import { Input, Label, FieldError } from "components/lib/form";
-import { ErrorMessage } from "formik";
+import Field from "components/Field";
+import { Label, FormControl } from "components/lib/form";
+import { IconDelete } from "components/Icon";
 import PropTypes from "prop-types";
-import {
-  ItemName,
-  ItemQty,
-  ItemPrice,
-  ItemCost,
-  DelBtn,
-  Item,
-  Title,
-  AddItemBtn,
-} from "./styles";
+import { ItemCost, DelBtn, Item, Title, AddItemBtn, Column } from "./styles";
 
 export function BillItem({ onDelete, index, ...item }) {
   return (
     <Item>
-      <ItemName className="item-name">
-        <Label>Item Name</Label>
-        <Input value={item.name} name={`items[${index}].name`} />
-        <FieldError>
-          <ErrorMessage name={`items[${index}].name`} />
-        </FieldError>
-      </ItemName>
-      <div
-        css={`
-          display: flex;
-          align-items: center;
-          flex-wrap: nowrap;
-        `}
-      >
-        <ItemQty>
-          <Label>Qty.</Label>
-          <Input value={item.quantity} name={`items[${index}].quantity`} />
-          <FieldError>
-            <ErrorMessage name={`items[${index}].quantity`} />
-          </FieldError>
-        </ItemQty>
-        <ItemPrice>
-          <Label>Price</Label>
-          <Input value={item.price} name={`items[${index}].price`} />
-          <FieldError>
-            <ErrorMessage name={`items[${index}].price`} />
-          </FieldError>
-        </ItemPrice>
-        <ItemCost>
+      <Column>
+        <Field name={`items[${index}].name`} label="Name" />
+        <Field name={`items[${index}].quantity`} label="Qty." />
+      </Column>
+      <Column>
+        <Field name={`items[${index}].price`} label="Price" />
+        <FormControl>
           <Label>Total</Label>
-          <Input value={+item.price * +item.quantity} disabled />
-        </ItemCost>
-        {<DelBtn onClick={onDelete} />}
-      </div>
+          <ItemCost>{+item.price * +item.quantity}</ItemCost>
+        </FormControl>
+        <FormControl className="del-btn">
+          <Label>Del</Label>
+          <DelBtn onClick={onDelete}>
+            <IconDelete width="25" />
+          </DelBtn>
+        </FormControl>
+      </Column>
     </Item>
   );
 }
@@ -74,7 +49,7 @@ export default function ItemList({ onAddItem, children }) {
       <Title>Item List</Title>
       <ul>{children}</ul>
       <AddItemBtn as="span" onClick={onAddItem}>
-        Add new Item
+        + Add new Item
       </AddItemBtn>
     </div>
   );

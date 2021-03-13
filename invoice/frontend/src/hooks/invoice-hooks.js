@@ -1,6 +1,5 @@
 import * as React from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import {
   useNotification,
@@ -35,13 +34,10 @@ function useInvoiceMutation(queryFn, conf = {}) {
 
 // create invoice
 export function useCreateInvoice() {
-  const queryClient = useQueryClient();
   return useInvoiceMutation((invoice) => axios.post("invoices", invoice), {
     errorMsg: "Failed to create invoice",
     onSuccess: (data, { id }, ctx) => {
-      queryClient.setQueryData("invoice", id, data);
-      queryClient.refetchQueries(["invoices", "all"]);
-      queryClient.refetchQueries(["invoices", data.status]);
+      window.location.reload();
     },
   });
 }

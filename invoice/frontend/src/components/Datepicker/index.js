@@ -7,8 +7,8 @@ import "./datepicker.css";
 
 const PickerButton = React.forwardRef(({ value, onClick }, ref) => (
   <Button onClick={onClick} ref={ref}>
-    <IconCalenddar />
     <DateValue>{value || "Due date"}</DateValue>
+    <IconCalenddar />
   </Button>
 ));
 

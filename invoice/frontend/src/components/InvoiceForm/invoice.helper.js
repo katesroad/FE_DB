@@ -17,13 +17,13 @@ export const invoice = {
   clientEmail: "",
   clientName: "",
   description: "",
-  paymentTerms: "1",
+  paymentTerms: "",
   paymentDue: "",
   items: [],
   status: "",
 };
 
-export const getItem = () => ({ id: uuid(), name: "", quantity: "", price: 0 });
+export const getItem = () => ({ id: uuid(), name: "", quantity: 1, price: 0 });
 
 const AddressSchema = Yup.object().shape({
   street: Yup.string()
@@ -55,19 +55,20 @@ export const InvoiceSchema = Yup.object().shape({
     .required("Client email is required."),
   clientAddress: AddressSchema,
   description: Yup.string()
-    .min(2, "The description/project is too short.")
-    .max(20, "The description/project is too long.")
-    .required("The description/project is required."),
+    .min(2, "Description/project is too short.")
+    .max(20, "Description/project is too long.")
+    .required("Description/project is required."),
   paymentDue: Yup.date().required("Payment due is required."),
+  paymentTerms: Yup.string().required("Payment terms is required"),
   items: Yup.array()
     .of(
       Yup.object().shape({
         name: Yup.string()
-          .max(50, "Item name is too long.")
-          .required(`Item name is required.`),
+          .max(50, "Name is too long.")
+          .required(`Name is required.`),
         price: Yup.number()
-          .positive("Price must be positive.")
-          .required("Item price is required."),
+          .positive("Price is invalid.")
+          .required("Price is required."),
         quantity: Yup.number()
           .positive(`Quantity should be positive.`)
           .integer("Quantity must be integer.")
@@ -76,3 +77,10 @@ export const InvoiceSchema = Yup.object().shape({
     )
     .required("Items is required."),
 });
+
+export const PAYMENT_TERMS = [
+  { value: "1", label: "Net 1 Day" },
+  { value: "7", label: "Net 7 day" },
+  { value: "14", label: "Net 14 day" },
+  { value: "30", label: "Net 30 day" },
+];

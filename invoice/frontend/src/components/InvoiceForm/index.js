@@ -1,38 +1,14 @@
-// eslint-disable-next-line
-import styled from "styled-components/macro";
 import * as React from "react";
 import PropTypes from "prop-types";
-import { Formik, Form, FieldArray } from "formik";
-import { Button, FieldError } from "components/lib";
-import UserAddress from "components/UserAddress";
+import { Formik, FieldArray } from "formik";
+import { FieldError } from "components/lib";
+import UserAddress, { AddressShape } from "components/UserAddress";
 import Datepicker from "components/Datepicker";
+import Select, { Option } from "components/Select";
 import Field from "components/Field";
 import ItemList, { BillItem } from "components/ItemList";
-import { invoice, getItem, InvoiceSchema } from "./invoice.helper";
-import { FormError, ButtonGroup, SaveButton, FormFooter } from "./styles";
-
-const AddressTypes = {
-  street: PropTypes.string,
-  city: PropTypes.string,
-  postcode: PropTypes.string,
-  country: PropTypes.string,
-};
-
-const InvoiceBasic = React.memo(({ values }) => (
-  <>
-    <UserAddress type="senderAddress" address={values.senderAddress} />
-    <UserAddress type="clientAddress" address={values.clientAddress}>
-      <Field label="client name" name="clientName" />
-      <Field label="client email" name="clientEmail" />
-    </UserAddress>
-  </>
-));
-InvoiceBasic.propTypes = {
-  senderAddress: PropTypes.shape(AddressTypes),
-  clientAddress: PropTypes.shape(AddressTypes),
-  clientEmail: PropTypes.string,
-  clientName: PropTypes.string,
-};
+import { getItem, InvoiceSchema, PAYMENT_TERMS } from "./invoice.helper";
+import { FormError, FormFooter, Column, Form } from "./styles";
 
 function InvoiceForm({ children, onSubmit, ...invoice }) {
   const [itemsError, setItemsError] = React.useState(null);
@@ -41,22 +17,51 @@ function InvoiceForm({ children, onSubmit, ...invoice }) {
       initialValues={invoice}
       validationSchema={InvoiceSchema}
       onSubmit={(values) => {
-        if (values.items.length === 0) {
-          setItemsError(`An item must be added.`);
-        } else {
+        if (values.items.length > 0) {
           const { paymentDue, ...data } = values;
-          onsubmit({ paymentDue: new Date(paymentDue).getTime(), ...data });
+          onSubmit({ paymentDue: new Date(paymentDue).getTime(), ...data });
+        } else {
+          setItemsError(`An item must be added.`);
         }
       }}
-      render={({ values, setFieldValue, errors }) => (
+    >
+      {({ values, setFieldValue }) => (
         <Form>
-          <InvoiceBasic values={values} />
-          <Datepicker
-            label="Invoice Date"
-            name="paymentDue"
-            onChange={setFieldValue}
-            value={values.paymentDue}
+          {/* sender address */}
+          <UserAddress type="senderAddress" address={values.senderAddress} />
+          {/* client address, client name, and client email */}
+          <UserAddress type="clientAddress" address={values.clientAddress}>
+            <Field label="client name" name="clientName" />
+            <Field label="client email" name="clientEmail" />
+          </UserAddress>
+          <Column>
+            {/* invoice date */}
+            <Datepicker
+              label="Invoice Date"
+              name="paymentDue"
+              onChange={setFieldValue}
+              value={values.paymentDue}
+            />
+            {/* payment terms */}
+            <Select
+              name="paymentTerms"
+              value={values.paymentTerms}
+              label="payment terms"
+            >
+              {PAYMENT_TERMS.map(({ value, label }) => (
+                <Option value={value} key={value}>
+                  {label}
+                </Option>
+              ))}
+            </Select>
+          </Column>
+          {/* project/description */}
+          <Field
+            name="description"
+            label="Project/Description"
+            value={values.descritpion}
           />
+          {/* item list */}
           <FieldArray
             name="items"
             render={(arrayHelpers) => (
@@ -78,37 +83,26 @@ function InvoiceForm({ children, onSubmit, ...invoice }) {
               </ItemList>
             )}
           />
-          <FormError>
-            {itemsError ? (
-              <FieldError>- An Item must be added</FieldError>
-            ) : null}
-          </FormError>
-          {/* to place discard button */}
-          <FormFooter>
-            {children}
-            <ButtonGroup>
-              <SaveButton>save</SaveButton>
-              <Button type="submit" variant="primary">
-                Send
-              </Button>
-            </ButtonGroup>
-          </FormFooter>
+          {itemsError ? (
+            <FormError>
+              <FieldError>- An Item must be added.</FieldError>
+            </FormError>
+          ) : null}
+          {/* to place custmized button group based on need */}
+          <FormFooter>{children}</FormFooter>
         </Form>
       )}
-    />
+    </Formik>
   );
 }
 InvoiceForm.propTypes = {
-  ...invoice,
-};
-InvoiceForm.propTypes = {
-  senderAddress: PropTypes.shape(AddressTypes),
-  clientAddress: PropTypes.shape(AddressTypes),
+  senderAddress: PropTypes.shape(AddressShape),
+  clientAddress: PropTypes.shape(AddressShape),
   clientName: PropTypes.string,
   clientEmail: PropTypes.string,
   descritpion: PropTypes.string,
   paymentDue: PropTypes.string,
-  paymentTerms: PropTypes.oneOf(["1", "7", "14", "30"]),
+  paymentTerms: PropTypes.oneOf(["", "1", "7", "14", "30"]),
 };
 
 export default InvoiceForm;
