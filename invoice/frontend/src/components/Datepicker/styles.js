@@ -20,5 +20,4 @@ export const Button = styled.span`
 
 export const DateValue = styled.span`
   margin-top: 2px;
-  margin-left: 8px;
 `;
