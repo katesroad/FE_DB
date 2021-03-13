@@ -10,7 +10,14 @@ import Header from "./components/Header";
 // Invoice detail page
 export default function InvoicesScreen() {
   const { status, data: invoices } = useInvoices();
-  const [invoiceStatus, setInvoiceStatus] = React.useState("all");
+  const [statusList, setStatusList] = React.useState([]);
+  const onSelect = (status) => {
+    const statusSet = new Set(statusList);
+    if (statusSet.has(status)) {
+      statusSet.delete(status);
+    } else statusSet.add(status);
+    setStatusList([...statusSet]);
+  };
   return (
     <>
       {/* page header */}
@@ -25,7 +32,7 @@ export default function InvoicesScreen() {
           `}
         >
           <InvoiceStats status={status} invoices={invoices} />
-          <InvoicesFilter status={invoiceStatus} onChange={() => {}} />
+          <InvoicesFilter statusList={statusList} onSelect={onSelect} />
         </div>
       </Header>
       {/* invoice list */}
