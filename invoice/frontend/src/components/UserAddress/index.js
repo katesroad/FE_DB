@@ -2,10 +2,9 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import Field from "components/Field";
 import { Title, Column } from "./styles";
-
 function UserAddress({ address, type, children }) {
   return (
-    <>
+    <div>
       <Title>bill {type === "senderAddress" ? "from" : "to"}</Title>
       {children}
       <Field
@@ -27,7 +26,7 @@ function UserAddress({ address, type, children }) {
           value={address.country}
         />
       </Column>
-    </>
+    </div>
   );
 }
 UserAddress.defaultProps = {
