@@ -17,7 +17,7 @@ class Item {
   total: number;
 }
 
-export type Status = 'paid' | 'pending' | 'draft';
+type Status = 'paid' | 'pending' | 'draft';
 @Schema({ versionKey: false, timestamps: true })
 export class Invoice {
   // coordindate id in data

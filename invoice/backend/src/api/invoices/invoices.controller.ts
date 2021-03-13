@@ -8,7 +8,6 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
-import { Status } from 'common/mongo';
 import { InvoicesService } from './invoices.service';
 
 @Controller('api/invoices')
@@ -16,7 +15,7 @@ export class InvoicesController {
   constructor(private invoiceService: InvoicesService) {}
 
   @Get()
-  getInvoices(@Query('status') status?: Status) {
+  getInvoices(@Query('status') status?: string) {
     return this.invoiceService.getInvoices(status);
   }
 
