@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 import { Field } from "formik";
-import { variant } from "styled-system";
 import { red } from "styles/colors";
 
 export const inputStyle = css`
@@ -15,13 +14,20 @@ export const inputStyle = css`
   text-transform: capitalize;
   background-color: var(--input-background-color);
   font-weight: var(--font-weight-bold);
+`;
+
+export const inputStyleWithStatus = css`
+  ${inputStyle}
   &:disabled {
     width: auto;
     border: 0;
     background-color: transparent;
   }
   &:focus {
-    border: 1px solid var(--color-primary);
+    border-color: var(--color-primary);
+  }
+  &.error {
+    border-color: ${red.normal}!important;
   }
 `;
 
@@ -39,20 +45,9 @@ export const Label = styled.label`
   text-transform: capitalize;
 `;
 
-export const InputBase = styled(Field)`
-  ${inputStyle}
+export const Input = styled(Field)`
+  ${inputStyleWithStatus}
 `;
-
-export const Input = styled(InputBase)(
-  {},
-  variant({
-    variants: {
-      error: {
-        border: `1px solid ${red.normal}`,
-      },
-    },
-  })
-);
 
 export const FieldError = styled.small`
   margin-top: 8px;

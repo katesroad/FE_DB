@@ -14,7 +14,7 @@ const TextField = React.memo(({ label, name, children, ...props }) => {
         {...props}
         id={name}
         name={name}
-        variant={error ? "error" : ""}
+        className={error ? "error" : ""}
       />
       <FieldError>
         <ErrorMessage name={name} />
