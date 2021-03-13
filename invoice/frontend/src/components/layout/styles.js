@@ -90,3 +90,14 @@ export const Main = styled(Content)`
     padding-top: 64px;
   }
 `;
+
+/*-----------------Styles for App Main------------------------------*/
+export const PageHeader = styled.section`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  ${mediaQueries.medium} {
+    margin-bottom: 56px;
+  }
+`;

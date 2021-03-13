@@ -30,3 +30,5 @@ export function AppHeader() {
 export const AppMain = ({ children }) => {
   return <Main as="main">{children}</Main>;
 };
+
+export { PageHeader } from "./styles";
