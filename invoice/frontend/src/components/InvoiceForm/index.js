@@ -6,32 +6,28 @@ import { Formik, Form, FieldArray } from "formik";
 import { Button, FieldError } from "components/lib";
 import UserAddress from "components/UserAddress";
 import Datepicker from "components/Datepicker";
+import Select, { Option } from "components/Select";
 import Field from "components/Field";
 import ItemList, { BillItem } from "components/ItemList";
-import { invoice, getItem, InvoiceSchema } from "./invoice.helper";
-import { FormError, ButtonGroup, SaveButton, FormFooter } from "./styles";
+import {
+  invoice,
+  getItem,
+  InvoiceSchema,
+  PAYMENT_TERMS,
+} from "./invoice.helper";
+import {
+  FormError,
+  ButtonGroup,
+  SaveButton,
+  FormFooter,
+  Column,
+} from "./styles";
 
 const AddressTypes = {
   street: PropTypes.string,
   city: PropTypes.string,
   postcode: PropTypes.string,
   country: PropTypes.string,
-};
-
-const InvoiceBasic = React.memo(({ values }) => (
-  <>
-    <UserAddress type="senderAddress" address={values.senderAddress} />
-    <UserAddress type="clientAddress" address={values.clientAddress}>
-      <Field label="client name" name="clientName" />
-      <Field label="client email" name="clientEmail" />
-    </UserAddress>
-  </>
-));
-InvoiceBasic.propTypes = {
-  senderAddress: PropTypes.shape(AddressTypes),
-  clientAddress: PropTypes.shape(AddressTypes),
-  clientEmail: PropTypes.string,
-  clientName: PropTypes.string,
 };
 
 function InvoiceForm({ children, onSubmit, ...invoice }) {
@@ -50,13 +46,35 @@ function InvoiceForm({ children, onSubmit, ...invoice }) {
       }}
       render={({ values, setFieldValue, errors }) => (
         <Form>
-          <InvoiceBasic values={values} />
-          <Datepicker
-            label="Invoice Date"
-            name="paymentDue"
-            onChange={setFieldValue}
-            value={values.paymentDue}
-          />
+          {/* sender address */}
+          <UserAddress type="senderAddress" address={values.senderAddress} />
+          {/* client address, client name, and client email */}
+          <UserAddress type="clientAddress" address={values.clientAddress}>
+            <Field label="client name" name="clientName" />
+            <Field label="client email" name="clientEmail" />
+          </UserAddress>
+          <Column>
+            {/* invoice date */}
+            <Datepicker
+              label="Invoice Date"
+              name="paymentDue"
+              onChange={setFieldValue}
+              value={values.paymentDue}
+            />
+            {/* payment terms */}
+            <Select
+              name="paymentTerms"
+              value={values.paymentTerms}
+              label="payment terms"
+            >
+              {PAYMENT_TERMS.map(({ value, label }) => (
+                <Option value={value} key={value}>
+                  {label}
+                </Option>
+              ))}
+            </Select>
+          </Column>
+          {/* item list */}
           <FieldArray
             name="items"
             render={(arrayHelpers) => (
@@ -98,9 +116,6 @@ function InvoiceForm({ children, onSubmit, ...invoice }) {
     />
   );
 }
-InvoiceForm.propTypes = {
-  ...invoice,
-};
 InvoiceForm.propTypes = {
   senderAddress: PropTypes.shape(AddressTypes),
   clientAddress: PropTypes.shape(AddressTypes),
