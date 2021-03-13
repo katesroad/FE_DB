@@ -1,43 +1,8 @@
 import styled from "styled-components";
-import { FormControl, Button } from "components/lib";
+import { Button, ButtonBase } from "components/lib";
 import * as mediaQueries from "styles/media-queries";
-import { IconDelete } from "components/Icon";
 
 /*-----------------------Styles for Item-----------------------------------------*/
-
-export const ItemName = styled(FormControl)`
-  widtth: 100%;
-  ${mediaQueries.medium} {
-    max-width: 214px;
-    margin-right: 16px;
-  } ;
-`;
-
-export const ItemQty = styled(FormControl)`
-  min-width: 64px;
-  flex-grow: 1; ;
-`;
-
-export const ItemPrice = styled(FormControl)`
-  min-width: 100px;
-  flex-grow: 2; ;
-`;
-
-export const ItemCost = styled(FormControl)`
-  min-width: 64px;
-  flex-grow: 1;
-  input {
-    text-align: left;
-    padding-left: 0;
-    font-size: 14px;
-  }
-`;
-
-export const DelBtn = styled(IconDelete)`
-  width: 16px;
-  height: 16px; ;
-`;
-
 export const Item = styled.div`
   margin-bottom: 16px;
   ${mediaQueries.medium} {
@@ -45,14 +10,50 @@ export const Item = styled.div`
     margin-bottom: 18px;
   } ;
 `;
+export const Column = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: space-betweem;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  > div {
+    &:nth-child(2) {
+      margin-left: 23px;
+    }
+  }
+  ${mediaQueries.medium} {
+    &:nth-child(2) {
+      margin-left: 23px;
+    }
+  }
+  .del-btn {
+    label {
+      visibility: hidden;
+    }
+  }
+`;
+
+export const ItemCost = styled.span`
+  display: block;
+  min-width: 64px;
+  /* the input element height is 48px */
+  height: 48px;
+  line-height: 48px;
+`;
+
+export const DelBtn = styled(ButtonBase)`
+  width: 16px;
+  background-color: transparent;
+`;
 
 /*----------------------Styles for ItemList------------------------------*/
 
 export const Wrapper = styled.div``;
 
 export const Title = styled.h3`
-  font-size: 18px;
   margin-bottom: 16px;
+  font-size: 18px;
+  color: var(--color-primary);
 }`;
 
 export const AddItemBtn = styled(Button)`
