@@ -10,10 +10,13 @@ export const Wrapper = styled.div`
 
 export const StatusList = styled(DisclosurePanel)`
   position: absolute;
-  top: 32px;
-  left: 16px;
+  top: 54px;
+  left: -16px;
   padding: 16px;
-  width: 100%;
+  width: 158px;
+  border-radius: 8px;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  background-color: var(--element-background-color);
   ${cardStyle}
   &:focus {
     outline: 0;
