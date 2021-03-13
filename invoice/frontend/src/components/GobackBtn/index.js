@@ -1,3 +1,5 @@
+// eslint-disable-next-line
+import styled from "styled-components/macro";
 import * as React from "react";
 import { IconArrowLeft } from "components/Icon";
 
@@ -5,7 +7,15 @@ export default function GobackBtn() {
   return (
     <>
       <IconArrowLeft />
-      <span style={{ marginLeft: "6px" }}>Go Back</span>
+      <strong
+        css={`
+          margin-left: 16px;
+          font-size: 12px;
+          letter-spacing: -0.25px;
+        `}
+      >
+        Go Back
+      </strong>
     </>
   );
 }
