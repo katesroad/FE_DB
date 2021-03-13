@@ -1,17 +1,21 @@
 import styled from "styled-components";
 import ReactDatepicker from "react-datepicker";
 import { inputStyle } from "components/lib/form";
-import { buttonStyle } from "components/lib/button";
 require("react-datepicker/dist/react-datepicker.css");
 
 export const DatepickerCompo = styled(ReactDatepicker)`
   ${inputStyle}
-  max-width: 100px;
+  display: flex;
+  justify-content: space-betweem;
+  align-items: center;
 `;
 
 export const Button = styled.span`
-  ${buttonStyle}
-  display: block;
+  ${inputStyle}
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
 `;
 
 export const DateValue = styled.span`
