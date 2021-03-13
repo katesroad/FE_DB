@@ -16,15 +16,15 @@ function InvoiceForm({ children, onSubmit, ...invoice }) {
       initialValues={invoice}
       validationSchema={InvoiceSchema}
       onSubmit={(values) => {
-        if (values.items.length === 0) {
-          setItemsError(`An item must be added.`);
-        } else {
+        if (values.items.length > 0) {
           const { paymentDue, ...data } = values;
-          onsubmit({ paymentDue: new Date(paymentDue).getTime(), ...data });
+          onSubmit({ paymentDue: new Date(paymentDue).getTime(), ...data });
+        } else {
+          setItemsError(`An item must be added.`);
         }
       }}
     >
-      {({ values, setFieldValue }) => (
+      {({ values, setFieldValue, errors }) => (
         <Form>
           {/* sender address */}
           <UserAddress type="senderAddress" address={values.senderAddress} />
@@ -54,6 +54,12 @@ function InvoiceForm({ children, onSubmit, ...invoice }) {
               ))}
             </Select>
           </Column>
+          {/* project/description */}
+          <Field
+            name="description"
+            label="Project/Description"
+            value={values.descritpion}
+          />
           {/* item list */}
           <FieldArray
             name="items"
