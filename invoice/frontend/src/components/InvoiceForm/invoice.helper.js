@@ -17,7 +17,7 @@ export const invoice = {
   clientEmail: "",
   clientName: "",
   description: "",
-  paymentTerms: "1",
+  paymentTerms: "",
   paymentDue: "",
   items: [],
   status: "",
@@ -59,6 +59,7 @@ export const InvoiceSchema = Yup.object().shape({
     .max(20, "The description/project is too long.")
     .required("The description/project is required."),
   paymentDue: Yup.date().required("Payment due is required."),
+  paymentTerms: Yup.string().required("Payment terms is required"),
   items: Yup.array()
     .of(
       Yup.object().shape({
@@ -76,3 +77,10 @@ export const InvoiceSchema = Yup.object().shape({
     )
     .required("Items is required."),
 });
+
+export const PAYMENT_TERMS = [
+  { value: "1", label: "Net 1 Day" },
+  { value: "7", label: "Net 7 day" },
+  { value: "14", label: "Net 14 day" },
+  { value: "30", label: "Net 30 day" },
+];
