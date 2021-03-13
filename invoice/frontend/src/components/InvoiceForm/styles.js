@@ -24,7 +24,7 @@ export const Column = styled.div`
       &>div {
         width: 100%;
         &:nth-child(2) {
-          margin-left: 20px;
+          margin-left: 23px;
         }
       }
     }
