@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Invoice, InvoiceDoc, Status } from 'common/mongo';
+import { Invoice, InvoiceDoc } from 'common/mongo';
 import { Model } from 'mongoose';
 import { HelperService } from './helper.service';
 
@@ -12,10 +12,10 @@ export class InvoicesService {
     private readonly helperService: HelperService,
   ) {}
 
-  getInvoices(status?: Status) {
-    let filter: Record<string, string> = null;
-    if (status) {
-      filter = { status };
+  getInvoices(filterStatus?: string) {
+    let filter: any = null;
+    if (filterStatus) {
+      filter = { status: { $in: filterStatus.split(',') } };
     }
     return this.invoiceModel
       .find(filter, {

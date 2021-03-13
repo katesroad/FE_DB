@@ -9,7 +9,7 @@ export function useInvoices(status) {
   return useQuery({
     queryKey: ["invoices", status],
     queryFn: ({ queryKey: [, status] }) => {
-      const params = status === "all" ? {} : { status };
+      const params = status === "" ? {} : { status };
       return axios.get("invoices", { params });
     },
   });
