@@ -8,7 +8,12 @@ import * as mediaQueries from "styles/media-queries";
 export const InvoiceWrap = styled(LinkCard)`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   text-decoration: none;
+  border: 1px solid transparent;
+  &:hover {
+    border: 1px solid var(--color-primary);
+  }
 `;
 export const InvoiceAmount = styled.strong`
   font-size: 16px;
@@ -50,7 +55,7 @@ export const InvoiceId = styled.span`
 
 export const DueDate = styled.span`
   font-size: 14px;
-  line-height: 20px;
+  margin-bottom: 8px;
   ${mediaQueries.medium} {
     margin-bottom: 0;
   }

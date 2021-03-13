@@ -20,7 +20,7 @@ import {
 
 export const InvoiceShape = {
   tag: PropTypes.string.isRequired,
-  paymentDue: PropTypes.string.isRequired,
+  paymentDue: PropTypes.number.isRequired,
   status: PropTypes.string.isRequired,
   total: PropTypes.number.isRequired,
   clientName: PropTypes.string.isRequired,
@@ -33,7 +33,9 @@ const Invoice = React.memo(({ ...invoice }) => {
         <InvoiceId>
           # <strong>{invoice.tag}</strong>
         </InvoiceId>
-        <DueDate>Due {invoice.paymentDue}</DueDate>
+        <DueDate>
+          Due {new Date(invoice.paymentDue).toLocaleDateString()}
+        </DueDate>
         <InvoiceTotal>
           $ <span>{invoice.total}</span>
         </InvoiceTotal>
@@ -41,8 +43,8 @@ const Invoice = React.memo(({ ...invoice }) => {
       <Column>
         <ClientName>{invoice.clientName}</ClientName>
         <InvoiceStatus status={invoice.status} />
-        <ArrowButton />
       </Column>
+      <ArrowButton />
     </InvoiceWrap>
   );
 });
