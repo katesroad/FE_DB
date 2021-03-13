@@ -12,6 +12,7 @@ export const ModalContent = styled(ModalContentBase)`
   width: 100%;
   max-width: 730px;
   height: 100vh;
+  verflow-y: scroll;
   background-color: var(--body-bg);
   ${mediaQueries.iphone} {
     padding-left: 24px;
@@ -27,6 +28,7 @@ export const ModalContent = styled(ModalContentBase)`
     left: 84px;
     padding-left: 76px;
     max-width: 768px;
+    overflow-y: none;
   }
 `;
 export const Title = styled.div`
@@ -58,10 +60,9 @@ export const CloseBtn = styled(ButtonBase)`
 export const Content = styled.div`
   position: relative;
   height: 89vh;
-  padding-bottom: 24vh;
-  padding-right: 8px;
   overflow-y: scroll;
+  padding-bottom: 200px;
   ${mediaQueries.large} {
-    padding-bottom: 240px;
+    padding-bottom: 120px;
   }
 `;
