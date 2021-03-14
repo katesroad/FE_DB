@@ -21,6 +21,9 @@ export const ItemWrapper = styled.div`
   ${flexBettween}
   width: 100%;
   margin-bottom: 24px;
+  &:last-child {
+    margin-bottom: 0;
+  }
   .name {
     display: block;
     margin-bottom: 8px;
@@ -50,6 +53,7 @@ export const MediumView = styled.table`
   }
   ${mediaQuries.medium} {
     display: table;
+    margin-bottom: -24px;
   }
 `;
 
@@ -60,7 +64,7 @@ export const GrandTotal = styled.div`
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   span {
-    font-size: 16px;
+    font-size: 14px;
     color: var(--color-white);
   }
   strong {
@@ -68,6 +72,8 @@ export const GrandTotal = styled.div`
     color: var(--color-white);
   }
   ${mediaQuries.medium} {
-    margin-top: -24px;
+    strong {
+      font-size: 24px;
+    }
   }
 `;

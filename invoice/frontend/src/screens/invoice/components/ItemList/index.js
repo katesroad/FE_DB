@@ -14,10 +14,7 @@ import {
 const ItemPropTypes = {
   name: PropTypes.string.isRequired,
   quantity: PropTypes.number.isRequired,
-  price: PropTypes.oneOf([
-    PropTypes.string.isRequired,
-    PropTypes.number.isRequired,
-  ]).isRequired,
+  price: PropTypes.number.isRequired,
 };
 function Item({ ...item }) {
   return (
@@ -35,7 +32,7 @@ function Item({ ...item }) {
 Item.propTypes = ItemPropTypes;
 
 const { dark } = THEME_MODE;
-function ItemList({ items, total }) {
+function ItemList({ items, total, invoiceStatus }) {
   const [theme] = useTheme();
   let wrapBgColor;
   let totalBgColor;
@@ -95,7 +92,9 @@ function ItemList({ items, total }) {
           background-color: ${totalBgColor};
         `}
       >
-        <span>Amount Due</span>
+        <span className="type">
+          {invoiceStatus === "pending" ? "Amount Due" : "Grand Total"}
+        </span>
         <strong>$ {total}</strong>
       </GrandTotal>
     </>
@@ -105,6 +104,7 @@ function ItemList({ items, total }) {
 ItemList.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape(ItemPropTypes)).isRequired,
   total: PropTypes.number.isRequired,
+  invoiceStatus: PropTypes.oneOf(["draft", "pending", "paid"]),
 };
 
 export default ItemList;
