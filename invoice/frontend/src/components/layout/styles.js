@@ -82,12 +82,12 @@ export const Logo = styled.img`
 
 /*-----------------Styles for App Main------------------------------*/
 export const Main = styled(Content)`
-  padding-top: 104px;
+  padding-top: 72px;
   ${mediaQueries.medium} {
-    padding-top: 136px;
+    padding-top: 80px;
   }
   ${mediaQueries.large} {
-    padding-top: 64px;
+    padding-top: 0;
   }
 `;
 
@@ -96,8 +96,13 @@ export const PageHeader = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 32px;
+  margin-top: 32px;
+  margin-bottom: 24px;
   ${mediaQueries.medium} {
-    margin-bottom: 56px;
+    margin-top: 48px;
+    margin-bottom: 32px;
+  }
+  ${mediaQueries.medium} {
+    margin-top: 64px;
   }
 `;

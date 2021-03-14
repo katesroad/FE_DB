@@ -12,6 +12,9 @@ export default function GobackBtn() {
           margin-left: 16px;
           font-size: 12px;
           letter-spacing: -0.25px;
+          &:hover {
+            color: #888eb0;
+          }
         `}
       >
         Go Back
