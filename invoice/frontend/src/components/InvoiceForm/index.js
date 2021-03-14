@@ -59,7 +59,7 @@ function InvoiceForm({ children, onSubmit, ...invoice }) {
           <Field
             name="description"
             label="Project/Description"
-            value={values.descritpion}
+            value={values.description}
           />
           {/* item list */}
           <FieldArray
