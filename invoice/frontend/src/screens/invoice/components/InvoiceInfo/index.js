@@ -1,22 +1,20 @@
-// eslint-disable-next-line
-import styled from "styled-components/macro";
 import * as React from "react";
 import ItemList from "../ItemList";
-import { Wrapper, Column, Item } from "./styles";
+import { Wrapper, Column, Item, Address } from "./styles";
 
 const UserAddress = ({ address }) => (
-  <p>
+  <Address>
     <span>{address.street}</span>
     <span>{address.city}</span>
     <span>{address.postcode}</span>
     <span>{address.country}</span>
-  </p>
+  </Address>
 );
 
 const InvoiceDate = ({ name, date }) => (
   <Item>
-    <span className="date-name">{name}</span>
-    <strong className="date-value">{date}</strong>
+    <span>{name}</span>
+    <strong>{date}</strong>
   </Item>
 );
 
@@ -25,8 +23,8 @@ export default function InvoiceInfo({ ...invoice }) {
     <Wrapper>
       <Column className="row1">
         <Item>
-          <span className="invoice-tag">
-            # <strong>{invoice.tag}</strong>
+          <span>
+            # <strong className="invoice-tag">{invoice.tag}</strong>
           </span>
           <span className="invoice-desc">{invoice.description}</span>
         </Item>
@@ -49,7 +47,7 @@ export default function InvoiceInfo({ ...invoice }) {
         </Column>
         <Column>
           <Item>
-            <span className="info-name">Bill To</span>
+            <span>Bill To</span>
             <strong className="client-name">{invoice.clientName}</strong>
             <UserAddress address={invoice?.clientAddress} />
           </Item>
@@ -57,7 +55,7 @@ export default function InvoiceInfo({ ...invoice }) {
         <Column>
           <Item>
             <span>Sent to</span>
-            <strong className="client-email">{invoice.clientEmail}</strong>
+            <strong>{invoice.clientEmail}</strong>
           </Item>
         </Column>
       </Column>
