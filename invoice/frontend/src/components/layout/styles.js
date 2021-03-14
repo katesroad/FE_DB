@@ -35,8 +35,8 @@ export const ModeBtn = styled(Button)`
   border-radius: 0;
   border-right: 1px solid #494e6e;
   background-color: transparent;
-  img {
-    max-width: 19px;
+  svg {
+    max-width: 20px;
   }
   ${mediaQueries.medium} {
     padding: 0 30px 0 0;

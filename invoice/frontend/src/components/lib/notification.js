@@ -9,13 +9,13 @@ export const NotificationBase = styled.div`
   width: 40vw;
   padding: 8px;
   margin-bottom: 16px;
-  border-left: 2px solid;
+  border-left: 2px solid #fff;
   border-radius: 4px;
   line-height: 1.5;
-  color: var(--title-text-color);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: clip;
+  color: #fff;
   background-color: var(--element-background-color);
 `;
 

@@ -47,6 +47,7 @@ export const Label = styled.label`
 
 export const Input = styled(Field)`
   ${inputStyleWithStatus}
+  text-transform: none;
 `;
 
 export const FieldError = styled.small`
