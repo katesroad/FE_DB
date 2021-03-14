@@ -3,11 +3,14 @@ import styled from "styled-components/macro";
 import * as React from "react";
 import { PageHeader as Header } from "components/layout";
 import { useInvoices } from "hooks/useGetInvoices";
+import SuspenseErrorBoundary, {
+  ErrorFallback,
+} from "components/SuspenseBoundary";
 import InvoiceList from "./components/InvoiceList";
 import InvoiceStats from "./components/InvoiceStats";
 import InvoicesFilter from "./components/InvoicesFilter";
-import CreateInvoice from "./components/CreateInvoice";
 
+const CreateInvoice = React.lazy(() => import("./components/CreateInvoice"));
 // Invoice detail page
 export default function InvoicesScreen() {
   const [statusList, setStatusList] = React.useState([]);
@@ -34,7 +37,9 @@ export default function InvoicesScreen() {
           {/* invoice status filter */}
           <InvoicesFilter statusList={statusList} onSelect={onSelect} />
           {/* new invoice button and the modal triggered by click create button */}
-          <CreateInvoice />
+          <SuspenseErrorBoundary FallbackComponent={ErrorFallback} key={status}>
+            <CreateInvoice />
+          </SuspenseErrorBoundary>
         </div>
       </Header>
       {/* invoice list */}
