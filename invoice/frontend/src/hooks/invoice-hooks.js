@@ -1,5 +1,6 @@
 import * as React from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import {
   useNotification,
@@ -46,21 +47,18 @@ export function useCreateInvoice() {
 export function useGetInvoice(id) {
   return useQuery({
     queryKey: ["invoice", id],
-    queryFn: () => axios.get(id),
+    queryFn: () => axios.get(`invoices/${id}`),
   });
 }
 
 export function useUpdateInvoice({ id, tag }) {
-  const queryClient = useQueryClient();
   return useInvoiceMutation(
-    (invoice) => axios.patch(`invoice/${invoice.id}`, invoice),
+    (invoice) => axios.patch(`invoices/${invoice.id}`, invoice),
     {
       errorMsg: `Failed to update invoice#${tag || id}`,
       successMsg: `Updated invoice#${tag || id}`,
       onSuccess: (data, { id }) => {
-        queryClient.setQueryData("invoice", id, data);
-        queryClient.refetchQueries(["invoices", "all"]);
-        queryClient.refetchQueries(["invoices", data.status]);
+        window.location.reload();
       },
     }
   );
@@ -69,12 +67,14 @@ export function useUpdateInvoice({ id, tag }) {
 // delete invoice
 export function useDeleteInvoice(invoice) {
   const queryClient = useQueryClient();
+  const history = useHistory();
   return useInvoiceMutation(
-    (invoice) => axios.delete(`invoice/${invoice.id}`),
+    (invoice) => axios.delete(`invoices/${invoice.id}`),
     {
-      successMsg: `Updated invoice#${invoice.id}`,
-      onSuccess: () => {
-        queryClient.refetchQueries("invoices", "all");
+      successMsg: `Deleted invoice#${invoice.tag}`,
+      onSuccess: async () => {
+        await queryClient.refetchQueries("invoices", "all");
+        history.push("/");
       },
     }
   );

@@ -1,12 +1,16 @@
 // eslint-disable-next-line
 import styled from "styled-components/macro";
 import * as React from "react";
+import { PageHeader as Header } from "components/layout";
 import { useInvoices } from "hooks/useGetInvoices";
+import SuspenseErrorBoundary, {
+  ErrorFallback,
+} from "components/SuspenseBoundary";
 import InvoiceList from "./components/InvoiceList";
 import InvoiceStats from "./components/InvoiceStats";
 import InvoicesFilter from "./components/InvoicesFilter";
-import Header from "./components/Header";
 
+const CreateInvoice = React.lazy(() => import("./components/CreateInvoice"));
 // Invoice detail page
 export default function InvoicesScreen() {
   const [statusList, setStatusList] = React.useState([]);
@@ -22,17 +26,20 @@ export default function InvoicesScreen() {
     <>
       {/* page header */}
       <Header>
+        <InvoiceStats status={status} invoices={invoices} />
         <div
           css={`
             display: flex;
             align-items: center;
             justify-content: space-between;
-            flex-grow: 1;
-            margin-right: 24px;
           `}
         >
-          <InvoiceStats status={status} invoices={invoices} />
+          {/* invoice status filter */}
           <InvoicesFilter statusList={statusList} onSelect={onSelect} />
+          {/* new invoice button and the modal triggered by click create button */}
+          <SuspenseErrorBoundary FallbackComponent={ErrorFallback} key={status}>
+            <CreateInvoice />
+          </SuspenseErrorBoundary>
         </div>
       </Header>
       {/* invoice list */}

@@ -46,6 +46,9 @@ const GlobalStyles = createGlobalStyle`
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
   }
+  a {
+    text-decoration:none;
+  }
 
   button[disabled] {
     cursor: not-allowed;
