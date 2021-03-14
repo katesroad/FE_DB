@@ -3,51 +3,40 @@ import styled from "styled-components/macro";
 import * as React from "react";
 import { useGetInvoice } from "hooks/invoice-hooks";
 import { Link, useParams } from "react-router-dom";
-import InvocieStatus from "components/InvoiceStatus";
-import { Card, Spinner } from "components/lib";
+import { Spinner, Error } from "components/lib";
 import { PageHeader as Header } from "components/layout";
 import GobackBtn from "components/GobackBtn";
-import ItemList from "./components/ItemList";
+import InvoiceInfo from "./components/InvoiceInfo";
+import StatusPanel from "./components/StatusPanel";
+import Operations from "./components/Operations";
+import Footer from "./components/Footer";
 
 // Invoice detail page
 export default function InvoiceScreen() {
   const { id } = useParams();
-  const { status, data: invoice } = useGetInvoice(id);
+  const { status, data: invoice, error } = useGetInvoice(id);
   return (
     <>
       <Header>
-        <Link
-          to="/"
-          css={`
-            text-decoration: none;
-          `}
-        >
+        <Link to="/">
           <GobackBtn />
         </Link>
       </Header>
-      <Card>
-        <div
-          css={`
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-          `}
-        >
-          <span>Status</span>
-          {status === "success" ? (
-            <InvocieStatus status={invoice?.status} />
-          ) : (
-            <Spinner />
-          )}
-        </div>
-      </Card>
-      {status === "success" ? (
-        <ItemList
-          items={invoice?.items}
-          total={invoice?.total}
-          invoiceStatus={invoice?.status}
-        />
-      ) : null}
+      <StatusPanel status={status} invoice={invoice}>
+        <Operations invoice={invoice} />
+      </StatusPanel>
+      {["loading", "idle"].includes(status) ? (
+        <Spinner />
+      ) : status === "error" ? (
+        <Error>{JSON.stringify(error.message)}</Error>
+      ) : (
+        <>
+          <InvoiceInfo {...invoice} />
+          <Footer>
+            <Operations invoice={invoice} />
+          </Footer>
+        </>
+      )}
     </>
   );
 }

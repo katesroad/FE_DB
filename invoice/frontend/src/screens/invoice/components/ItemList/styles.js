@@ -6,6 +6,9 @@ export const Wrapper = styled.div`
   padding: 24px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  ${mediaQuries.medium} {
+    padding: 32px;
+  }
 `;
 
 // item list wrapper for mobile version
@@ -72,6 +75,8 @@ export const GrandTotal = styled.div`
     color: var(--color-white);
   }
   ${mediaQuries.medium} {
+    padding-left: 32px;
+    padding-right: 32px;
     strong {
       font-size: 24px;
     }

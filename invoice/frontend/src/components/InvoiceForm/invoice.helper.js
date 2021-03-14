@@ -79,8 +79,8 @@ export const InvoiceSchema = Yup.object().shape({
 });
 
 export const PAYMENT_TERMS = [
-  { value: "1", label: "Net 1 Day" },
-  { value: "7", label: "Net 7 day" },
-  { value: "14", label: "Net 14 day" },
-  { value: "30", label: "Net 30 day" },
+  { value: 1, label: "Net 1 Day" },
+  { value: 7, label: "Net 7 day" },
+  { value: 14, label: "Net 14 day" },
+  { value: 30, label: "Net 30 day" },
 ];

@@ -1,9 +1,9 @@
 import { Status, Dot } from "./styles";
 import PropTypes from "prop-types";
 
-function InvoiceStatus({ status }) {
+function InvoiceStatus({ status, ...props }) {
   return (
-    <Status variant={status}>
+    <Status variant={status} {...props}>
       <Dot>⬤</Dot>
       {status}
     </Status>
