@@ -9,6 +9,7 @@ import GobackBtn from "components/GobackBtn";
 import InvoiceInfo from "./components/InvoiceInfo";
 import StatusPanel from "./components/StatusPanel";
 import Operations from "./components/Operations";
+import Footer from "./components/Footer";
 
 // Invoice detail page
 export default function InvoiceScreen() {
@@ -29,7 +30,12 @@ export default function InvoiceScreen() {
       ) : status === "error" ? (
         <Error>{JSON.stringify(error.message)}</Error>
       ) : (
-        <InvoiceInfo {...invoice} />
+        <>
+          <InvoiceInfo {...invoice} />
+          <Footer>
+            <Operations invoice={invoice} />
+          </Footer>
+        </>
       )}
     </>
   );
