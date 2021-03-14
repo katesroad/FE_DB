@@ -1,3 +1,5 @@
+// eslint-disable-next-line
+import styled from "styled-components/macro";
 import * as React from "react";
 import PropTypes from "prop-types";
 import { useDeleteInvoice } from "hooks/invoice-hooks";
@@ -18,7 +20,19 @@ function DeleteInvoice({ id, tag }) {
       <ModalOpenBtn>
         <DeleteBtn variant="danger">delete</DeleteBtn>
       </ModalOpenBtn>
-      <ModalContent title="Comfirm Deletetion" aria-label="Comfirm Deletetion">
+      <ModalContent
+        title="Comfirm Deletetion"
+        aria-label="Comfirm Deletetion"
+        css={`
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          width: 90%;
+          margin-top: 0;
+          margin-bottom: 0;
+          transform: translate(-50%, -50%);
+        `}
+      >
         <CofirmContent>
           Are you sure you want to delete invoice
           <InvoiceTag>#{tag}</InvoiceTag>? This action cannot be undone.
@@ -39,10 +53,9 @@ function DeleteInvoice({ id, tag }) {
     </Modal>
   );
 }
-
 DeleteInvoice.propTypes = {
   id: PropTypes.string.isRequired,
   tag: PropTypes.string.isRequired,
 };
 
-export default DeleteInvoice;
+export default React.memo(DeleteInvoice);

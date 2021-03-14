@@ -4,7 +4,7 @@ import { Button } from "components/lib";
 export const CofirmContent = styled.p`
   margin: 12px 0 16px 0;
   font-size: 16px;
-  line-height: 22px;
+  line-height: 1.75;
   em {
     margin-right: 4px;
     font-size: 120%;
