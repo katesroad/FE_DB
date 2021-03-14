@@ -20,7 +20,7 @@ const NewInvoiceBtn = (props) => (
   </Button>
 );
 
-export default function CreateInvoice({ children }) {
+export default function CreateInvoice() {
   const { mutate, status } = useCreateInvoice();
   const [action, setAction] = React.useState("");
   const onClick = ({ target }) => setAction(target.innerHTML);
