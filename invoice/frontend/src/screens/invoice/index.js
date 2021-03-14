@@ -4,15 +4,15 @@ import * as React from "react";
 import { useGetInvoice } from "hooks/invoice-hooks";
 import { Link, useParams } from "react-router-dom";
 import InvocieStatus from "components/InvoiceStatus";
-import { Card, Spinner } from "components/lib";
+import { Card, Spinner, Error } from "components/lib";
 import { PageHeader as Header } from "components/layout";
 import GobackBtn from "components/GobackBtn";
-import ItemList from "./components/ItemList";
+import InvoiceInfo from "./components/InvoiceInfo";
 
 // Invoice detail page
 export default function InvoiceScreen() {
   const { id } = useParams();
-  const { status, data: invoice } = useGetInvoice(id);
+  const { status, data: invoice, error } = useGetInvoice(id);
   return (
     <>
       <Header>
@@ -41,13 +41,13 @@ export default function InvoiceScreen() {
           )}
         </div>
       </Card>
-      {status === "success" ? (
-        <ItemList
-          items={invoice?.items}
-          total={invoice?.total}
-          invoiceStatus={invoice?.status}
-        />
-      ) : null}
+      {["loading", "idle"].includes(status) ? (
+        <Spinner />
+      ) : status === "error" ? (
+        <Error>{JSON.stringify(error.message)}</Error>
+      ) : (
+        <InvoiceInfo {...invoice} />
+      )}
     </>
   );
 }
