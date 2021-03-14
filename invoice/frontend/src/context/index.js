@@ -1,5 +1,5 @@
 import * as React from "react";
-import { BrowserRouter, Redirect, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ThemeProvider } from "./theme.context";
 import { NotificationProvider } from "./notification.context";
@@ -20,10 +20,7 @@ export default function AppProvider({ children }) {
             <AppHeader />
             <AppMain>
               <BrowserRouter>
-                <>
-                  {children}
-                  <Route path="/*" component={() => <Redirect to="/" />} />
-                </>
+                <>{children}</>
               </BrowserRouter>
             </AppMain>
           </ThemeProvider>
