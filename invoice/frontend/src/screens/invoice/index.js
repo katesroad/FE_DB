@@ -3,11 +3,12 @@ import styled from "styled-components/macro";
 import * as React from "react";
 import { useGetInvoice } from "hooks/invoice-hooks";
 import { Link, useParams } from "react-router-dom";
-import InvocieStatus from "components/InvoiceStatus";
-import { Card, Spinner, Error } from "components/lib";
+import { Spinner, Error } from "components/lib";
 import { PageHeader as Header } from "components/layout";
 import GobackBtn from "components/GobackBtn";
 import InvoiceInfo from "./components/InvoiceInfo";
+import StatusPanel from "./components/StatusPanel";
+import Operations from "./components/Operations";
 
 // Invoice detail page
 export default function InvoiceScreen() {
@@ -16,31 +17,13 @@ export default function InvoiceScreen() {
   return (
     <>
       <Header>
-        <Link
-          to="/"
-          css={`
-            text-decoration: none;
-          `}
-        >
+        <Link to="/">
           <GobackBtn />
         </Link>
       </Header>
-      <Card>
-        <div
-          css={`
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-          `}
-        >
-          <span>Status</span>
-          {status === "success" ? (
-            <InvocieStatus status={invoice?.status} />
-          ) : (
-            <Spinner />
-          )}
-        </div>
-      </Card>
+      <StatusPanel status={status} invoice={invoice}>
+        <Operations invoice={invoice} />
+      </StatusPanel>
       {["loading", "idle"].includes(status) ? (
         <Spinner />
       ) : status === "error" ? (
