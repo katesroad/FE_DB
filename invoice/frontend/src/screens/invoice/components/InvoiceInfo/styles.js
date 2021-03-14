@@ -2,8 +2,9 @@ import styled from "styled-components";
 import * as mediaQuries from "styles/media-queries";
 
 export const Wrapper = styled.div`
-  margin-top: 24px;
   padding: 24px;
+  margin-top: 24px;
+  margin-bottom: 104px;
   color: var(--element-text-color);
   background-color: var(--element-background-color);
   overflow-x: hidden;
