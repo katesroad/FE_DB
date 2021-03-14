@@ -1,0 +1,21 @@
+[data-reach-disclosure-button] {
+  height: 48px;
+  font-weight: var(--font-weight-bold);
+  color: var(--title-text-color);
+  background-color: transparent;
+}
+
+@media only screen and (min-width: 375px) {
+  [data-reach-disclosure-button] strong {
+    margin-right: 16px;
+  }
+}
+[data-reach-disclosure-button] svg {
+  transition: all 0.25s ease-in;
+}
+[data-reach-disclosure-button][data-state="open"] svg {
+  transform: rotate(180deg);
+}
+[data-reach-disclosure-button][data-state="collapsed"] {
+  transform: rotate(0deg);
+}

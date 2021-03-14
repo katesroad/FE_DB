@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  invoice:
+    container_name: invoice
+    build:
+      context: .
+      target: production
+    environment:
+      NODE_ENV: production
+    command: node dist/main
+    ports:
+      - 3001:3000

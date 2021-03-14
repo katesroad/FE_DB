@@ -1,0 +1,89 @@
+/* https://reach.tech/listbox */
+@import "@reach/listbox/styles.css";
+
+/* Hide the input element that stores the payment terms value */
+input.select-value {
+  display: none !important;
+  visibility: hidden;
+}
+/* select placeholder */
+.select-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-transform: none;
+}
+/* style copied from components/lib/form inputStyle  */
+[data-reach-listbox-button] {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 48px;
+  border: 1px solid var(--input-border-color);
+  border-radius: 4px;
+  outline: none;
+  font-size: 16px;
+  color: var(--input-text-color);
+  font-weight: var(--font-weight-bold);
+  text-transform: capitalize;
+  background-color: var(--input-background-color);
+  text-transform: none;
+  cursor: pointer;
+}
+
+[data-reach-listbox-popover],
+[data-reach-listbox-popover]:hover {
+  border: none;
+  box-shadow: none;
+  outline: none;
+  background-color: transparent;
+}
+
+[data-reach-listbox-popover]:focus-within {
+  box-shadow: none;
+  outline: none;
+}
+
+[data-reach-listbox-list]:focus {
+  border: none !important;
+}
+/* style copied from components/lib/form inputStyle */
+[data-reach-listbox-option] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-left: 22px;
+  height: 48px;
+  margin-bottom: 1px;
+  color: var(--input-text-color);
+  text-transform: capitalize;
+  background-color: var(--input-background-color);
+  cursor: pointer;
+}
+[data-reach-listbox-option]:first-child {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+[data-reach-listbox-option]:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+[data-reach-listbox-option]:hover,
+[data-reach-listbox-option][data-current] {
+  color: var(--color-primary);
+  background-color: var(--input-background-color);
+}
+
+[data-reach-listbox-arrow] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  font-size: 16px;
+}
