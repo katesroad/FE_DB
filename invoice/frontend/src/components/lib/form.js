@@ -41,6 +41,7 @@ export const Label = styled.label`
   align-self: flex-start;
   margin-bottom: 10px;
   display: block;
+  font-size: 14px;
   color: var(--element-text-color);
   text-transform: capitalize;
 `;

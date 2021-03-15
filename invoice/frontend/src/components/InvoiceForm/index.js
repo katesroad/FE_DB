@@ -49,7 +49,7 @@ function InvoiceForm({ children, onSubmit, paymentDue, ...invoiceData }) {
               label="payment terms"
             >
               {PAYMENT_TERMS.map(({ value, label }) => (
-                <Option value={value} key={value}>
+                <Option value={value + ""} key={value}>
                   {label}
                 </Option>
               ))}
@@ -102,7 +102,7 @@ InvoiceForm.propTypes = {
   clientEmail: PropTypes.string,
   descritpion: PropTypes.string,
   paymentDue: PropTypes.string,
-  paymentTerms: PropTypes.oneOf(["", "1", "7", "14", "30"]),
+  paymentTerms: PropTypes.oneOf(["default", "1", "7", "14", "30"]),
 };
 
 export default InvoiceForm;
