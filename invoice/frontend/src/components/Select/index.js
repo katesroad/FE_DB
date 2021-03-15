@@ -1,6 +1,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { useField, ErrorMessage } from "formik";
+import FocusLock from "react-focus-lock";
 import { IconArrowDown } from "components/Icon";
 import { FormControl, Label, FieldError } from "components/lib/form";
 // https://reach.tech/listbox
@@ -45,22 +46,29 @@ const Select = ({ name, value, label, placeholder, children }) => {
   return (
     <FormControl>
       <Label>{label || name}</Label>
-      <ListboxInput
-        aria-labelledby={name}
-        value={value}
-        onChange={(value) => field.onChange({ target: { name, value } })}
-      >
-        <ListboxButton
-          arrow={<Arrow value={value} placeholder={placeholder} />}
-          aria-label="select button"
-        />
-        <ListboxPopover>
-          <ListboxList>
-            {/* to place options for select */}
-            {children}
-          </ListboxList>
-        </ListboxPopover>
-      </ListboxInput>
+      <>
+        <ListboxInput
+          aria-labelledby={name}
+          value={value}
+          onChange={(value) => field.onChange({ target: { name, value } })}
+        >
+          <ListboxButton
+            arrow={<Arrow value={value} placeholder={placeholder} />}
+            aria-label="select button"
+          />
+          <ListboxPopover>
+            <FocusLock autoFocus>
+              <ListboxList>
+                <Option value="default" disabled>
+                  Please select
+                </Option>
+                {/* to place options for select */}
+                {children}
+              </ListboxList>
+            </FocusLock>
+          </ListboxPopover>
+        </ListboxInput>
+      </>
       <input {...field} className="select-value" />
       <FieldError>
         <ErrorMessage name={name} />
