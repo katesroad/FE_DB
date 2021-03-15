@@ -1,7 +1,7 @@
+import * as React from "react";
 // eslint-disable-next-line
 import styled from "styled-components/macro";
-import * as React from "react";
-import { PageHeader as Header } from "components/layout";
+import * as mediaQueries from "styles/media-queries";
 import { useInvoices } from "hooks/useGetInvoices";
 import SuspenseErrorBoundary, {
   ErrorFallback,
@@ -25,7 +25,24 @@ export default function InvoicesScreen() {
   return (
     <>
       {/* page header */}
-      <Header>
+      <div
+        css={`
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 32px;
+          margin-bottom: 32px;
+          transition: all 0.25 ease;
+          ${mediaQueries.medium} {
+            margin-top: 56px;
+            margin-bottom: 56px;
+          }
+          ${mediaQueries.medium} {
+            margin-top: 72px;
+            margin-bottom: 65px;
+          }
+        `}
+      >
         <InvoiceStats status={status} invoices={invoices} />
         <div
           css={`
@@ -41,7 +58,7 @@ export default function InvoicesScreen() {
             <CreateInvoice />
           </SuspenseErrorBoundary>
         </div>
-      </Header>
+      </div>
       {/* invoice list */}
       <InvoiceList status={status} invoices={invoices} />
     </>

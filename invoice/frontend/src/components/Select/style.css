@@ -38,6 +38,7 @@ input.select-value {
 
 [data-reach-listbox-popover],
 [data-reach-listbox-popover]:hover {
+  margin-top: -4px;
   border: none;
   box-shadow: none;
   outline: none;
@@ -60,7 +61,7 @@ input.select-value {
   width: 100%;
   padding-left: 22px;
   height: 48px;
-  margin-bottom: 1px;
+  border-bottom: 1px solid var(--body-bg);
   color: var(--input-text-color);
   text-transform: capitalize;
   background-color: var(--input-background-color);

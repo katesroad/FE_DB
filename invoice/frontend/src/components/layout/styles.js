@@ -15,7 +15,7 @@ export const Header = styled(Content)`
   padding-top: 0;
   padding-bottom: 0;
   background-color: #373b53;
-  z-index: 999;
+  z-index: 10;
   ${mediaQueries.medium} {
     height: 80px;
   }
@@ -88,21 +88,5 @@ export const Main = styled(Content)`
   }
   ${mediaQueries.large} {
     padding-top: 0;
-  }
-`;
-
-/*-----------------Styles for App Main------------------------------*/
-export const PageHeader = styled.section`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 32px;
-  margin-bottom: 24px;
-  ${mediaQueries.medium} {
-    margin-top: 48px;
-    margin-bottom: 32px;
-  }
-  ${mediaQueries.medium} {
-    margin-top: 64px;
   }
 `;

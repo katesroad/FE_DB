@@ -1,5 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
+import FocusLock from "react-focus-lock";
 import { Formik, FieldArray } from "formik";
 import { FieldError } from "components/lib";
 import UserAddress, { AddressShape } from "components/UserAddress";
@@ -13,6 +14,7 @@ import { FormError, FormFooter, Column, Form } from "./styles";
 function InvoiceForm({ children, onSubmit, paymentDue, ...invoiceData }) {
   const [itemsError, setItemsError] = React.useState(null);
   if (paymentDue) invoiceData.paymentDue = new Date(paymentDue);
+  else invoiceData.paymentDue = new Date();
   return (
     <Formik
       initialValues={invoiceData}
@@ -49,7 +51,7 @@ function InvoiceForm({ children, onSubmit, paymentDue, ...invoiceData }) {
               label="payment terms"
             >
               {PAYMENT_TERMS.map(({ value, label }) => (
-                <Option value={value} key={value}>
+                <Option value={value + ""} key={value}>
                   {label}
                 </Option>
               ))}
@@ -89,7 +91,9 @@ function InvoiceForm({ children, onSubmit, paymentDue, ...invoiceData }) {
             </FormError>
           ) : null}
           {/* to place custmized button group based on need */}
-          <FormFooter>{children}</FormFooter>
+          <FocusLock>
+            <FormFooter>{children}</FormFooter>
+          </FocusLock>
         </Form>
       )}
     </Formik>
@@ -102,7 +106,7 @@ InvoiceForm.propTypes = {
   clientEmail: PropTypes.string,
   descritpion: PropTypes.string,
   paymentDue: PropTypes.string,
-  paymentTerms: PropTypes.oneOf(["", "1", "7", "14", "30"]),
+  paymentTerms: PropTypes.oneOf(["default", "1", "7", "14", "30"]),
 };
 
 export default InvoiceForm;

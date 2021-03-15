@@ -39,7 +39,7 @@ function DeleteInvoice({ id, tag }) {
         </CofirmContent>
         <ModalFooter>
           <ModalCloseBtn>
-            <Button>Cancle</Button>
+            <Button>Cancel</Button>
           </ModalCloseBtn>
           <Button
             variant="danger"

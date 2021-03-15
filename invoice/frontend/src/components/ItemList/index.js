@@ -38,7 +38,7 @@ BillItem.defaultProps = {
 };
 BillItem.propTypes = {
   name: PropTypes.string,
-  qty: PropTypes.string.isRequired,
+  quantity: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   onDelete: PropTypes.func.isRequired,
 };
