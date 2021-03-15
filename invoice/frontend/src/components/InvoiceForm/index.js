@@ -1,5 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
+import FocusLock from "react-focus-lock";
 import { Formik, FieldArray } from "formik";
 import { FieldError } from "components/lib";
 import UserAddress, { AddressShape } from "components/UserAddress";
@@ -13,6 +14,7 @@ import { FormError, FormFooter, Column, Form } from "./styles";
 function InvoiceForm({ children, onSubmit, paymentDue, ...invoiceData }) {
   const [itemsError, setItemsError] = React.useState(null);
   if (paymentDue) invoiceData.paymentDue = new Date(paymentDue);
+  else invoiceData.paymentDue = new Date();
   return (
     <Formik
       initialValues={invoiceData}
@@ -89,7 +91,9 @@ function InvoiceForm({ children, onSubmit, paymentDue, ...invoiceData }) {
             </FormError>
           ) : null}
           {/* to place custmized button group based on need */}
-          <FormFooter>{children}</FormFooter>
+          <FocusLock>
+            <FormFooter>{children}</FormFooter>
+          </FocusLock>
         </Form>
       )}
     </Formik>
