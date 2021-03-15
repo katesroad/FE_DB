@@ -5,7 +5,9 @@ const callAll = (...fns) => (...args) =>
   fns.forEach((fn) => {
     try {
       fn && fn(...args);
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
   });
 
 const ModalContext = React.createContext();
@@ -46,4 +48,8 @@ export function ModalOpenBtn({ children: child, ...props }) {
     onClick: callAll(() => setIsOpen(true), child.props.onClick),
     ...props,
   });
+}
+
+export function useModal() {
+  return React.useContext(ModalContext);
 }

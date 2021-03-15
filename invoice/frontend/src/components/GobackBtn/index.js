@@ -21,7 +21,9 @@ export default function GobackBtn(props) {
         ${mediaQueries.medium} {
           padding-top: 64px;
         }
+        cursor: pointer;
       `}
+      {...props}
     >
       <IconArrowLeft />
       <strong

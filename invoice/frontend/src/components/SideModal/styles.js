@@ -43,6 +43,9 @@ export const Title = styled.div`
     padding-top: 56px;
     padding-bottom: 56px;
     width: 80%;
+    .goback-btn {
+      display: none;
+    }
   }
 `;
 
