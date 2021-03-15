@@ -2,7 +2,6 @@ import * as React from "react";
 import { useGetInvoice } from "hooks/invoice-hooks";
 import { Link, useParams } from "react-router-dom";
 import { Spinner, Error } from "components/lib";
-import { PageHeader as Header } from "components/layout";
 import GobackBtn from "components/GobackBtn";
 import InvoiceInfo from "./components/InvoiceInfo";
 import StatusPanel from "./components/StatusPanel";
@@ -20,11 +19,9 @@ export default function InvoiceScreen() {
   }, [invoice]);
   return (
     <>
-      <Header>
-        <Link to="/">
-          <GobackBtn />
-        </Link>
-      </Header>
+      <Link to="/">
+        <GobackBtn />
+      </Link>
       <StatusPanel status={status} invoice={invoice}>
         <Operations invoice={invoice} />
       </StatusPanel>

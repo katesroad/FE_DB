@@ -90,19 +90,3 @@ export const Main = styled(Content)`
     padding-top: 0;
   }
 `;
-
-/*-----------------Styles for App Main------------------------------*/
-export const PageHeader = styled.section`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 32px;
-  margin-bottom: 24px;
-  ${mediaQueries.medium} {
-    margin-top: 48px;
-    margin-bottom: 32px;
-  }
-  ${mediaQueries.medium} {
-    margin-top: 64px;
-  }
-`;
