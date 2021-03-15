@@ -15,7 +15,7 @@ export const Header = styled(Content)`
   padding-top: 0;
   padding-bottom: 0;
   background-color: #373b53;
-  z-index: 999;
+  z-index: 10;
   ${mediaQueries.medium} {
     height: 80px;
   }
