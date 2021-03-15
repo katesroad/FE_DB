@@ -1,7 +1,9 @@
+// eslint-disable-next-line
+import styled from "styled-components/macro";
 import * as React from "react";
 import { useGetInvoice } from "hooks/invoice-hooks";
 import { Link, useParams } from "react-router-dom";
-import { Spinner, Error } from "components/lib";
+import { Spinner, Error, Card } from "components/lib";
 import GobackBtn from "components/GobackBtn";
 import InvoiceInfo from "./components/InvoiceInfo";
 import StatusPanel from "./components/StatusPanel";
@@ -13,8 +15,9 @@ export default function InvoiceScreen() {
   const { id } = useParams();
   const { status, data: invoice, error } = useGetInvoice(id);
   React.useEffect(() => {
-    const tag = invoice?.tag ?? "";
-    document.title = `Fem Invoice#${tag}`;
+    if (invoice?.tag) {
+      document.title = `Fem Invoice#${invoice.tag}`;
+    }
     return () => (document.title = "Fem Invoice");
   }, [invoice]);
   return (
@@ -25,17 +28,32 @@ export default function InvoiceScreen() {
       <StatusPanel status={status} invoice={invoice}>
         <Operations invoice={invoice} />
       </StatusPanel>
-      {["loading", "idle"].includes(status) ? (
-        <Spinner className="size-large" />
-      ) : status === "error" ? (
-        <Error>{JSON.stringify(error.message)}</Error>
-      ) : (
+      {status === "success" ? (
         <>
           <InvoiceInfo {...invoice} />
           <Footer>
             <Operations invoice={invoice} />
           </Footer>
         </>
+      ) : (
+        <Card
+          css={`
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 24px;
+            height: 42vh;
+            .error {
+              font-size: 200%;
+            }
+          `}
+        >
+          {status === "error" ? (
+            <Error className="error">{error?.message}</Error>
+          ) : (
+            <Spinner className="size-large" />
+          )}
+        </Card>
       )}
     </>
   );
