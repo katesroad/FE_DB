@@ -11,10 +11,11 @@ import ItemList, { BillItem } from "components/ItemList";
 import { getItem, InvoiceSchema, PAYMENT_TERMS } from "./invoice.helper";
 import { FormError, FormFooter, Column, Form } from "./styles";
 
-function InvoiceForm({ children, onSubmit, paymentDue, ...invoiceData }) {
+function InvoiceForm({ children, onSubmit, ...invoiceData }) {
   const [itemsError, setItemsError] = React.useState(null);
-  if (paymentDue) invoiceData.paymentDue = new Date(paymentDue);
-  else invoiceData.paymentDue = new Date();
+  if (invoiceData.paymentDue) {
+    invoiceData.paymentDue = new Date(invoiceData.paymentDue);
+  }
   return (
     <Formik
       initialValues={invoiceData}
@@ -27,7 +28,7 @@ function InvoiceForm({ children, onSubmit, paymentDue, ...invoiceData }) {
         }
       }}
     >
-      {({ values, setFieldValue }) => (
+      {({ values, setFieldValue, ...props }) => (
         <Form>
           {/* sender address */}
           <UserAddress type="senderAddress" address={values.senderAddress} />
