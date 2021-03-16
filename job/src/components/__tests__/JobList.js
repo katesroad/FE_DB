@@ -1,6 +1,6 @@
 import { render, screen } from "test/render-utils";
 import * as React from "react";
-import JobItem from "components/JobItem";
+import JobList from "components/JobList";
 
 test("render <JobItem /> with job data", () => {
 	const job = {
@@ -18,7 +18,7 @@ test("render <JobItem /> with job data", () => {
 		url:
 			"https://jobs.github.com/positions/4ca744df-5a54-4dc7-9f54-8dc571dbfbdb",
 	};
-	render(<JobItem {...job} />);
+	render(<JobList jobs={[job]} status="loading" />);
 
 	expect(screen.getByText(job.type)).toBeInTheDocument();
 	expect(screen.getByText(job.company)).toBeInTheDocument();

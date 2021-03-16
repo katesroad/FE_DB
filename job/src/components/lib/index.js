@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import * as mediaQueries from "styles/media-queries";
 export * from "./typography";
 export * from "./button";
+export * from "./spinner";
 
 export const cardStyle = css`
 	padding: 32px;

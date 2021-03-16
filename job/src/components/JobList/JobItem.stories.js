@@ -1,15 +1,7 @@
 import * as React from "react";
-import JobItem from ".";
+import JobList from ".";
 
-export default {
-	title: "components/JobItem",
-	component: JobItem,
-};
-
-const Template = (args) => <JobItem {...args} />;
-
-export const Example = Template.bind({});
-Example.args = {
+const job = {
 	company: "You Need A Budget (YNAB)",
 	company_logo:
 		"https://jobs.github.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcStjIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f1e50b660e33b469d44f3e0056bfb0dbc3ec1826/photo5945096832545830307.jpg",
@@ -22,4 +14,15 @@ Example.args = {
 	title: "Humbly Confident Senior iOS Developer ",
 	type: "Full Time",
 	url: "https://jobs.github.com/positions/4ca744df-5a54-4dc7-9f54-8dc571dbfbdb",
+};
+export default {
+	title: "components/JobList",
+	component: JobList,
+};
+
+const Template = (args) => <JobList jobs={args.jobs} />;
+
+export const Example = Template.bind({});
+Example.args = {
+	jobs: [job, job, job],
 };
