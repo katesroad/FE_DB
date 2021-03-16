@@ -9,6 +9,7 @@ export const InvoiceWrap = styled(LinkCard)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 23px 24px;
   margin-bottom: 16px;
   text-decoration: none;
   border: 1px solid transparent;

@@ -43,7 +43,7 @@ export default function EditInvoice({ invoice }) {
           </ModalCloseBtn>
           <p>
             <Button type="submit" disabled={isLoading} onClick={handleClick}>
-              {isLoading ? "saving" : "save"}
+              {isLoading && toStatus === "draft" ? "saving" : "save"}
             </Button>
             <Button
               type="submit"
@@ -51,7 +51,7 @@ export default function EditInvoice({ invoice }) {
               disabled={isLoading}
               onClick={handleClick}
             >
-              {isLoading ? "sending" : "send"}
+              {isLoading && toStatus === "pending" ? "sending" : "send"}
             </Button>
           </p>
         </div>
