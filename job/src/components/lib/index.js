@@ -22,6 +22,21 @@ export const Content = styled.div`
 		padding-left: 20px;
 		padding-right: 20px;
 	}
+	${mediaQueries.small} {
+		padding-left: calc(30px + 1vw);
+		padding-right: calc(30px + 1vw);
+	}
+	${mediaQueries.medium} {
+		padding-left: calc(39px + 1vw);
+		padding-right: calc(39px + 1vw);
+	}
+	${mediaQueries.large} {
+		width: 1100px;
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 0;
+		padding-right: 0;
+	}
 `;
 
 export const LinkCard = styled(Link)`

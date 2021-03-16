@@ -7,7 +7,7 @@ export const Typography = styled("div")(
 		fontFamily: "inherit",
 		color: "var(--title-color)",
 		"&:hover": {
-			color: "${colors.p31}",
+			color: colors.p31,
 		},
 	},
 	variant({
@@ -20,7 +20,6 @@ export const Typography = styled("div")(
 			location: {
 				fontSize: "16px",
 				lineHeight: "26px",
-				color: "inherit",
 				color: colors.p00,
 			},
 		},

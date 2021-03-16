@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Content } from "components/lib";
 
 /*-----------------Styles for App Header------------------------------*/
 export const Header = styled.header`
@@ -14,7 +15,7 @@ export const Header = styled.header`
 `;
 
 /*-----------------Styles for App Main------------------------------*/
-export const Main = styled.div`
+export const Main = styled(Content)`
 	flex-grow: 10;
 	margin-top: 200px;
 `;
