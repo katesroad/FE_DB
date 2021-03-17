@@ -12,20 +12,21 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family:Kumbh Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
     font-size: 16px;
-    font-weight: ${fonts.FONT_WEIGHT.normal}
+    font-weight: ${fonts.FONT_WEIGHT.normal};
     line-height: 1.625;
     color: ${colors.p31};
   }
   :root {
     --title-color: ${light.title.color};
     --element-background: ${light.element.bg};
+    --element-color: ${dark.element.color};
     --button-background: ${light.button.bg};
     --button-color: ${light.button.color};
-    --body-background: 
   }
   [data-theme="dark"] {
     --title-color: ${dark.title.color};
     --element-background: ${dark.element.bg};
+    --element-color: ${dark.element.color};
     --button-background: ${dark.button.bg};
     --button-color: ${dark.button.color};
     background-color: ${dark.body.bg};
@@ -77,6 +78,19 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
     height: 100vh;
+  }
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: ${colors.p31};
+    font-size: 16px;
+    opacity: 1; /* Firefox */
+  }
+
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: ${colors.p31};
+  }
+
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: ${colors.p31};
   }
 `;
 export default GlobalStyle;

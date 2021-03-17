@@ -24,14 +24,14 @@ export const colors = {
 // dark theme
 export const dark = {
 	title: { color: p01 },
-	element: { bg: p20 },
+	element: { bg: p20, color: colors.p31 },
 	button: {},
 	body: { bg: p30 },
 };
 // light theme
 export const light = {
 	title: { color: p20 },
-	element: { bg: p01 },
+	element: { bg: p01, color: colors.p31 },
 	button: { bg: p00, color: p01, hover: p10 },
 	body: { bg: p01 },
 };
