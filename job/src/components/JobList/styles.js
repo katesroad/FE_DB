@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { colors } from "styles/colors";
-import * as mediaQueries from "styles/media-queries";
 
 /*--------------------styling for job item--------------------------*/
 export const JobWrap = styled(Link)`
@@ -12,9 +11,6 @@ export const JobWrap = styled(Link)`
 	border-radius: 6px;
 	color: inherit;
 	background: var(--element-background);
-	${mediaQueries.medium} {
-		margin-bottom: 2.5rem;
-	}
 `;
 
 export const Content = styled.div`

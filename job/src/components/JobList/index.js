@@ -7,7 +7,7 @@ import { JobWrap, Logo, Content } from "./styles";
 
 export const JobType = {
 	id: PropTypes.string.isRequired,
-	company_logo: PropTypes.string.isRequired,
+	company_logo: PropTypes.string,
 	created_at: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
 	company: PropTypes.string.isRequired,
@@ -52,7 +52,6 @@ const JobList = ({ jobs }) => (
 );
 JobList.propTypes = {
 	jobs: PropTypes.arrayOf(PropTypes.shape(JobType)),
-	status: PropTypes.oneOf(["idle", "loading", "error", "success"]).isRequired,
 };
 
 export default JobList;

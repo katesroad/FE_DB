@@ -23,14 +23,7 @@ export function Modal(props) {
 export function ModalContent(props) {
 	const [isOpen, setIsOpen] = React.useContext(ModalContext);
 	const handleDismiss = () => setIsOpen(false);
-	return (
-		<Dialog
-			isOpen={isOpen}
-			onDismiss={handleDismiss}
-			{...props}
-			portal={false}
-		/>
-	);
+	return <Dialog isOpen={isOpen} onDismiss={handleDismiss} {...props} />;
 }
 
 export function ModalCloseBtn({ children: child, ...props }) {

@@ -23,9 +23,10 @@ const JobType = React.memo(({ fulltime, children, onClick }) => (
 	</Fulltime>
 ));
 
-const JobFilter = ({ children, onChange, ...filter }) => {
+const JobFilter = ({ children, onChange, onSubmit, ...filter }) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		onSubmit();
 	};
 	return (
 		<form onSubmit={handleSubmit}>
@@ -33,39 +34,41 @@ const JobFilter = ({ children, onChange, ...filter }) => {
 			<MobileView>
 				<Field
 					name="title--mobile"
-					value={filter.title}
-					onChange={(e) => onChange({ title: e.target.value })}
-					placeholder="Filter by title..."
+					value={filter.description}
+					onChange={(e) => onChange({ description: e.target.value })}
+					placeholder="Filter by description..."
 					className="job-title"
 				/>
 				<ButtonGroup>
 					{/* popup for mobile version */}
 					<Modal>
 						<ModalOpenBtn>
-							<span className="button-filter">
+							<span className="button-filter" aria-label="filter">
 								<IconFilter />
 							</span>
 						</ModalOpenBtn>
-						<ModalContent aria-label="job-filter">
+						<ModalContent aria-label="filter-dialog">
 							<Popup>
-								<Field
-									name="location--mobile"
-									value={filter.location}
-									onChange={(e) => onChange({ location: e.target.value })}
-									placeholder="Filter by location..."
-									className="job-location"
-								>
-									<IconLocation />
-								</Field>
-								<p className="line"></p>
-								<JobType
-									fulltime={filter.fulltime}
-									onClick={() => onChange({ fulltime: !filter.fulltime })}
-									className="fulltime--mobile"
-								>
-									<strong>Fulltime only</strong>
-								</JobType>
-								<Button onClick={handleSubmit}>search</Button>
+								<form onSubmit={handleSubmit}>
+									<Field
+										name="location--mobile"
+										value={filter.location}
+										onChange={(e) => onChange({ location: e.target.value })}
+										placeholder="Filter by location..."
+										className="job-location"
+									>
+										<IconLocation />
+									</Field>
+									<p className="line"></p>
+									<JobType
+										fulltime={filter.full_time}
+										onClick={() => onChange({ full_time: !filter.full_time })}
+										className="fulltime--mobile"
+									>
+										<strong>Fulltime only</strong>
+									</JobType>
+									<Button type="submit">search</Button>
+								</form>
 							</Popup>
 						</ModalContent>
 					</Modal>
@@ -79,9 +82,9 @@ const JobFilter = ({ children, onChange, ...filter }) => {
 			<MediumView>
 				<Field
 					name="title--medium"
-					value={filter.title}
-					onChange={(e) => onChange({ title: e.target.value })}
-					placeholder="Filter by title..."
+					value={filter.description}
+					onChange={(e) => onChange({ description: e.target.value })}
+					placeholder="Filter by description..."
 				>
 					<IconSearch />
 				</Field>
@@ -95,8 +98,8 @@ const JobFilter = ({ children, onChange, ...filter }) => {
 				</Field>
 				<ButtonGroup className="btn-group">
 					<JobType
-						fulltime={filter.fulltime}
-						onClick={() => onChange({ fulltime: !filter.fulltime })}
+						fulltime={filter.full_time}
+						onClick={() => onChange({ full_time: !filter.full_time })}
 					/>
 					<Button type="submit" className="button-search">
 						<span>search</span>
@@ -107,10 +110,11 @@ const JobFilter = ({ children, onChange, ...filter }) => {
 	);
 };
 JobFilter.propTypes = {
-	onChange: PropTypes.func.isRequired,
 	title: PropTypes.string,
 	location: PropTypes.string,
-	type: PropTypes.string, //fulltime, parttime
+	full_time: PropTypes.bool,
+	onChange: PropTypes.func.isRequired,
+	onSubmit: PropTypes.func.isRequired,
 };
 
 export default React.memo(JobFilter);

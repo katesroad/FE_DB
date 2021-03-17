@@ -6,8 +6,8 @@ import GlobalStyles from "styles/GlobalStyle";
 import { AppHeader, AppMain } from "components/layout";
 
 const queryClient = new QueryClient({
-	cacheTime: 2500,
-	staleTime: 2000,
+	cacheTime: 250000,
+	staleTime: 250000,
 });
 export default function AppProvider({ children }) {
 	return (

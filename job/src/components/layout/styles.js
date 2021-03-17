@@ -17,5 +17,4 @@ export const Header = styled.header`
 /*-----------------Styles for App Main------------------------------*/
 export const Main = styled(Content)`
 	flex-grow: 10;
-	margin-top: 200px;
 `;
