@@ -33,6 +33,7 @@ export const Content = styled.div`
 		font-size: 14px;
 		line-height: 18px;
 		color: ${colors.p00};
+		font-weight: bold;
 	}
 `;
 
