@@ -9,6 +9,7 @@ import {
 	HowToApply,
 	FixedFooter,
 } from "./styles";
+import { AppHeader } from "components/layout";
 
 // Job detail information page
 export default function JobScreen() {
@@ -34,84 +35,87 @@ export default function JobScreen() {
 		return () => (document.title = "Jobs");
 	}, [job]);
 	return (
-		<Wrapper>
-			<AboutCompany>
-				<CompanyLogo
-					alt={job.company}
-					src={job.company_logo}
-					className="company-logo"
-				/>
-				<Content className="content">
-					<div className="job-owner">
-						{/* compnay name, company url */}
-						<h4>{job.company}</h4>
-						<a
+		<>
+			<AppHeader />
+			<Wrapper>
+				<AboutCompany>
+					<CompanyLogo
+						alt={job.company}
+						src={job.company_logo}
+						className="company-logo"
+					/>
+					<Content className="content">
+						<div className="job-owner">
+							{/* compnay name, company url */}
+							<h4>{job.company}</h4>
+							<a
+								href={job.company_url}
+								target="_blank"
+								rel="noreferrer"
+								className="company-link"
+							>
+								{job.company}
+							</a>
+						</div>
+						<Button
+							as="a"
 							href={job.company_url}
 							target="_blank"
 							rel="noreferrer"
-							className="company-link"
+							className="btn-link"
 						>
-							{job.company}
-						</a>
-					</div>
-					<Button
-						as="a"
-						href={job.company_url}
-						target="_blank"
-						rel="noreferrer"
-						className="btn-link"
-					>
-						Company Site
-					</Button>
-				</Content>
-			</AboutCompany>
-			<JobDesc>
-				<Content className="content">
-					<div>
-						<p>
-							<span>{new Date(job.created_at).toLocaleDateString()}</span>
-							<span>{job.type}</span>
-						</p>
-						<h4 className="job-role">{job.title}</h4>
-						<p className="job-location">{job.location}</p>
-					</div>
-					<Button
-						as="a"
-						href={job.company_url}
-						target="_blank"
-						className="btn-link"
-					>
-						Apply Now
-					</Button>
-				</Content>
-				{/* Job description, requirements, etc */}
-				<div
-					dangerouslySetInnerHTML={{ __html: job.description }}
-					className="job-desc"
-				/>
-			</JobDesc>
-			<HowToApply>
-				<h4>How to apply</h4>
-				<p dangerouslySetInnerHTML={{ __html: job.how_to_apply }}></p>
-			</HowToApply>
-			{/* the apply button, role at page bottom */}
-			<FixedFooter>
-				<Content className="content">
-					<div className="jd">
-						<h4>{job.title}</h4>
-						<strong>{job.company}</strong>
-					</div>
-					<Button
-						as="a"
-						target="_blank"
-						href={job.company_url}
-						rel="noreferrer"
-						className="btn-link"
-					>
-						Apply Now
-					</Button>
-				</Content>
-			</FixedFooter>
-		</Wrapper>
+							Company Site
+						</Button>
+					</Content>
+				</AboutCompany>
+				<JobDesc>
+					<Content className="content">
+						<div>
+							<p>
+								<span>{new Date(job.created_at).toLocaleDateString()}</span>
+								<span>{job.type}</span>
+							</p>
+							<h4 className="job-role">{job.title}</h4>
+							<p className="job-location">{job.location}</p>
+						</div>
+						<Button
+							as="a"
+							href={job.company_url}
+							target="_blank"
+							className="btn-link"
+						>
+							Apply Now
+						</Button>
+					</Content>
+					{/* Job description, requirements, etc */}
+					<div
+						dangerouslySetInnerHTML={{ __html: job.description }}
+						className="job-desc"
+					/>
+				</JobDesc>
+				<HowToApply>
+					<h4>How to apply</h4>
+					<p dangerouslySetInnerHTML={{ __html: job.how_to_apply }}></p>
+				</HowToApply>
+				{/* the apply button, role at page bottom */}
+				<FixedFooter>
+					<Content className="content">
+						<div className="jd">
+							<h4>{job.title}</h4>
+							<strong>{job.company}</strong>
+						</div>
+						<Button
+							as="a"
+							target="_blank"
+							href={job.company_url}
+							rel="noreferrer"
+							className="btn-link"
+						>
+							Apply Now
+						</Button>
+					</Content>
+				</FixedFooter>
+			</Wrapper>
+		</>
 	);
 }

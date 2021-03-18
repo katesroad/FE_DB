@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { AppMain } from "components/layout";
 import * as mediaQueries from "styles/media-queries";
 import { colors } from "styles/colors";
 

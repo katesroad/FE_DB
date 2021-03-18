@@ -15,10 +15,7 @@ export default function AppProvider({ children }) {
 			<GlobalStyles />
 			<QueryClientProvider client={queryClient}>
 				<ThemeProvider>
-					<AppHeader />
-					<AppMain>
-						<BrowserRouter>{children}</BrowserRouter>
-					</AppMain>
+					<BrowserRouter>{children}</BrowserRouter>
 				</ThemeProvider>
 			</QueryClientProvider>
 		</>

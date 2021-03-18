@@ -8,15 +8,24 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     line-height: 1;
     box-sizing: border-box;
+    transition: all .25s ease;
+  }
+  html {
+   height:100%;
   }
   body {
+    min-height:100%;
+    overflow-y:scroll;
+  }
+  body {
+    min-height:100%;
     font-family:Kumbh Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
     font-size: 16px;
     font-weight: ${fonts.FONT_WEIGHT.normal};
     line-height: 1.625;
     color: ${colors.p31};
   }
-  :root {
+  body {
     --title-color: ${light.title.color};
     --element-background: ${light.element.bg};
     --element-color: ${dark.element.color};
@@ -24,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
     --button-color: ${light.button.color};
     background-color: ${light.body.bg};
   }
-  [data-theme="dark"] {
+  body[data-theme="dark"] {
     --title-color: ${dark.title.color};
     --element-background: ${dark.element.bg};
     --element-color: ${dark.element.color};

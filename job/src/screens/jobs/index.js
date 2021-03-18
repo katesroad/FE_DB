@@ -1,5 +1,6 @@
 // eslint-disable-next-line
 import styled from "styled-components/macro";
+import { AppHeader, AppMain } from "components/layout";
 import * as mediaQueries from "styles/media-queries";
 import * as React from "react";
 import JobFilter from "components/JobFilter";
@@ -29,30 +30,38 @@ export default function JobsScreen() {
 	const handleSubmit = () => setDoSearch(true);
 	return (
 		<>
-			<JobFilter {...filter} onChange={handleChange} onSubmit={handleSubmit} />
-			<div
-				css={`
-					margin-top: 32px;
-					${mediaQueries.small} {
-						margin-top: calc(40px + 1vw);
-					}
-					${mediaQueries.large} {
-						margin-top: 56px;
-					}
-				`}
-			>
-				{status === "success" ? (
-					<JobList jobs={jobs} />
-				) : (
-					<>
-						{status === "error" ? (
-							<p>{JSON.stringify(error)}</p>
-						) : (
-							<p>Loading...</p>
-						)}
-					</>
-				)}
-			</div>
+			<AppHeader>
+				<JobFilter
+					{...filter}
+					onChange={handleChange}
+					onSubmit={handleSubmit}
+				/>
+			</AppHeader>
+			<AppMain>
+				<div
+					css={`
+						padding-top: 32px;
+						${mediaQueries.small} {
+							margin-top: calc(40px + 1vw);
+						}
+						${mediaQueries.large} {
+							margin-top: 56px;
+						}
+					`}
+				>
+					{status === "success" ? (
+						<JobList jobs={jobs} />
+					) : (
+						<>
+							{status === "error" ? (
+								<p>{JSON.stringify(error)}</p>
+							) : (
+								<p>Loading...</p>
+							)}
+						</>
+					)}
+				</div>
+			</AppMain>
 		</>
 	);
 }
