@@ -33,5 +33,5 @@ export const light = {
 	title: { color: p20 },
 	element: { bg: p01, color: colors.p31 },
 	button: { bg: p00, color: p01, hover: p10 },
-	body: { bg: p01 },
+	body: { bg: "#f2f2f2" },
 };

@@ -16,7 +16,7 @@ function ThemeProvider(props) {
 	});
 	React.useEffect(() => {
 		window.localStorage.setItem("jobs-theme", mode);
-		document.documentElement.setAttribute("data-theme", mode);
+		document.body.setAttribute("data-theme", mode);
 	}, [mode]);
 	const value = [mode, setMode];
 	return <ThemeContext.Provider value={value} {...props} />;

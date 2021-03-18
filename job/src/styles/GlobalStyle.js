@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
     --element-color: ${dark.element.color};
     --button-background: ${light.button.bg};
     --button-color: ${light.button.color};
+    background-color: ${light.body.bg};
   }
   [data-theme="dark"] {
     --title-color: ${dark.title.color};
