@@ -8,7 +8,14 @@ export function useGetJobs(filter) {
 		else params[key] = encodeURI(params[key]);
 	});
 	return useQuery({
-		queryFn: () => axios.get("/", { params }),
+		queryFn: () => axios.get("/positions.json", { params }),
 		queryKey: ["jobs", params],
+	});
+}
+
+export function useGetJob(id) {
+	return useQuery({
+		queryFn: () => axios.get(`/positions/${id}.json`),
+		queryKey: ["job", id],
 	});
 }

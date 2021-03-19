@@ -102,7 +102,7 @@ export const AboutCompany = styled.div`
 	}
 `;
 
-export const CompanyLogo = styled.img`
+export const CompanyLogo = styled.div`
 	position: absolute;
 	top: 0;
 	left: 50%;
@@ -110,13 +110,18 @@ export const CompanyLogo = styled.img`
 	width: 50px;
 	height: 50px;
 	border-radius: 15px;
+	background-size: 25px auto;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: #f2f2f2;
 	${mediaQueries.small} {
 		position: relative;
 		left: 0;
-		height: 100%;
-		width: auto;
+		height: 140px;
+		width: 140px;
 		transform: translate(0, 0);
 		border-radius: 0 15px 15px 0;
+		background-size: 140px auto;
 	}
 `;
 
