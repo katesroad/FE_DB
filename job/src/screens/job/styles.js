@@ -1,12 +1,13 @@
 import styled from "styled-components";
-import { AppMain } from "components/layout";
 import * as mediaQueries from "styles/media-queries";
 import { colors } from "styles/colors";
+import { Content } from "components/lib";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(Content)`
 	max-width: 730px;
 	margin-left: auto;
 	margin-right: auto;
+	margin-top: 164px;
 	h4 {
 		font-size: 20px;
 		color: var(--title-color);
@@ -35,7 +36,7 @@ export const Wrapper = styled.div`
 	}
 `;
 
-export const Content = styled.div`
+export const FlexContent = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -56,18 +57,32 @@ export const Content = styled.div`
 /*--------------------------About company section---------------------------------*/
 export const AboutCompany = styled.div`
 	position: relative;
+	max-width: 730px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 32px;
+	border-radius: 6px;
+	background-color: var(--element-background);
 	${mediaQueries.small} {
 		display: flex;
 		padding-left: 0 !important;
 		height: 140px;
 		padding-bottom: 0;
 	}
+	a {
+		color: inherit;
+	}
+	h4 {
+		color: var(--title-color);
+	}
 	.content {
 		padding-top: 49px;
 		padding-bottom: 32px;
 		align-items: center;
+		text-align: center;
 		h4 {
 			margin-bottom: 13px;
+			font-size: 20px;
 		}
 		.btn-link {
 			margin-top: 27px;
@@ -75,7 +90,7 @@ export const AboutCompany = styled.div`
 		}
 		${mediaQueries.small} {
 			flex-grow: 1;
-			padding: 42px 0 42px 40px;
+			padding: 42px;
 			text-align: left;
 			.job-owner {
 				flex-grow: 1;
@@ -101,6 +116,7 @@ export const CompanyLogo = styled.img`
 		height: 100%;
 		width: auto;
 		transform: translate(0, 0);
+		border-radius: 0 15px 15px 0;
 	}
 `;
 
