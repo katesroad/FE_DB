@@ -40,6 +40,7 @@ const GlobalStyle = createGlobalStyle`
     --button-background: ${dark.button.bg};
     --button-color: ${dark.button.color};
     background-color: ${dark.body.bg};
+     color: ${colors.p31};
   }
 
   body::-webkit-scrollbar-track {
@@ -82,6 +83,9 @@ const GlobalStyle = createGlobalStyle`
 
   button[disabled] {
     cursor: not-allowed;
+  }
+  h1, h2, h3,h4, h5, h6, strong, em, b {
+    color: var(--title-color);
   }
 
   #root {

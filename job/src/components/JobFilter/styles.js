@@ -70,6 +70,9 @@ export const MobileView = styled(Wrapper)`
 		background-color: transparent;
 	}
 	button {
+		svg path {
+			fill: #fff !important;
+		}
 		&.button-search {
 			min-width: 48px;
 			justify-content: center;

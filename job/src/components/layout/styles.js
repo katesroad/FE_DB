@@ -27,12 +27,12 @@ export const Header = styled.header`
 /*-----------------Styles for App Main------------------------------*/
 export const Main = styled(Content)`
 	flex-grow: 10;
-	margin-top: 72px;
+	padding-top: calc(72px + 0.5vw);
 
 	${mediaQueries.medium} {
-		margin-top: 110px;
+		padding-top: calc(110px + 0.2vw);
 	}
 	${mediaQueries.large} {
-		margin-top: 183px;
+		padding-top: 123px;
 	}
 `;

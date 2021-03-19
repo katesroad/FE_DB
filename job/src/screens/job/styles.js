@@ -120,8 +120,9 @@ export const CompanyLogo = styled.div`
 		height: 140px;
 		width: 140px;
 		transform: translate(0, 0);
-		border-radius: 0 15px 15px 0;
+		border-radius: 0;
 		background-size: 140px auto;
+		border-radius: 6px 0 0 6px;
 	}
 `;
 
@@ -132,6 +133,11 @@ export const JobDesc = styled.div`
 	padding-bottom: 32px;
 	margin-top: 32px;
 	margin-bottom: 32px;
+	h2,
+	h4,
+	h5 {
+		padding: 2rem 0;
+	}
 	${mediaQueries.small} {
 		.content {
 			margin-bottom: 32px;

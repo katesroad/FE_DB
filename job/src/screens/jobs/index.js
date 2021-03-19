@@ -35,15 +35,19 @@ export default function JobsScreen() {
 			</AppHeader>
 			<AppMain>
 				{status === "success" ? (
-					<JobList jobs={jobs} />
+					jobs?.lenght ? (
+						<JobList jobs={jobs} />
+					) : (
+						<Card>No jobs were found with given search.</Card>
+					)
 				) : (
-					<>
+					<p>
 						{status === "error" ? (
 							<p>{JSON.stringify(error)}</p>
 						) : (
 							<p>Loading...</p>
 						)}
-					</>
+					</p>
 				)}
 			</AppMain>
 		</>
