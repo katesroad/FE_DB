@@ -1,5 +1,3 @@
-// eslint-disable-next-line
-import styled from "styled-components/macro";
 import * as React from "react";
 import { useParams } from "react-router-dom";
 import { Button } from "components/lib";
@@ -13,7 +11,7 @@ import {
 	FixedFooter,
 } from "./styles";
 import { AppHeader } from "components/layout";
-import { useGetJob } from "../../hooks/useGetJobs";
+import { useGetJob } from "hooks/useGetJobs";
 
 // Job detail information page
 export default function JobScreen() {

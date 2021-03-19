@@ -1,5 +1,3 @@
-// eslint-disable-next-line
-import styled from "styled-components/macro";
 import { AppHeader, AppMain } from "components/layout";
 import * as React from "react";
 import JobFilter from "components/JobFilter";
