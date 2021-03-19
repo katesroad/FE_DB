@@ -39,13 +39,13 @@ export const Fulltime = styled.div`
 		height: 24px;
 		margin-right: 16px;
 		border-radius: 3px;
-		background: #313743;
+		background-color: #313743;
 		cursor: pointer;
 		svg {
 			display: none;
 		}
 		&.checked {
-			background: #5964e0;
+			background-color: #5964e0 !important;
 			svg {
 				display: block;
 			}

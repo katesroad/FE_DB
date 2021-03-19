@@ -7,21 +7,30 @@ import {
 	IconCheck,
 } from "components/Icon";
 import Field from "components/Field";
+import { useTheme, THEME_MODE } from "context/theme.context";
 import { Button, Modal, ModalContent, ModalOpenBtn } from "components/lib";
 import { MobileView, MediumView, ButtonGroup, Fulltime, Popup } from "./styles";
 
-const JobType = React.memo(({ fulltime, children, onClick }) => (
-	<Fulltime onClick={onClick}>
-		<span className={`${fulltime === true ? "checkbox checked" : "checkbox"}`}>
-			<IconCheck />
-		</span>
-		{children || (
-			<strong>
-				Fulltime <span className="only-text">only</span>
-			</strong>
-		)}
-	</Fulltime>
-));
+const { light } = THEME_MODE;
+const JobType = React.memo(({ fulltime, children, onClick }) => {
+	const [mode] = useTheme();
+	const bgColor = mode === light ? "#f2f2f2" : "#313743";
+	return (
+		<Fulltime onClick={onClick}>
+			<span
+				className={`${fulltime === true ? "checkbox checked" : "checkbox"}`}
+				style={{ backgroundColor: bgColor }}
+			>
+				<IconCheck />
+			</span>
+			{children || (
+				<strong>
+					Fulltime <span className="only-text">only</span>
+				</strong>
+			)}
+		</Fulltime>
+	);
+});
 
 const JobFilter = ({ children, onChange, onSubmit, ...filter }) => {
 	const handleSubmit = (e) => {
