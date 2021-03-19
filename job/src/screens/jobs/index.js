@@ -1,11 +1,13 @@
 // eslint-disable-next-line
 import styled from "styled-components/macro";
 import { AppHeader, AppMain } from "components/layout";
+import ThemeSwitcher from "components/ThemeSwitcher";
 import * as mediaQueries from "styles/media-queries";
 import * as React from "react";
 import JobFilter from "components/JobFilter";
 import JobList from "components/JobList";
 import { useGetJobs } from "hooks/useGetJobs";
+import { Content } from "components/lib";
 
 // Invoice detail page
 export default function JobsScreen() {
@@ -23,7 +25,6 @@ export default function JobsScreen() {
 	const { status, data: jobs, error } = useGetJobs(params);
 
 	const handleChange = (update) => {
-		console.log(update);
 		setDoSearch(false);
 		setFilter({ ...filter, ...update });
 	};
@@ -31,11 +32,27 @@ export default function JobsScreen() {
 	return (
 		<>
 			<AppHeader>
-				<JobFilter
-					{...filter}
-					onChange={handleChange}
-					onSubmit={handleSubmit}
-				/>
+				<Content>
+					<ThemeSwitcher
+						css={`
+							paddint-top: 32px;
+							padding-bottom: 32px;
+							${mediaQueries.medium} {
+								padding-top: 42px;
+								padding-bottom: 46px;
+							}
+							${mediaQueries.large} {
+								padding-top: 45px;
+								padding-bottom: 45px;
+							}
+						`}
+					/>
+					<JobFilter
+						{...filter}
+						onChange={handleChange}
+						onSubmit={handleSubmit}
+					/>
+				</Content>
 			</AppHeader>
 			<AppMain>
 				<div
