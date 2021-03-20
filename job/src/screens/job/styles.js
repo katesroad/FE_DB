@@ -1,40 +1,20 @@
 import styled from "styled-components";
 import * as mediaQueries from "styles/media-queries";
 import { colors } from "styles/colors";
-import { Content } from "components/lib";
+import { Button } from "components/lib";
 
-export const Wrapper = styled(Content)`
-	max-width: 730px;
-	margin-left: auto;
-	margin-right: auto;
-	padding-top: 156px;
-	h4,
-	strong {
-		font-size: 20px;
-		color: var(--title-color);
-		text-transform: capitalize;
-	}
-	a {
-		color: inherit;
-	}
-	& > div {
-		padding-left: 24px;
-		padding-right: 24px;
-		border-radius: 6px;
-		background-color: var(--element-background);
-	}
+const Card = styled.div`
+	padding-left: 24px;
+	padding-right: 24px;
+	border-radius: 6px;
+	background-color: var(--element-background);
 	${mediaQueries.small} {
-		padding-top: 98px;
-		> div {
-			padding-left: 32px;
-			padding-right: 32px;
-		}
+		padding-left: 32px;
+		padding-right: 32px;
 	}
 	${mediaQueries.medium} {
-		> div {
-			padding-left: 48px;
-			padding-right: 48px;
-		}
+		padding-left: 48px;
+		padding-right: 48px;
 	}
 `;
 
@@ -42,10 +22,14 @@ export const FlexContent = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	.btn-link {
-		min-width: 140px;
-		width: 100%;
-		color: ${colors.p01};
+
+	h4,
+	strong {
+		font-size: 20px;
+		text-transform: capitalize;
+	}
+	a {
+		color: inherit;
 	}
 	${mediaQueries.small} {
 		flex-direction: row;
@@ -56,50 +40,92 @@ export const FlexContent = styled.div`
 	}
 `;
 
+// the button that is an a tag
+export const LinkButton = styled(Button).attrs(() => ({
+	target: "_blank",
+	rel: "noreferrer",
+	className: "btn-link",
+	as: "a",
+}))`
+	flex-grow: 1;
+	min-width: 140px;
+	width: 100%;
+	color: ${colors.p01}!important;
+	${mediaQueries.small} {
+		max-width: 160px;
+	}
+`;
+
+export const OuterLink = styled("a").attrs(() => ({
+	target: "_blank",
+	rel: "noreferrer",
+	className: "btn-link",
+	as: "a",
+}))`
+	color: inherit;
+`;
+
+// the container to render markdown format content
+export const MdContent = styled.div`
+	h1,
+	h2,
+	h4,
+	h5,
+	h6,
+	strong {
+		display: block;
+		padding-top: 2rem;
+	  padding-bottom: 2rem;
+		&:first-child {
+			padding-top: 0;
+		}
+	}
+	}
+	p,
+	li {
+		line-height: 26px;
+	}
+	a {
+		font-weight: bold;
+		word-break: break-all;
+	}
+`;
+
 /*--------------------------About company section---------------------------------*/
 export const AboutCompany = styled.div`
 	position: relative;
 	max-width: 730px;
 	margin-left: auto;
 	margin-right: auto;
-	margin-bottom: 32px;
 	border-radius: 6px;
 	background-color: var(--element-background);
+
 	${mediaQueries.small} {
 		display: flex;
-		padding-left: 0 !important;
 		height: 140px;
-		padding-bottom: 0;
 	}
-	a {
-		color: inherit;
-	}
+`;
+
+export const ComapnyDesc = styled(FlexContent)`
+	padding-top: 49px;
+	padding-bottom: 32px;
+	align-items: center;
 	h4 {
-		color: var(--title-color);
+		margin-bottom: 13px;
 	}
-	.content {
-		padding-top: 49px;
-		padding-bottom: 32px;
-		align-items: center;
-		text-align: center;
-		h4 {
-			margin-bottom: 13px;
-			font-size: 20px;
+	.btn-link {
+		margin-top: 27px;
+		max-width: 140px;
+	}
+	${mediaQueries.small} {
+		flex-grow: 1;
+		padding: 42px;
+		text-align: left;
+		.job-owner {
+			flex-grow: 1;
 		}
 		.btn-link {
-			margin-top: 27px;
-			width: 160px;
-		}
-		${mediaQueries.small} {
-			flex-grow: 1;
-			padding: 42px;
-			text-align: left;
-			.job-owner {
-				flex-grow: 1;
-			}
-			.btn-link {
-				margin-top: 0;
-			}
+			margin-top: 0;
 		}
 	}
 `;
@@ -130,21 +156,18 @@ export const CompanyLogo = styled.div`
 
 /*---------------------Job description section-----------------------------------------**/
 
-export const JobDesc = styled.div`
+export const JobDesc = styled(Card)`
 	padding-top: 40px;
 	padding-bottom: 32px;
 	margin-top: 32px;
 	margin-bottom: 32px;
-
-	${mediaQueries.small} {
-		.content {
-			margin-bottom: 32px;
-		}
-	}
 	${mediaQueries.medium} {
 		padding-top: 48px;
 		padding-bottom: 48px;
 	}
+`;
+
+export const JobContent = styled(FlexContent)`
 	.job-type {
 		margin-left: 16px;
 	}
@@ -157,46 +180,26 @@ export const JobDesc = styled.div`
 		font-weight: bold;
 		color: var(--button-background);
 	}
-	.btn-link {
-		margin: 32px 0;
+	.apply-now {
+		margin-top: 32px;
 	}
 	${mediaQueries.small} {
-		margin-bottom: 40px;
-		.btn-link {
-			margin: 0;
-		}
-	}
-	.job-desc {
-		h2,
-		h4,
-		h5,
-		strong {
-			display: block;
-			padding: 2rem 0;
-		}
-		p {
-			line-height: 26px;
-			margin-bottom: 16px;
-		}
-		li {
-			line-height: 26px;
+		padding-bottom: 40px;
+		.apply-now {
+			margin-top: 0;
 		}
 	}
 `;
 
 /*----------------------------How to apply----------------------------------*/
 
-export const HowToApply = styled.div`
+export const HowToApply = styled(Card)`
 	padding-top: 24px;
 	padding-bottom: 24px;
 	margin-bottom: 30vw;
 	color: var(--title-color);
 	h4 {
 		margin-bottom: 28px;
-	}
-	a {
-		font-weight: bold;
-		word-break: break-all;
 	}
 	${mediaQueries.small} {
 		padding-top: 32px;
@@ -211,35 +214,20 @@ export const HowToApply = styled.div`
 
 /*----------------------Fixed footer--------------------*/
 
-export const FixedFooter = styled.div`
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	padding-top: 16px;
-	padding-bottom: 16px;
-	padding-left: 0 !important;
-	padding-right: 0 !important;
-	border-raidus: 0 !important;
-	.content {
-		width: 89%;
-		max-width: 730px;
-		margin-left: auto;
-		margin-right: auto;
-		padding-left: 0important;
-		padding-right: 0 !important;
-		.jd {
-			display: none;
+export const ApplyNow = styled(FlexContent)`
+	width: 89%;
+	max-width: 730px;
+	margin-left: auto;
+	margin-right: auto;
+	.job-role {
+		display: none;
+	}
+	${mediaQueries.small} {
+		h4 {
+			padding-bottom: 12px;
 		}
-		${mediaQueries.small} {
-			padding-top: calc(16px + 0.5vw);
-			padding-bottom: calc(16px + 0.5vw);
-			h4 {
-				padding-bottom: 12px;
-			}
-			.jd {
-				display: block;
-			}
+		.job-role {
+			display: block;
 		}
 	}
 `;

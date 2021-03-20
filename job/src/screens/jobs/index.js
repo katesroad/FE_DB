@@ -1,9 +1,12 @@
-import { AppHeader, AppMain } from "components/layout";
+// eslint-disable-next-line
+import styled from "styled-components/macro";
+import * as mediaQueries from "styles/media-queries";
+import Header from "components/header";
 import * as React from "react";
-import { Card } from "components/lib";
 import JobFilter from "components/JobFilter";
 import JobList from "components/JobList";
 import { useGetJobs } from "hooks/useGetJobs";
+import { Content } from "components/lib";
 
 // Invoice detail page
 export default function JobsScreen() {
@@ -27,20 +30,29 @@ export default function JobsScreen() {
 	const handleSubmit = () => setDoSearch(true);
 	return (
 		<>
-			<AppHeader>
+			<Header>
 				<JobFilter
 					{...filter}
 					onChange={handleChange}
 					onSubmit={handleSubmit}
 				/>
-			</AppHeader>
-			<AppMain>
+			</Header>
+			<Content
+				as="main"
+				css={`
+					flex-grow: 10;
+					padding-top: calc(72px + 0.5vw);
+
+					${mediaQueries.medium} {
+						padding-top: calc(110px + 0.2vw);
+					}
+					${mediaQueries.large} {
+						padding-top: 123px;
+					}
+				`}
+			>
 				{status === "success" ? (
-					jobs?.length ? (
-						<JobList jobs={jobs} />
-					) : (
-						<Card>No jobs were found with given search.</Card>
-					)
+					<JobList jobs={jobs} />
 				) : (
 					<p>
 						{status === "error" ? (
@@ -50,7 +62,7 @@ export default function JobsScreen() {
 						)}
 					</p>
 				)}
-			</AppMain>
+			</Content>
 		</>
 	);
 }

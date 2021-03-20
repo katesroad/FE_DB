@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import * as mediaQueries from "styles/media-queries";
-import { Content } from "components/lib";
 import HeaderBgSmall from "./bg.header.small.svg";
 import HeaderBgMedium from "./bg.header.medium.svg";
 import HeaderBgDesktop from "./bg.header.desktop.svg";
@@ -21,18 +20,5 @@ export const Header = styled.header`
 	}
 	${mediaQueries.large} {
 		background-image: url(${HeaderBgDesktop});
-	}
-`;
-
-/*-----------------Styles for App Main------------------------------*/
-export const Main = styled(Content)`
-	flex-grow: 10;
-	padding-top: calc(72px + 0.5vw);
-
-	${mediaQueries.medium} {
-		padding-top: calc(110px + 0.2vw);
-	}
-	${mediaQueries.large} {
-		padding-top: 123px;
 	}
 `;

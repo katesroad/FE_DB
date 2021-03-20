@@ -1,16 +1,22 @@
+// eslint-disable-next-line
+import styled from "styled-components/macro";
+import * as mediaQueries from "styles/media-queries";
 import * as React from "react";
 import { useParams } from "react-router-dom";
-import { Button } from "components/lib";
+import { Content, Card } from "components/lib";
+import Header from "components/header";
 import {
-	Wrapper,
-	FlexContent,
+	OuterLink,
+	LinkButton,
 	AboutCompany,
 	CompanyLogo,
+	ComapnyDesc,
 	JobDesc,
+	JobContent,
+	MdContent,
 	HowToApply,
-	FixedFooter,
+	ApplyNow,
 } from "./styles";
-import { AppHeader } from "components/layout";
 import { useGetJob } from "hooks/useGetJobs";
 
 // Job detail information page
@@ -23,95 +29,99 @@ export default function JobScreen() {
 	}, [job]);
 	return (
 		<>
-			<AppHeader>
+			<Header>
 				{status === "success" ? (
 					<AboutCompany>
 						<CompanyLogo
 							style={{ backgroundImage: `url(${job.company_logo})` }}
 						/>
-						<FlexContent className="content">
+						{/* compnay name, company url */}
+						<ComapnyDesc>
 							<div className="job-owner">
-								{/* compnay name, company url */}
 								<h4>{job.company}</h4>
-								<a
-									href={job.company_url}
-									target="_blank"
-									rel="noreferrer"
-									className="company-link"
-								>
-									{job.company}
-								</a>
+								<OuterLink href={job.company_url}>{job.company}</OuterLink>
 							</div>
-							<Button
-								as="a"
-								href={job.company_url}
-								target="_blank"
-								rel="noreferrer"
-								className="btn-link"
-							>
-								Company Site
-							</Button>
-						</FlexContent>
+							<LinkButton href={job.company_url}>Company Site</LinkButton>
+						</ComapnyDesc>
 					</AboutCompany>
-				) : null}
-			</AppHeader>
-			<Wrapper>
-				{status === "success" && job ? (
+				) : status === "error" ? (
+					<p>Failed to load job</p>
+				) : (
+					<p>Loading..</p>
+				)}
+			</Header>
+			<Content
+				as="main"
+				css={`
+					max-width: 730px;
+					margin-left: auto;
+					margin-right: auto;
+					padding-top: 156px;
+					${mediaQueries.small} {
+						padding-top: 98px;
+					}
+				`}
+			>
+				{status === "success" ? (
 					<>
 						<JobDesc>
-							<FlexContent className="content">
+							{/* use wapper to avoid adding too much content inside of JobDesc */}
+							<JobContent>
 								<div>
 									<p>
 										<span>{new Date(job.created_at).toLocaleDateString()}</span>
 										<span className="job-type">{job.type}</span>
 									</p>
 									<h4 className="job-role">{job.title}</h4>
-									<p className="job-location">{job.location}</p>
+									<span className="job-location">{job.location}</span>
 								</div>
-								<Button
-									as="a"
-									href={job.company_url}
-									target="_blank"
-									className="btn-link"
-								>
-									Apply Now
-								</Button>
-							</FlexContent>
+								<LinkButton href={job.company_url}>Apply Now</LinkButton>
+							</JobContent>
 							{/* Job description, requirements, etc */}
-							<div
+							{/* splitted content inside JobDesc to a separate one */}
+							<MdContent
 								dangerouslySetInnerHTML={{ __html: job.description }}
-								className="job-desc"
 							/>
 						</JobDesc>
 						<HowToApply>
 							<h4>How to apply</h4>
-							<p dangerouslySetInnerHTML={{ __html: job.how_to_apply }}></p>
+							<MdContent
+								dangerouslySetInnerHTML={{ __html: job.how_to_apply }}
+							></MdContent>
 						</HowToApply>
-						{/* the apply button, role at page bottom */}
-						<FixedFooter>
-							<FlexContent className="content">
-								<div className="jd">
-									<h4>{job.title}</h4>
-									<strong>{job.company}</strong>
-								</div>
-								<Button
-									as="a"
-									target="_blank"
-									href={job.company_url}
-									rel="noreferrer"
-									className="btn-link"
-								>
-									Apply Now
-								</Button>
-							</FlexContent>
-						</FixedFooter>
 					</>
 				) : status === "error" ? (
-					<p>{JSON.stringify(error)}</p>
+					<Card>{JSON.stringify(error)}</Card>
 				) : (
-					<p>Loading...</p>
+					<Card>Loading...</Card>
 				)}
-			</Wrapper>
+			</Content>
+			{/* the fixed footer at page bottom */}
+			{status === "success" ? (
+				<div
+					css={`
+						position: fixed;
+						left: 0;
+						bottom: 0;
+						width: 100%;
+						padding-top: 16px;
+						padding-bottom: 16px;
+						background-color: var(--element-background);
+						${mediaQueries.small} {
+							padding-top: calc(16px + 0.5vw);
+							padding-bottom: calc(16px + 0.5vw);
+						}
+					`}
+				>
+					<ApplyNow>
+						<div className="job-role">
+							<h4>{job.title}</h4>
+							<OuterLink href={job.company_url}>{job.company}</OuterLink>
+						</div>
+						<LinkButton href={job.company_url}>Apply Now</LinkButton>
+					</ApplyNow>
+				</div>
+			) : null}
 		</>
 	);
 }
