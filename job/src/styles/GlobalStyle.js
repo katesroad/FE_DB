@@ -77,7 +77,8 @@ const GlobalStyle = createGlobalStyle`
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 
-  a {
+  a{
+    color: inherit;
     text-decoration: none;
   }
 
