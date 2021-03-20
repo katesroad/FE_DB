@@ -33,7 +33,6 @@ export default function AppHeader({ children, ...props }) {
               padding-bottom: 42px;
             }
           `}
-          {...props}
         >
           <Link to="/">
             <IconLogo />
