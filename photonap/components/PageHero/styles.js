@@ -30,22 +30,21 @@ export const Wrapper = styled.section`
 	}
 `;
 
-export const HeroImg = styled.div`
+export const HeroImg = styled.div.attrs(() => ({
+	className: "hero-img",
+}))`
 	height: 78.4vw;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 100% auto;
-	background-image: url(/features/mobile/hero.jpg);
 	${mediaQueries.medium} {
 		flex-grow: 1;
 		height: 63.8vw;
 		width: 40.26vw;
-		background-image: url(/features/tablet/hero.jpg);
 	}
 	${mediaQueries.large} {
 		width: 57.6vw;
 		height: 30.625rem;
-		background-image: url(/features/desktop/hero.jpg);
 		background-size: cover;
 	}
 `;
