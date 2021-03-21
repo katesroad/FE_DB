@@ -22,7 +22,7 @@ export default function FeaturesScreen() {
 						${mediaQueries.medium} {
 							display: flex;
 							align-items: center;
-							justify-conent: space-between;
+							justify-content: space-between;
 							flex-wrap: wrap;
 							li {
 								width: 50%;
@@ -34,6 +34,9 @@ export default function FeaturesScreen() {
 							padding-bottom: 9.06rem;
 							li {
 								padding-bottom: calc(4.75rem + 1.7vw);
+								&:nth-child(n + 4) {
+									padding-bottom: 0;
+								}
 							}
 						}
 						@media only screen and (min-width: 1440px) {

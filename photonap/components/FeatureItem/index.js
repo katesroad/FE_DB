@@ -12,6 +12,10 @@ export default function FeatureItem({ img, title, desc }) {
 				text-align: center;
 				.img {
 					width: 4.5rem;
+					height: 4.5rem;
+					margin-left: auto;
+					margin-right: auto;
+					text-align: center;
 				}
 				.title {
 					margin-top: 3rem;
@@ -26,7 +30,9 @@ export default function FeatureItem({ img, title, desc }) {
 				}
 			`}
 		>
-			<img src={img} alt={title} className="img" />
+			<div className="img">
+				<img src={img} alt={title} />
+			</div>
 			<h4 className="title">{title}</h4>
 			<p className="desc"> {desc}</p>
 		</li>
