@@ -21,6 +21,12 @@ export const Wrapper = styled.section`
 			}
 		}
 	}
+	@media only screen and (min-width: 1560px) {
+		.intro-text {
+			justify-content: flex-end;
+			padding-right: 10vw;
+		}
+	}
 `;
 
 export const HeroImg = styled.div`
