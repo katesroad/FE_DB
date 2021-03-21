@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }) {
 		<>
 			<GlobalStyle />
 			<Header />
-			<main style={{ flexGrow: 1, padding: "10rem 0" }}>
+			<main style={{ flexGrow: 1 }}>
 				<Component {...pageProps} />
 			</main>
 			<Footer />
