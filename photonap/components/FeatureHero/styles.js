@@ -10,6 +10,7 @@ export const Wrapper = styled.section`
 			width: 59.74vw;
 		}
 	}
+
 	${mediaQueries.large} {
 		.intro-text {
 			padding-top: 0 !important;
@@ -17,7 +18,7 @@ export const Wrapper = styled.section`
 			display: flex;
 			align-items: center;
 			.content {
-				max-width: 24.1875rem;
+				max-width: 26.1875rem;
 			}
 		}
 	}

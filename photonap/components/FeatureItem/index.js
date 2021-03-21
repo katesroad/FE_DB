@@ -20,7 +20,6 @@ export default function FeatureItem({ img, title, desc }) {
 					font-size: 1.125rem;
 				}
 				.desc {
-					font-size: 0.9375rem;
 					line-height: 1.5625rem;
 					color: var(--black);
 					opacity: 0.6;

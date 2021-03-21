@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { colors } from "styles/colors";
+import * as mediaQueries from "styles/media-queries";
 import { FONT_WEIGHT } from "styles/font";
 
 const GlobalStyle = createGlobalStyle`
@@ -20,6 +21,12 @@ const GlobalStyle = createGlobalStyle`
     font-weight:${FONT_WEIGHT.normal};
     overflow-y: scroll;
     min-width: 280px;
+  }
+  p {
+    font-size: 0.9375rem;
+    ${mediaQueries.xlarge} {
+      font-size: 1.25rem;
+    }
   }
 
   :root {

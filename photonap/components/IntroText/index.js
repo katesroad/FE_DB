@@ -24,9 +24,11 @@ export default function IntroText({ title, content, variant, ...props }) {
 				}
 				p {
 					font-size: 0.9375rem;
-					line-height: 1.5625rem;
+					line-height: 1.667;
 					color: var(--gray);
-					word-break: break-all;
+					${mediaQueries.medium} {
+						font-size: 1.25rem;
+					}
 				}
 			`}
 			{...props}

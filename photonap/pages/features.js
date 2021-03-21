@@ -66,6 +66,12 @@ export default function FeaturesScreen() {
 						font-size: 0.75rem;
 						span {
 							margin-right: 1rem;
+							transition: margin-right 0.25s ease;
+						}
+						&:hover {
+							span {
+								margn-right: 1.5rem;
+							}
 						}
 					}
 				`}
