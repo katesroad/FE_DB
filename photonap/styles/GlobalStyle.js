@@ -19,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     font-weight:${FONT_WEIGHT.normal};
     overflow-y: scroll;
+    min-width: 280px;
   }
 
   :root {

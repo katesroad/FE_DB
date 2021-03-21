@@ -74,6 +74,7 @@ export const NavList = styled(NavItems)`
 		align-items: center;
 		padding-top: 0;
 		padding-bottom: 0;
+		padding-right: 0;
 		font-size: 0.875rem;
 
 		.gray-line {
