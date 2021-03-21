@@ -22,4 +22,9 @@ export const Button = styled("button")`
 	text-align: center;
 	color: var(--white);
 	background-color: var(--black);
+	transition: background-color color 0.25s ease;
+	&:hover {
+		color: var(--black);
+		background-color: var(--gray);
+	}
 `;

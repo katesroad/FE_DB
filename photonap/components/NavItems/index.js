@@ -17,7 +17,6 @@ export default function NavItems({ children, ...props }) {
 				// the invite button
 				button {
 					width: 100%;
-					min-width: 110px;
 				}
 			`}
 			{...props}

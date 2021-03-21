@@ -1,54 +1,38 @@
 import styled from "styled-components/macro";
 import * as React from "react";
 import { Button, Content } from "components/lib";
-import NavItems from "components/NavItems";
 import Link from "next/link";
+import { Wrapper, Nav, NavList, NavButton } from "./styles";
 
 export default function Header() {
+	const [menuIsOpen, setMenuIsOpen] = React.useState(false);
+	const handleClick = (e) => setMenuIsOpen(!menuIsOpen);
 	return (
 		<Content
 			as="header"
 			css={`
+				position: relative;
+				height: 4.5rem;
 				display: flex;
 				justify-content: space-between;
-				padding-top: 16px;
-				padding-bottom: 16px;
+				align-items: center;
 			`}
 		>
-			<Link
-				href="/"
-				css={`
-					cursor: pointer;
-				`}
-			>
+			<Link href="/">
 				<img
 					src="https://fem-photosnap-app-g8glvjkbv-asaulters.vercel.app/assets/shared/desktop/logo-black.svg"
-					alt="photosnap"
+					alt=""
 				/>
 			</Link>
-			<div
-				css={`
-					display: flex;
-				`}
-			>
-				<button>x</button>
-				<nav>
-					<NavItems
-						css={`
-							display: flex;
-							flex-direction: row;
-							align-items: center;
-							li {
-								margin-left: 16px;
-							}
-						`}
-					>
-						<li>
-							<Button>Get an invitation</Button>
-						</li>
-					</NavItems>
-				</nav>
-			</div>
+			<Nav>
+				<NavButton onClick={handleClick}>{menuIsOpen ? "x" : "="}</NavButton>
+				<NavList className={menuIsOpen ? "open" : "close"}>
+					<li className="gray-line"></li>
+					<li>
+						<Button>GET AN INVITATION</Button>
+					</li>
+				</NavList>
+			</Nav>
 		</Content>
 	);
 }
