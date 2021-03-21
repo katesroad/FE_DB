@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 
-export default function ButtonArrow({ children }) {
+export default function ButtonArrow({ children, ...props }) {
 	return (
 		<button
 			css={`
@@ -12,6 +12,7 @@ export default function ButtonArrow({ children }) {
 				color: var(--white);
 				letter-spacing: 2px;
 			`}
+			{...props}
 		>
 			{children}
 			<svg
