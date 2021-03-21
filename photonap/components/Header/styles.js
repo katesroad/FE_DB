@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import * as mediaQueries from "styles/media-queries";
-import { Content, Button } from "components/lib";
+import { Button } from "components/lib";
 import NavItems from "components/NavItems";
 
 /*-------------styling for nav list-----------------------------*/
