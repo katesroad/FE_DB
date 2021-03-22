@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import { Content } from "components/lib";
 import * as React from "react";
 import * as mediaQueries from "styles/media-queries";
 import PageHero from "components/PageHero";
 import PricingPlans from "components/PricingTiers";
+import TireCompare from "components/TierCompare";
+import Head from "next/head";
 
 const intro = {
 	title: "pricing",
@@ -14,6 +15,9 @@ const intro = {
 export default function PricingScreen() {
 	return (
 		<>
+			<Head>
+				<title>Photonap | Pricing</title>
+			</Head>
 			<PageHero
 				{...intro}
 				css={`
@@ -33,6 +37,7 @@ export default function PricingScreen() {
 				`}
 			/>
 			<PricingPlans />
+			<TireCompare />
 		</>
 	);
 }
