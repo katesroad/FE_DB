@@ -5,6 +5,7 @@ import PageHero from "components/PageHero";
 import * as React from "react";
 import FeatureItem from "components/FeatureItem";
 import { features } from "constant/features";
+import Head from "next/head";
 
 const intro = {
 	title: "features",
@@ -15,6 +16,9 @@ const intro = {
 export default function FeaturesScreen() {
 	return (
 		<>
+			<Head>
+				<title>Photonap | Features</title>
+			</Head>
 			<PageHero
 				{...intro}
 				css={`
