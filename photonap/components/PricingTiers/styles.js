@@ -1,50 +1,9 @@
+import { Content } from "components/lib";
 import styled from "styled-components";
 import * as mediaQueries from "styles/media-queries";
 
-/*-------------------the bill type switch-----------------------------------*/
-
-export const BillType = styled.strong`
-	font-size: 1.125rem;
-	color: var(--dark);
-	opacity: 0.5;
-	&.is-selected {
-		opacity: 1;
-	}
-`;
-
-export const Switch = styled.div.attrs(() => ({
-	className: "button-switch",
-}))`
-	position: relative;
-	margin-left: 2rem;
-	margin-right: 2rem;
-	width: 4rem;
-	height: 2rem;
-	padding: 0.25rem;
-	border-radius: 1rem;
-	background-color: #dfdfdf;
-	cursor: pointer;
-	&:after {
-		content: "";
-		display: block;
-		position: absolute;
-		left: 0.25rem;
-		top: 0.25rem;
-		width: 1.5rem;
-		height: 1.5rem;
-		border-radius: 50%;
-		background-color: var(--black);
-		background-color: var(--black);
-		transition: all 0.25s ease;
-	}
-	&.is-active {
-		&:after {
-			left: 2rem;
-		}
-	}
-`;
-
 /*------------------------The plan item------------------- */
+
 export const Plan = styled.li.attrs(() => ({
 	className: "plan-item",
 }))`
@@ -144,5 +103,90 @@ export const PlanPrice = styled.div`
 	.bill-type {
 		color: var(--dark);
 		opacity: 0.6;
+	}
+`;
+
+/*--------------------The pricing plan list-----------------------**/
+
+export const Wrapper = styled(Content)`
+	padding-top: calc(3rem + 4.2vw);
+	padding-bottom: calc(3rem + 4.2vw);
+	${mediaQueries.medium} {
+		padding-top: 7rem;
+		padding-bottom: 7rem;
+	}
+	${mediaQueries.xlarge} {
+		padding-top: 7.5rem;
+		padding-bottom: 10rem;
+	}
+`;
+
+/*-------------------the bill type switch-----------------------------------*/
+
+export const BillTypeWrap = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 2.5rem;
+	text-transform: capitalize;
+	${mediaQueries.medium} {
+		padding-bottom: calc(2.5rem + 1vw);
+	}
+	${mediaQueries.xlarge} {
+		padding-bottom: 3rem;
+	}
+`;
+
+export const BillType = styled.strong`
+	font-size: 1.125rem;
+	color: var(--dark);
+	opacity: 0.5;
+	&.is-selected {
+		opacity: 1;
+	}
+`;
+
+export const Switch = styled.div.attrs(() => ({
+	className: "button-switch",
+}))`
+	position: relative;
+	margin-left: 2rem;
+	margin-right: 2rem;
+	width: 4rem;
+	height: 2rem;
+	padding: 0.25rem;
+	border-radius: 1rem;
+	background-color: #dfdfdf;
+	cursor: pointer;
+	&:after {
+		content: "";
+		display: block;
+		position: absolute;
+		left: 0.25rem;
+		top: 0.25rem;
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 50%;
+		background-color: var(--black);
+		background-color: var(--black);
+		transition: all 0.25s ease;
+	}
+	&.is-active {
+		&:after {
+			left: 2rem;
+		}
+	}
+`;
+
+export const PlanList = styled.ul`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	${mediaQueries.large} {
+		flex-direction: row;
+		.plan-item {
+			width: 33.333%;
+		}
 	}
 `;
