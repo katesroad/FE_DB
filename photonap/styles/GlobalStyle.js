@@ -24,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
   }
   p {
     font-size: 0.9375rem;
+    line-height: 1.667;
     ${mediaQueries.xlarge} {
       font-size: 1.25rem;
     }

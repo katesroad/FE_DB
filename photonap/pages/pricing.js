@@ -3,6 +3,7 @@ import { Content } from "components/lib";
 import * as React from "react";
 import * as mediaQueries from "styles/media-queries";
 import PageHero from "components/PageHero";
+import PricingPlans from "components/PricingTiers";
 
 const intro = {
 	title: "pricing",
@@ -31,7 +32,7 @@ export default function PricingScreen() {
 					}
 				`}
 			/>
-			<Content as="main"></Content>
+			<PricingPlans />
 		</>
 	);
 }
