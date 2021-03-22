@@ -4,14 +4,14 @@ import GlobalStyle from "styles/GlobalStyle";
 
 // customized App
 export default function App({ Component, pageProps }) {
-	return (
-		<>
-			<GlobalStyle />
-			<Header />
-			<main style={{ flexGrow: 1 }}>
-				<Component {...pageProps} />
-			</main>
-			<Footer />
-		</>
-	);
+  return (
+    <>
+      <GlobalStyle />
+      <Header />
+      <main style={{ flexGrow: 1 }}>
+        <Component {...pageProps} />
+      </main>
+      <Footer />
+    </>
+  );
 }
