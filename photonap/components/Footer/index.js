@@ -24,29 +24,35 @@ export default function Footer() {
 					background-size: cover;
 					background-color: #fff;
 					background-image: url(/shared/mobile/bg-beta.jpg);
-					.title {
-						margin-bottom: 1.25rem;
-						font-size: 2rem;
-						line-height: 2.5rem;
-						text-transform: uppercase;
-						letter-spacing: 0.20625rem;
+					${mediaQueries.medium} {
+						background-image: url(/shared/tablet/bg-beta.jpg);
 					}
-					.btn {
-						font-size: 0.75rem;
-						span {
-							margin-right: 1rem;
-							transition: margin-right 0.25s ease;
-						}
-						&:hover {
-							span {
-								margn-right: 1.5rem;
-							}
-						}
+					${mediaQueries.large} {
+						background-image: url(/shared/desktop/bg-beta.jpg);
 					}
 				`}
 			>
 				<Content
 					css={`
+						.title {
+							margin-bottom: 1.25rem;
+							font-size: 2rem;
+							line-height: 2.5rem;
+							text-transform: uppercase;
+							letter-spacing: 0.20625rem;
+						}
+						.btn {
+							font-size: 0.75rem;
+							span {
+								margin-right: 1rem;
+								transition: margin-right 0.25s ease;
+							}
+							&:hover {
+								span {
+									margn-right: 1.5rem;
+								}
+							}
+						}
 						${mediaQueries.medium} {
 							display: flex;
 							justify-content: space-between;

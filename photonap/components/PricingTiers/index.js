@@ -16,7 +16,7 @@ function PlanItem({ tier, variant, billType }) {
 			<PlanPrice>
 				<h4 className="price">${tier.price[billType]}</h4>
 				<span className="bill-type">
-					{billType === "month" ? "per month" : "per year"}
+					{billType === "monthly" ? "per month" : "per year"}
 				</span>
 			</PlanPrice>
 			<div>
