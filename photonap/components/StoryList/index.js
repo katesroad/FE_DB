@@ -24,9 +24,9 @@ Story.propTypes = {
 	author: PropTypes.string.isRequired,
 };
 
-export default function StoryList({ stories }) {
+export default function StoryList({ stories, ...props }) {
 	return (
-		<Wrapper>
+		<Wrapper {...props}>
 			{stories.map((story) => (
 				<Story {...story} key={story.name + story.createdAt} />
 			))}

@@ -1,7 +1,15 @@
 import styled from "styled-components";
 import * as mediaQueries from "styles/media-queries";
-import { Button } from "components/lib";
+import { Button, Content } from "components/lib";
 import NavItems from "components/NavItems";
+
+export const Wrapper = styled(Content)`
+	position: relative;
+	height: 4.5rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+`;
 
 /*-------------styling for nav list-----------------------------*/
 
