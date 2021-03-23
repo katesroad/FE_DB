@@ -6,6 +6,13 @@ export const StoryWrap = styled.li`
 	position: relative;
 	color: var(--white);
 	background-color: rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+	transition: translate 0.25s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+	@media only screen {
+		&:hover {
+			transform: translate3d(0, -1.5vw, 0) scale(1.01);
+		}
+	}
 `;
 
 export const StoryIntro = styled.div`
