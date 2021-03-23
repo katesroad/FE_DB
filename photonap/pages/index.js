@@ -11,25 +11,25 @@ const stories = STORIES.slice(0, 4);
 const homeFeatures = features.slice(0, 3);
 
 export default function Home() {
-	return (
-		<>
-			<Head>
-				<title>Photonap</title>
-			</Head>
-			<>
-				<HomeStories />
-				<StoryList
-					stories={stories}
-					css={`
-						max-width: 1580px;
-						margin-left: auto;
-						margin-right: auto;
-					`}
-				/>
-				<Content>
-					<FeatureList features={homeFeatures} />
-				</Content>
-			</>
-		</>
-	);
+  return (
+    <>
+      <Head>
+        <title>Photonap</title>
+      </Head>
+      <>
+        <HomeStories />
+        <StoryList
+          stories={stories}
+          css={`
+            max-width: 1580px;
+            margin-left: auto;
+            margin-right: auto;
+          `}
+        />
+        <Content>
+          <FeatureList features={homeFeatures} />
+        </Content>
+      </>
+    </>
+  );
 }
