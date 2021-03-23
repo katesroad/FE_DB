@@ -125,7 +125,6 @@ export const CopyrightWrap = styled.div`
 export const InviteButton = styled(ButtonArrow)`
 	flex-grow: 1;
 	margin-bottom: 2.125rem;
-	width: 13.75rem;
 	max-width: 13.75rem;
 	font-size: 0.75rem;
 `;
