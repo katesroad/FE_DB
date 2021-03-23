@@ -16,13 +16,20 @@ export default function Home() {
 			<Head>
 				<title>Photonap</title>
 			</Head>
-			<div>
+			<>
 				<HomeStories />
-				<StoryList stories={stories} />
+				<StoryList
+					stories={stories}
+					css={`
+						max-width: 1580px;
+						margin-left: auto;
+						margin-right: auto;
+					`}
+				/>
 				<Content>
 					<FeatureList features={homeFeatures} />
 				</Content>
-			</div>
+			</>
 		</>
 	);
 }
