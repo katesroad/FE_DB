@@ -2,7 +2,13 @@ import styled from "styled-components/macro";
 import * as React from "react";
 import { Wrapper, Content, ColorfulLine } from "./styles";
 
-export default function IntroText({ title, content, variant, ...props }) {
+export default function IntroText({
+	title,
+	content,
+	variant,
+	children,
+	...props
+}) {
 	return (
 		<Wrapper
 			css={`
@@ -14,10 +20,14 @@ export default function IntroText({ title, content, variant, ...props }) {
 			<Content
 				css={`
 					color: ${variant === "dark" ? "var(--white)" : "var(--black)"};
+					p {
+						opacity: 0.6;
+					}
 				`}
 			>
 				<h2>{title}</h2>
 				<p>{content}</p>
+				{children}
 			</Content>
 		</Wrapper>
 	);

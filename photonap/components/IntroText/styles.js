@@ -5,7 +5,9 @@ export const Wrapper = styled.div`
 	position: relative;
 	padding: 4.5rem calc(12px + 3.2vw);
 	${mediaQueries.medium} {
-		padding-top: 10.8125rem;
+		padding-top: 7.8125rem;
+		display: flex;
+		justify-content: center;
 	}
 `;
 
@@ -30,9 +32,10 @@ export const ColorfulLine = styled.div`
 `;
 
 export const Content = styled.div`
+	max-width: 397px;
 	h2 {
 		padding-bottom: 1rem;
-		font-size: 2.5rem;
+		font-size: 2rem;
 		letter-spacing: 0.208rem;
 		text-transform: uppercase;
 		${mediaQueries.medium} {
@@ -40,9 +43,11 @@ export const Content = styled.div`
 		}
 	}
 	p {
+		margin-bottom: 1.5rem;
 		font-size: 0.9375rem;
 		line-height: 1.667;
-		color: var(--gray);
+		color: var(--dark);
+		opacity: 0.6;
 		${mediaQueries.medium} {
 			font-size: 1.25rem;
 		}
