@@ -26,12 +26,15 @@ const Story = ({ title, content, variant, name }) => {
 			<IntroText {...intro} className="intro-text">
 				<ButtonArrow
 					css={`
-						margin-top: 1rem;
+						margin-top: 1.4375rem;
 						color: ${variant === "dark" ? "var(--white)" : "var(--black)"};
 						svg path {
 							stroke: ${variant === "dark"
 								? "var(--white)"
 								: "var(--black)"}!important;
+						}
+						${mediaQueries.medium} {
+							margin-top: 3rem;
 						}
 					`}
 				>

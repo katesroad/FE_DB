@@ -39,11 +39,10 @@ export const Content = styled.div`
 		letter-spacing: 0.208rem;
 		text-transform: uppercase;
 		${mediaQueries.medium} {
-			margin-bottom: 1.3125rem;
+			padding-bottom: 1.3125rem;
 		}
 	}
 	p {
-		margin-bottom: 1.5rem;
 		font-size: 0.9375rem;
 		line-height: 1.667;
 		color: var(--dark);
