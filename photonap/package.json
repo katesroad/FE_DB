@@ -1,0 +1,34 @@
+{
+	"name": "photoshopnap",
+	"version": "1.0.0",
+	"scripts": {
+		"dev": "next",
+		"build": "next build",
+		"start": "next start"
+	},
+	"dependencies": {
+		"@reach/portal": "^0.13.2",
+		"husky": "^5.1.3",
+		"lint-staged": "^10.5.4",
+		"next": "latest",
+		"prettier": "^2.2.1",
+		"react": "^16.8.0",
+		"react-dom": "^16.8.0",
+		"react-is": "^16.8.0",
+		"styled-components": "^5.0.0"
+	},
+	"devDependencies": {
+		"babel-plugin-styled-components": "^1.8.0"
+	},
+	"license": "MIT",
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+			"prettier --write"
+		]
+	}
+}
