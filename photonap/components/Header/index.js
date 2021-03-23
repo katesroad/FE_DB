@@ -1,6 +1,5 @@
-import styled from "styled-components/macro";
 import * as React from "react";
-import { Button, Content } from "components/lib";
+import { Button } from "components/lib";
 import Link from "next/link";
 import { Wrapper, Nav, NavList, NavButton } from "./styles";
 
@@ -8,16 +7,7 @@ export default function Header() {
 	const [menuIsOpen, setMenuIsOpen] = React.useState(false);
 	const handleClick = (e) => setMenuIsOpen(!menuIsOpen);
 	return (
-		<Content
-			as="header"
-			css={`
-				position: relative;
-				height: 4.5rem;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-			`}
-		>
+		<Wrapper as="header">
 			<Link href="/">
 				<img
 					src="https://fem-photosnap-app-g8glvjkbv-asaulters.vercel.app/assets/shared/desktop/logo-black.svg"
@@ -33,6 +23,6 @@ export default function Header() {
 					</li>
 				</NavList>
 			</Nav>
-		</Content>
+		</Wrapper>
 	);
 }
