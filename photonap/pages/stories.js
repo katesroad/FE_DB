@@ -1,10 +1,7 @@
-import { Content } from "components/lib";
 import * as React from "react";
+import { STORIES } from "constant/stories";
+import StoryList from "components/StoryList";
 
 export default function StoriesScreen() {
-	return (
-		<Content as="main">
-			<h2>Stories page</h2>
-		</Content>
-	);
+	return <StoryList stories={STORIES} />;
 }
