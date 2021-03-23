@@ -11,7 +11,8 @@ export default function Header() {
 			<Link href="/">
 				<img
 					src="https://fem-photosnap-app-g8glvjkbv-asaulters.vercel.app/assets/shared/desktop/logo-black.svg"
-					alt=""
+					alt="photonap"
+					style={{ cursor: "pointer" }}
 				/>
 			</Link>
 			<Nav>

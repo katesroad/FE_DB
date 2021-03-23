@@ -8,6 +8,7 @@
 	},
 	"dependencies": {
 		"@reach/portal": "^0.13.2",
+		"babel-plugin-macros": "^3.0.1",
 		"husky": "^5.1.3",
 		"lint-staged": "^10.5.4",
 		"next": "latest",
