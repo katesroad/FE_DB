@@ -56,6 +56,7 @@ export const NavList = styled(NavItems)`
 	font-weight: var(--weight-bold);
 	text-align: center;
 	background-color: var(--white);
+	z-index: 2000;
 
 	a {
 		padding-bottom: 1.25rem;
