@@ -182,11 +182,13 @@ export const JobContent = styled(FlexContent)`
 	}
 	.apply-now {
 		margin-top: 32px;
+		margin-bottom: 32px;
 	}
 	${mediaQueries.small} {
 		padding-bottom: 40px;
 		.apply-now {
 			margin-top: 0;
+			margin-bottom: 0;
 		}
 	}
 `;

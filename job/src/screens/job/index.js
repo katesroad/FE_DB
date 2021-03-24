@@ -75,7 +75,9 @@ export default function JobScreen() {
 									<h4 className="job-role">{job.title}</h4>
 									<span className="job-location">{job.location}</span>
 								</div>
-								<LinkButton href={job.company_url}>Apply Now</LinkButton>
+								<LinkButton href={job.company_url} className="apply-now">
+									Apply Now
+								</LinkButton>
 							</JobContent>
 							{/* Job description, requirements, etc */}
 							{/* splitted content inside JobDesc to a separate one */}
