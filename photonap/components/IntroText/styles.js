@@ -36,6 +36,7 @@ export const Content = styled.div`
 	h2 {
 		padding-bottom: 1rem;
 		font-size: 2rem;
+		line-height: 1.2;
 		letter-spacing: 0.208rem;
 		text-transform: uppercase;
 		${mediaQueries.medium} {

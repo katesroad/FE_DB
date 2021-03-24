@@ -64,6 +64,7 @@ export const NavList = styled(NavItems)`
 	button,
 	a {
 		letter-spacing: 2.5px;
+		font-weight: var(--font-bold);
 	}
 
 	.gray-line {
