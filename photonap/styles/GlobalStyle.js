@@ -21,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight:${FONT_WEIGHT.normal};
     overflow-y: scroll;
     min-width: 280px;
+    font-family: "DM Sans", Roboto,Helvetica Neue,sans-serif;
   }
   p {
     font-size: 0.9375rem;

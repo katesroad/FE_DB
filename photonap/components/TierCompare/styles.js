@@ -3,10 +3,8 @@ import styled from "styled-components";
 import * as mediaQueries from "styles/media-queries";
 
 export const FeatureWrap = styled.div`
-  margin-bottom: 1.5rem;
-  &:last-child {
-    margin-bottom: 0;
-  }
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
   .feature-name {
     font-size: 0.75rem;
     letter-spacing: 0.125rem;
@@ -17,8 +15,6 @@ export const FeatureWrap = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 0.875rem;
-    border-bottom: 1px solid #dfdfdf;
   }
 `;
 
@@ -27,7 +23,9 @@ export const FeatureTiers = styled.div`
   justify-content: space-between;
   align-items: baseline;
   padding-top: 1rem;
-  border-bottom: 1px solid #dfdfdf;
+  p {
+    line-height: 0;
+  }
   span {
     display: inline-block;
     min-width: 2rem;
@@ -62,7 +60,8 @@ export const FeatureTiers = styled.div`
 `;
 
 export const Wrapper = styled(Content)`
-  margin-bottom: 4rem;
+  margin-bottom: calc(3rem + 4.26vw);
+  max-width: 45.625rem;
   .title {
     font-weight: var(--font-bold);
     text-transform: uppercase;
@@ -70,7 +69,6 @@ export const Wrapper = styled(Content)`
   .title--desktop {
     display: none;
     font-size: 2.5rem;
-    text-transform: uppercase;
     padding-bottom: 3.5rem;
   }
   .title--tablet {
@@ -84,6 +82,7 @@ export const Wrapper = styled(Content)`
     font-size: 0.75rem;
   }
   ${mediaQueries.medium} {
+    margin-bottom: calc(4rem + 6.25vw);
     .title--mobile {
       display: none;
     }
@@ -93,6 +92,8 @@ export const Wrapper = styled(Content)`
       justify-content: space-between;
       padding-left: 0.875rem;
       padding-right: 0.875rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--black);
       font-size: 0.75rem;
       .tier-types {
         display: flex;
@@ -103,9 +104,16 @@ export const Wrapper = styled(Content)`
     }
   }
   ${mediaQueries.large} {
+    margin-bottom: 10rem;
     .title--desktop {
       display: block;
       text-align: center;
     }
+  }
+`;
+
+export const FeatureList = styled.ul`
+  li {
+    border-bottom: 1px solid #dfdfdf;
   }
 `;

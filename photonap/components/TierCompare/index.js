@@ -2,10 +2,10 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { IconCheck } from "components/Icons";
 import { FEATURE_PRICING } from "./features";
-import { Wrapper, FeatureWrap, FeatureTiers } from "./styles";
+import { Wrapper, FeatureWrap, FeatureTiers, FeatureList } from "./styles";
 
 const FeatureIntro = ({ name, tiers }) => (
-  <FeatureWrap as="li">
+  <FeatureWrap>
     <h4 className="feature-name">{name}</h4>
     <FeatureTiers>
       {tiers.map(({ name, covered }) => (
@@ -47,11 +47,13 @@ export default function TireCompare() {
         </div>
       </div>
       <h4 className="title title--mobile"> The features</h4>
-      <ul>
+      <FeatureList>
         {FEATURE_PRICING.map((feature) => (
-          <FeatureIntro key={feature.name} {...feature} />
+          <li key={feature.name}>
+            <FeatureIntro key={feature.name} {...feature} />
+          </li>
         ))}
-      </ul>
+      </FeatureList>
     </Wrapper>
   );
 }

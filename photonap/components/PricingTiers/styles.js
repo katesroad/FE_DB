@@ -2,6 +2,21 @@ import { Content } from "components/lib";
 import styled from "styled-components";
 import * as mediaQueries from "styles/media-queries";
 
+/*--------------------------The plan list---------------------- */
+export const PlanList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  ${mediaQueries.large} {
+    flex-direction: row;
+    align-items: baseline;
+    .plan-item {
+      width: 33.333%;
+    }
+  }
+`;
+
 /*------------------------The plan item------------------- */
 
 export const Plan = styled.li.attrs(() => ({
@@ -50,13 +65,14 @@ export const Plan = styled.li.attrs(() => ({
       }
     }
     ${mediaQueries.large} {
-      width: 29.9% !important;
+      padding-top: 5.28125rem;
+      padding-bottom: 5.28125rem;
       border-left: 0;
-      margin-left: 2.875rem;
-      margin-right: 2.875rem;
-      transform: scale(1.1);
+      margin-left: 1.875rem;
+      margin-right: 1.875rem;
       &:after {
-        display: none;
+        width: 100%;
+        height: 0.375rem;
       }
     }
   }
@@ -174,19 +190,6 @@ export const Switch = styled.div.attrs(() => ({
   &.is-active {
     &:after {
       left: 2rem;
-    }
-  }
-`;
-
-export const PlanList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  ${mediaQueries.large} {
-    flex-direction: row;
-    .plan-item {
-      width: 33.333%;
     }
   }
 `;
