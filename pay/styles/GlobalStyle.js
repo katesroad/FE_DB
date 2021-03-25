@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
     min-width: 280px;
     font-family: "Publuic Sans", Roboto,Helvetica Neue,sans-serif;
     font-weight: var(--font-normal);
+    background-color: #edf3f8;
   }
 
   :root {
@@ -69,6 +70,12 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+  }
+  h1,h2,h3,h4,h5,h6,strong {
+    color: var(c10);
+  }
+  p {
+    color: var(--c20);
   }
 `;
 

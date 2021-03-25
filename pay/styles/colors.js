@@ -1,5 +1,5 @@
 // dark pink
-const c00 = '#ba4720';
+const c00 = '#ba4270';
 // white
 const c01 = '#fbfcfe';
 // juan blue

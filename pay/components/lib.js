@@ -26,7 +26,7 @@ export const Button = styled('button').attrs(() => ({ className: 'btn' }))`
   text-align: center;
   font-size: 0.9375rem;
   font-weight: var(--font-bold);
-  color: var(--white);
+  color: #fbfcfe !important;
   transition: all color 0.25s ease;
 `;
 
@@ -43,9 +43,22 @@ export const BtnPrimary = styled(Button).attrs(() => ({
 `;
 
 // nav item wrapped using next/link
-export const NavItem = styled(Link).attrs(() => ({ className: 'nav-item' }))`
+export const NavItem = styled(Link)`
   // color defined at the place using it
+  color: inherit;
   font-size: 0.9375rem;
   line-height: 1.2;
   font-weight: var(--font-bold);
+  text-transform: capitalize;
+`;
+
+export const NavItems = styled.p.attrs(() => ({ className: 'nav-items' }))`
+  a {
+    // color defined at the place using it
+    color: inherit;
+    font-size: 0.9375rem;
+    line-height: 1.2;
+    font-weight: var(--font-bold);
+    text-transform: capitalize;
+  }
 `;
