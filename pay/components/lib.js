@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Link from 'next/link';
 import * as mediaQueries from 'styles/media-queries';
 
 export const Content = styled.div`
@@ -39,4 +40,12 @@ export const BtnPrimary = styled(Button).attrs(() => ({
   &[disabled] {
     opacity: 0.5;
   }
+`;
+
+// nav item wrapped using next/link
+export const NavItem = styled(Link).attrs(() => ({ className: 'nav-item' }))`
+  // color defined at the place using it
+  font-size: 0.9375rem;
+  line-height: 1.2;
+  font-weight: var(--font-bold);
 `;
