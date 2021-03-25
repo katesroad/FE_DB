@@ -1,0 +1,1 @@
+For static file to be imported as an absolute path.

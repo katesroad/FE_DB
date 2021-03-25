@@ -1,0 +1,40 @@
+{
+	"name": "NextTemplate",
+	"version": "1.0.0",
+	"scripts": {
+		"dev": "next",
+		"build": "next build",
+		"start": "next start",
+		"lint": "eslint --fix .",
+		"format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+	},
+	"dependencies": {
+		"next": "latest",
+		"prettier": "^2.2.1",
+		"react": "^16.8.0",
+		"react-dom": "^16.8.0",
+		"react-id-swiper": "^4.0.0",
+		"react-is": "^16.8.0",
+		"styled-components": "^5.0.0",
+		"swiper": "^6.5.0"
+	},
+	"devDependencies": {
+		"babel-plugin-macros": "^3.0.1",
+		"babel-plugin-styled-components": "^1.8.0",
+		"eslint": "^7.22.0",
+		"husky": "^5.1.3",
+		"lint-staged": "^10.5.4",
+		"undefined": " "
+	},
+	"license": "MIT",
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+			"prettier --write"
+		]
+	}
+}
