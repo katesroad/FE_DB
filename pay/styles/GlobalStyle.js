@@ -21,18 +21,18 @@ const GlobalStyle = createGlobalStyle`
     overflow-y: scroll;
     min-width: 280px;
     font-family: "Publuic Sans", Roboto,Helvetica Neue,sans-serif;
-    max-width: 1440px;
-    margin-left: auto;
-    margin-right: auto;
+    font-weight: var(--font-normal);
   }
 
   :root {
-    --red: ${colors.red};
-    --white: ${colors.white};
-    --text-black:${colors.black};
-    --bg-black: ${colors.bgBlack};
-    --font-bold: ${FONT_WEIGHT.bold};
-    --font-bolder:${FONT_WEIGHT.bolder}
+    --c00: ${colors.c00};
+    --c01: ${colors.c01};
+    --c10: ${colors.c10};
+    --c11: ${colors.c11};
+    --c12:${colors.c12};
+    --c20:${colors.c20};
+    --font-normal: 400;
+    --font-bold: 700;
   }
 
   a,

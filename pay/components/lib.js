@@ -21,41 +21,22 @@ export const Content = styled.div`
 `;
 
 export const Button = styled('button').attrs(() => ({ className: 'btn' }))`
-  // padding: 1.5rem 2.5rem; customize button width and height at the place use it
+  // setup button width and height at using place
   text-align: center;
-  font-size: 1rem;
-  font-weight: var(--font-bolder);
+  font-size: 0.9375rem;
+  font-weight: var(--font-bold);
   color: var(--white);
   transition: all color 0.25s ease;
-  ${mediaQueries.medium} {
-    font-size: 1.125rem;
-  }
 `;
 
-export const RedButton = styled(Button).attrs(() => ({
-  className: 'btn--red'
+export const BtnPrimary = styled(Button).attrs(() => ({
+  className: 'btn--primary'
 }))`
-  background-color: var(--red);
+  background-color: var(--c00);
   &:hover {
-    background-color: #ff9393;
+    background-color: var(--c12);
   }
-`;
-
-export const BlackButton = styled(Button).attrs(() => ({
-  className: 'btn btn--black'
-}))`
-  background-color: var(--bg-black);
-  &:hvoer {
-    background-color: #434356;
-  }
-`;
-
-export const NavItem = styled('span').attrs(() => ({ className: 'nav-item' }))`
-  font-size: 1rem;
-  line-height: 2;
-  color: var(--white);
-  cursor: pointer;
-  &:hover {
-    font-weight: var(--font-bold);
+  &[disabled] {
+    opacity: 0.5;
   }
 `;

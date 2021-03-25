@@ -1,14 +1,14 @@
 // dark pink
-const p00 = '#ba4720';
+const cc00 = '#ba4720';
 // white
-const p01 = '#fbfcfe';
+const c01 = '#fbfcfe';
 // juan blue
-const p10 = '#36536b';
+const c10 = '#36536b';
 // mirage blue
-const p11 = '#1b262f';
+const c11 = '#1b262f';
 // charm pink
-const p12 = '#da6d97';
-//  ligh san juan blue
-const p20 = '#6c8294';
+const c12 = '#da6d97';
+//  ligh san juan blue1
+const c20 = '#6c8294';
 
-export const colors = { p00, p01, p10, p11, p12, p20 };
+export const colors = { c00, c01, c10, c11, c12, c20 };
