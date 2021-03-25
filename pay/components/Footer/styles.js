@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import * as mediaQueries from 'styles/media-queries';
 
 export const Footer = styled.footer`
+  margin-top: 5rem;
   padding-top: 2.56rem;
   padding-bottom: 3.4375rem;
   background-color: var(--c11);
@@ -10,11 +11,15 @@ export const Footer = styled.footer`
   background-position: center -39%;
   background-repeat: no-repeat;
   ${mediaQueries.medium} {
+    margin-top: calc(5rem + 2.6vw);
     padding-top: 1.875rem;
     padding-bottom: 1.875rem;
     background-position: center right;
     background-size: 56%;
     background-position: 110% -40%;
+  }
+  ${mediaQueries.xlarge} {
+    margin-top: 6rem;
   }
 `;
 
