@@ -49,7 +49,6 @@ export default function RequestForm(props) {
           font-size: 2rem;
           line-height: 1.125;
           color: var(--c10);
-          opacity: 0.75;
           ${mediaQueries.medium} {
             font-size: 3rem;
           }

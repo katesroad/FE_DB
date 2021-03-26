@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
     margin: 0 auto -0.5rem auto;
     font-size: 1.5rem;
     line-height: 1.3333;
+    opacity: 0.75;
   }
   .clients {
     display: flex;
