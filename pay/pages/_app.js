@@ -9,6 +9,7 @@ export default function App({ Component, pageProps }) {
     <>
       <Head>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Public Sans" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM Serif Display" />
         <title>Pay API</title>
       </Head>
       <GlobalStyle />

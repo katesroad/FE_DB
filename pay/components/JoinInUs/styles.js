@@ -31,4 +31,7 @@ export const Wrapper = styled.div`
       }
     }
   }
+  ${mediaQueries.xlarge} {
+    width: 80%;
+  }
 `;

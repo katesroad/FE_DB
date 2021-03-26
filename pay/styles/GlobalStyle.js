@@ -60,6 +60,7 @@ const GlobalStyle = createGlobalStyle`
   }
   h1,h2,h3,h4,h5,h6, strong {
     font-weight:var(--font-bolder);
+    font-family:'DM Serif Display',  Roboto,Helvetica Neue,sans-serif;
   }
 
   img {
@@ -70,6 +71,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden;
   }
   h1,h2,h3,h4,h5,h6,strong {
     color: var(--c10);
@@ -91,7 +93,6 @@ const GlobalStyle = createGlobalStyle`
     color: var(--c10);
     opacity: .5
   }
-
 `;
 
 export default GlobalStyle;

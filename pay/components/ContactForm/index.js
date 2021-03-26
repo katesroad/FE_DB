@@ -1,3 +1,5 @@
+import styled from 'styled-components/macro';
+import * as mediaQueries from 'styles/media-queries';
 import { Formik, Form } from 'formik';
 import { BtnSecondary } from 'components/lib';
 import * as React from 'react';
@@ -5,7 +7,7 @@ import Checkbox from './Checkbox';
 import Field from './Field';
 import { ContactSchema, initialValues } from './contact.helper';
 
-function ContactForm(props) {
+function ContactForm() {
   const handleSubmit = (values) => {
     console.log(values);
   };
@@ -23,8 +25,7 @@ function ContactForm(props) {
               height: 3rem;
               max-width: 9.5rem;
             }
-          `}
-          {...props}>
+          `}>
           <Field name="name" placeholder="Name" />
           <Field name="email" placeholder="Email" />
           <Field name="title" placeholder="Title" />
@@ -39,19 +40,22 @@ function ContactForm(props) {
   );
 }
 
-export default function RequestForm() {
+export default function RequestForm(props) {
   return (
-    <div>
-      <h4
+    <div {...props}>
+      <h3
         css={`
           margin-bottom: 2.5rem;
           font-size: 2rem;
           line-height: 1.125;
           color: var(--c10);
-          letter-spacing: -0.015rem;
+          opacity: 0.75;
+          ${mediaQueries.medium} {
+            font-size: 3rem;
+          }
         `}>
         Submit a help request and we’ll get in touch shortly.
-      </h4>
+      </h3>
       <ContactForm />
     </div>
   );

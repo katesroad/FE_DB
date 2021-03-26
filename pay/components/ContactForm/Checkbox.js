@@ -15,15 +15,15 @@ export default function Checkbox({ children, name, value }) {
         flex-direction: row;
         align-items: center;
         margin-bottom: 1.5rem;
-        input {
-          display: none;
-        }
         .desc {
           line-height: 1.6667;
           font-size: 0.9375rem;
           color: var(--c10);
           ${mediaQueries.medium} {
             max-width: 24.6875rem;
+          }
+          ${mediaQueries.xlarge} {
+            max-width: none;
           }
         }
         .icon-check {
