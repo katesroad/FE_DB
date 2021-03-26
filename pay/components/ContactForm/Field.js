@@ -31,6 +31,7 @@ export default function FormField({ type, ...props }) {
         }
         .error-msg {
           display: block;
+          padding-left: 1.25rem;
           margin-top: 0.5rem;
         }
       `}>
