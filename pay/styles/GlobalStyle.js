@@ -72,7 +72,7 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
   }
   h1,h2,h3,h4,h5,h6,strong {
-    color: var(c10);
+    color: var(--c10);
   }
   p {
     color: var(--c20);

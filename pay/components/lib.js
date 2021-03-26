@@ -42,6 +42,18 @@ export const BtnPrimary = styled(Button).attrs(() => ({
   }
 `;
 
+export const BtnSecondary = styled(Button).attrs(() => ({ className: 'btn--secondary' }))`
+  color: var(--c10) !important;
+  border-radius: 1.5rem;
+  border: 1px solid var(--c10);
+  background-color: #edf3f8;
+  &:hover {
+    border: 1px solid transparent;
+    color: rgba(251, 252, 254, 1) !important;
+    background-color: var(--c10);
+  }
+`;
+
 // nav item wrapped using next/link
 export const NavItem = styled(Link)`
   // color defined at the place using it
@@ -60,5 +72,12 @@ export const NavItems = styled.p.attrs(() => ({ className: 'nav-items' }))`
     line-height: 1.2;
     font-weight: var(--font-bold);
     text-transform: capitalize;
+  }
+`;
+
+export const Error = styled.div.attrs(() => ({ className: 'is-error' }))`
+  color: rgba(255, 0, 0, 0.5);
+  &:empty {
+    display: none;
   }
 `;
