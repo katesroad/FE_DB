@@ -13,6 +13,7 @@ export default function ContactScreen() {
           ${mediaQueries.xlarge} {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             margin-bottom: 5.8125rem;
           }
         `}>
