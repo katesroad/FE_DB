@@ -23,34 +23,3 @@ export const Wrapper = styled(Content)`
     margin-bottom: 6.25rem;
   }
 `;
-
-export const IntroText = styled.div`
-  margin-bottom: 2rem;
-  h4 {
-    margin-bottom: 0.5rem;
-    font-size: 1.5rem;
-    line-height: 1.333;
-    color: var(--c10);
-    letter-spacing: -0.1rem;
-    text-align: center;
-  }
-  p {
-    font-size: 0.9375rem;
-    line-height: 1.8666;
-    color: var(--c20);
-  }
-  ${mediaQueries.medium} {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 4rem;
-    h4 {
-      font-size: 2rem;
-    }
-    p {
-      max-width: 51.05vw;
-    }
-  }
-  ${mediaQueries.xlarge} {
-    margin-bottom: 3.5rem;
-  }
-`;
