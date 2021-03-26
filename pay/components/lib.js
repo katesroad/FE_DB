@@ -17,7 +17,7 @@ export const Content = styled.div`
     width: 89.5%;
   }
   ${mediaQueries.large} {
-    width: 77.08%;
+    width: 79.08%;
   }
 `;
 
