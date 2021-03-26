@@ -3,10 +3,14 @@ import styled from 'styled-components/macro';
 import * as React from 'react';
 import AboutUs from 'components/AboutUs';
 import AboutTeam from 'components/AboutTeam';
+import Head from 'next/head';
 
 export default function AboutScreen() {
   return (
     <>
+      <Head>
+        <title>About Us</title>
+      </Head>
       <AboutUs />
       <div
         css={`
