@@ -50,4 +50,7 @@ export const IntroText = styled.div`
       max-width: 51.05vw;
     }
   }
+  ${mediaQueries.xlarge} {
+    margin-bottom: 3.5rem;
+  }
 `;
