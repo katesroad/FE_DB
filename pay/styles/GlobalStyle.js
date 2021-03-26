@@ -77,6 +77,21 @@ const GlobalStyle = createGlobalStyle`
   p {
     color: var(--c20);
   }
+  ::-webkit-input-placeholder { /* Edge */
+    color: var(--c10);
+    opacity: .5
+  }
+
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: var(--c10);
+    opacity: .5;
+  }
+
+  ::placeholder {
+    color: var(--c10);
+    opacity: .5
+  }
+
 `;
 
 export default GlobalStyle;
