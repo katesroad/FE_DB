@@ -1,30 +1,15 @@
 import { Facebook, Logo, Twitter, Linkedin } from 'components/Icons';
-import { NavItem, BtnPrimary } from 'components/lib';
+import { NavItem } from 'components/lib';
 import * as React from 'react';
-import { Field, Formik } from 'formik';
-import {
-  Footer,
-  SocialIcons,
-  NavItems,
-  FooterContent,
-  Column,
-  ReadyToStart,
-  FillForm
-} from './styles';
+import { Footer, SocialIcons, NavItems, FooterContent, Column, ReadyToStart } from './styles';
+import ScheduleDemo from 'components/ScheduleDemo/inedx';
 
 export default function PageFooter() {
   return (
     <>
       <ReadyToStart>
         <h2>Ready to start</h2>
-        <Formik initialValues={{ contactEmail: '' }}>
-          {() => (
-            <FillForm>
-              <Field name="contactEmail" id="contactEmail" placeholder="Enter email address" />
-              <BtnPrimary>Schedule a demo</BtnPrimary>
-            </FillForm>
-          )}
-        </Formik>
+        <ScheduleDemo />
       </ReadyToStart>
       <Footer>
         <FooterContent>
