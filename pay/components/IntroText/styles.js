@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import * as mediaQueries from 'styles/media-queries';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div.attrs(() => ({ className: 'intro-text' }))`
   margin-bottom: 2rem;
   h4 {
     margin-bottom: 0.5rem;
