@@ -20,7 +20,8 @@ export const ReadyToStart = styled(Content)`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: none;
+    // reset to content width
+    max-width: 1110px;
     h2 {
       margin-bottom: 0;
     }
