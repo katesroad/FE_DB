@@ -3,6 +3,7 @@ import UseCaseList from 'components/UseCases';
 import Head from 'next/head';
 import OurClients from 'components/OurClients';
 import StartBuilding from 'components/StartBuilding';
+import Features from 'components/Features';
 
 export default function IndexScreen() {
   return (
@@ -12,6 +13,7 @@ export default function IndexScreen() {
       </Head>
       <StartBuilding />
       <OurClients />
+      <Features />
       <UseCaseList />
     </>
   );
