@@ -2,12 +2,14 @@ import styled from 'styled-components/macro';
 import { Error } from 'components/lib';
 import PropTypes from 'prop-types';
 import * as React from 'react';
-import { Field, ErrorMessage } from 'formik';
+import { Field, ErrorMessage, useField } from 'formik';
 
 export default function FormField({ type, ...props }) {
   const component = type === 'textarea' ? 'textarea' : 'input';
   const fieldProps = { ...props, component };
   if (type !== 'textarea') fieldProps.type = type;
+  const [, meta] = useField({ type, ...props });
+  const hasError = meta.error && meta.touched;
   return (
     <label
       css={`
@@ -20,10 +22,23 @@ export default function FormField({ type, ...props }) {
           line-height: 2.625rem;
           font-size: 0.9375rem;
           color: var(--c10);
-          opacity: 0.5;
           border-bottom: 1px solid var(--c10);
-          &:focus {
-            opacity: 1;
+          &.has-error {
+            color: red;
+            border-bottom: 1px solid red;
+            ::-webkit-input-placeholder {
+              /* Edge */
+              color: red;
+            }
+
+            :-ms-input-placeholder {
+              /* Internet Explorer 10-11 */
+              color: red;
+            }
+
+            ::placeholder {
+              color: red;
+            }
           }
         }
         textarea {
@@ -35,7 +50,7 @@ export default function FormField({ type, ...props }) {
           margin-top: 0.5rem;
         }
       `}>
-      <Field {...fieldProps} />
+      <Field {...fieldProps} className={hasError ? 'has-error' : ''} />
       <Error className="error-msg" as="small">
         <ErrorMessage name={props.name} />
       </Error>

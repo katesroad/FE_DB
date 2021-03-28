@@ -76,7 +76,7 @@ export const NavItems = styled.p.attrs(() => ({ className: 'nav-items' }))`
 `;
 
 export const Error = styled.div.attrs(() => ({ className: 'is-error' }))`
-  color: rgba(255, 0, 0, 0.5);
+  color: rgba(255, 0, 0, 1);
   &:empty {
     display: none;
   }
