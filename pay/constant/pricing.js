@@ -23,7 +23,7 @@ const BASIC_PLAN = {
 };
 
 const PREMIUM_PLAN = {
-  name: 'preium plan',
+  name: 'Premium plan',
   price: '499.00',
   desc: 'Get tailored solutions, volume pricing, and dedicated support for your team',
   features: [...OUR_FEATURES]

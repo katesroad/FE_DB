@@ -27,7 +27,7 @@ export default function PageHeader() {
             <NavItem href="/about">about</NavItem>
             <NavItem href="/contact">contact</NavItem>
           </NavItems>
-          <BtnPrimary>Scheduele a Demo</BtnPrimary>
+          <BtnPrimary>Schedule a Demo</BtnPrimary>
         </NavBar>
 
         {/* the menu open button for small devices */}

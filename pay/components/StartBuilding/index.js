@@ -8,7 +8,7 @@ export default function StartBuilding(props) {
     <Wrapper {...props}>
       <img src="/home/desktop/illustration-phone-mockup.svg" alt="start building" />
       <ContentText>
-        <h4 className="title">Start builidng with our APIs for absolutely free.</h4>
+        <h4 className="title">Start building with our APIs for absolutely free.</h4>
         <ScheduleDemo className="schedule-demo" />
         <p className="contact-us">
           Have any questions?{' '}

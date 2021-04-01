@@ -8,7 +8,6 @@ export const Wrapper = styled.div.attrs(() => ({ className: 'intro-text' }))`
     font-size: 1.5rem;
     line-height: 1.333;
     color: var(--c10);
-    letter-spacing: -0.1rem;
     text-align: center;
     text-transform: capitalize;
   }
