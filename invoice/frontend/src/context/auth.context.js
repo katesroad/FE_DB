@@ -1,6 +1,7 @@
 // eslint-disable-next-line
 import styled from "styled-components/macro";
 import { useQuery } from "react-query";
+import { Content } from "components/lib";
 import * as React from "react";
 import * as auth from "utils/auth";
 
@@ -43,7 +44,7 @@ export function AuthProvider(props) {
 
 	if (["loading", "idle"].includes(status)) {
 		return (
-			<div
+			<Content
 				css={`
 					position: fixed;
 					top: 0;
@@ -53,10 +54,11 @@ export function AuthProvider(props) {
 					align-items: center;
 					justify-content: center;
 					font-size: 3rem;
+					background: var(--body-background);
 				`}
 			>
 				<p>Loading...</p>
-			</div>
+			</Content>
 		);
 	}
 
