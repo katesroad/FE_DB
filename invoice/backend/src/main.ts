@@ -2,6 +2,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import * as rateLimit from 'express-rate-limit';
+import * as cookieParser from 'cookie-parser';
 import * as helmet from 'helmet';
 import { AppModule } from './app.module';
 
@@ -16,13 +17,9 @@ async function bootstrap() {
       forbidUnknownValues: true,
     }),
   );
-  app.use(
-    rateLimit({
-      windowMs: 1000, // 1 second
-      max: 10, // limit each IP to 10 requests per windowMs
-    }),
-  );
+  app.use(rateLimit({ windowMs: 1000, max: 10 }));
   app.use(helmet());
+  app.use(cookieParser());
 
   const port = config.get('app.port') || 3000;
   await app.listen(port, () => {

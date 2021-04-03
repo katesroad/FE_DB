@@ -7,10 +7,13 @@ import {
   Patch,
   Post,
   Query,
+  UseGuards,
 } from '@nestjs/common';
+import { JwtAuthGuard } from 'common/auth';
 import { InvoicesService } from './invoices.service';
 
 @Controller('api/invoices')
+@UseGuards(JwtAuthGuard)
 export class InvoicesController {
   constructor(private invoiceService: InvoicesService) {}
 

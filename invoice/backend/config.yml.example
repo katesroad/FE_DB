@@ -2,5 +2,16 @@ db:
   Mongo:
     uri: <your mongodb provider url>
 app:
-  port: 3000
- 
+  port: 8080
+  cors:
+    # allowed origins for API server
+    origin: https://www.example.com/, https://example.com/
+  auth:
+    access:
+      name: <Your JWT token name>
+      secret: <Your JWT token secret>
+      expiresIn: <Your JWT token expires time>
+    token:
+      name: <Your refresh token name>
+      secret: <Your refresh token secret>
+      expiresIn: <Your refresh token expires time>

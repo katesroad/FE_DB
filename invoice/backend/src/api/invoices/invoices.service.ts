@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Invoice, InvoiceDoc } from 'common/mongo';
+import { Invoice, InvoiceDoc } from 'mongo';
 import { Model } from 'mongoose';
 import { HelperService } from './helper.service';
 
