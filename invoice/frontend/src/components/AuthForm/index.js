@@ -28,11 +28,7 @@ function AuthForm({ onSubmit, type }) {
 	const handleSubmit = (values) => {
 		onSubmit(values).catch((errMsg) => setErrMsg(errMsg));
 	};
-	const handleFocus = (props) => () => {
-		props.setSubmitting(false);
-		setErrMsg("");
-	};
-	const handleClearMsg = (props) => () => {
+	const getClearErrorHandler = (props) => () => {
 		props.setSubmitting(false);
 		setErrMsg("");
 	};
@@ -46,7 +42,7 @@ function AuthForm({ onSubmit, type }) {
 				onSubmit={handleSubmit}
 			>
 				{({ isSubmitting, ...props }) => (
-					<Form onFocus={handleFocus(props)}>
+					<Form onFocus={getClearErrorHandler(props)}>
 						{type === "login" ? null : (
 							<Field
 								label="User Name"
@@ -65,7 +61,7 @@ function AuthForm({ onSubmit, type }) {
 						<ErrorMsg
 							errMsg={errMsg}
 							isSubmitting={isSubmitting}
-							onClearMsg={handleClearMsg(props)}
+							onClearMsg={getClearErrorHandler(props)}
 						/>
 						<p className="footer">
 							<Button type="submit" disabled={isSubmitting}>
