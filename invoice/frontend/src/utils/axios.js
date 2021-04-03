@@ -8,8 +8,9 @@ axios.interceptors.response.use(
 	(error) => {
 		let errorMessage = "";
 		let isAtAuth = false;
+		let url = "";
 		try {
-			const { url } = JSON.parse(JSON.stringify(error)).config;
+			url = JSON.parse(JSON.stringify(error)).config.url;
 			if (url.indexOf("auth/token") > -1) isAtAuth = true;
 			if (["/login", "/register"].includes(window.location.pathname)) {
 				isAtAuth = true;
@@ -22,13 +23,14 @@ axios.interceptors.response.use(
 		}
 		if (error.response.status === 400) {
 			auth.cleanUser();
-			errorMessage = "Invalid email or password";
+			errorMessage = "Email has been registered";
 		}
 
 		if ([401, 403].includes(error.response.status)) {
 			auth.cleanUser();
-			errorMessage = "Requesting resource that require authentication.";
+			errorMessage = "Please check the email and password";
 			if (!isAtAuth) {
+				errorMessage = "Requesting resource that require authentication.";
 				window.location.reload();
 			}
 		}

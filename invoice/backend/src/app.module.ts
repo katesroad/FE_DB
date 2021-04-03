@@ -25,7 +25,7 @@ import { CommonModule } from './common/common.module';
       },
     }),
     ApiModule,
-    CommonModule
+    CommonModule,
   ],
 })
 export class AppModule {}

@@ -1,4 +1,8 @@
-import { InternalServerErrorException, Injectable } from '@nestjs/common';
+import {
+  InternalServerErrorException,
+  Injectable,
+  BadRequestException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { UserDoc, User } from 'common/mongo';
 import { Model } from 'mongoose';
@@ -26,7 +30,9 @@ export class UserService {
       const user = await this.userModel.create(userData as any);
       return this.cleanUser(user.toJSON());
     } catch (e) {
-      throw new InternalServerErrorException(e);
+      if (e.code === 11000)
+        throw new BadRequestException('Email has been registerd.');
+      else throw new InternalServerErrorException(e);
     }
   }
 
