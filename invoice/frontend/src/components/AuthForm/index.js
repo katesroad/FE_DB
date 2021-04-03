@@ -67,13 +67,15 @@ function AuthForm({ onSubmit, type }) {
 							isSubmitting={isSubmitting}
 							onClearMsg={handleClearMsg(props)}
 						/>
-						<Button type="submit" disabled={isSubmitting}>
-							{isSubmitting
-								? type === "register"
-									? "registering"
-									: "logining"
-								: type}
-						</Button>
+						<p className="footer">
+							<Button type="submit" disabled={isSubmitting}>
+								{isSubmitting
+									? type === "register"
+										? "registering"
+										: "logining"
+									: type}
+							</Button>
+						</p>
 					</Form>
 				)}
 			</Formik>

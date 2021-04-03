@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
 	max-width: 400px;
 	height: auto;
 	max-height: 77vh;
+	background-color: var(--element-background-color);
 
 	h1 {
 		color: var(--titlte-text-color);
@@ -20,24 +21,33 @@ export const Wrapper = styled.div`
 	form {
 		width: 100%;
 	}
+	.footer {
+		width: 100%;
+		text-align: center;
+	}
 `;
 
 export const RedirectWrap = styled.div`
-	color: var(--element-text-color);
-	padding: 2em 0 0 0;
+	width: 100%;
+	padding-top: 2em;
 	text-align: center;
 	font-size: 0.9rem;
+	color: var(--element-text-color);
 
 	a {
 		text-decoration: underline;
 		white-space: pre;
+		color: var(--element-text-color);
+		&:hover {
+			color: var(--color-primary);
+		}
 	}
 `;
 
 export const ErrorWrap = styled.div`
-	color: red;
 	height: 2rem;
+	width: 100%;
 	text-align: center;
 	font-size: 1.2rem;
-	width: 100%;
+	color: red;
 `;
