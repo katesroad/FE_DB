@@ -10,7 +10,6 @@ export const Wrapper = styled.div`
 	width: 100%;
 	max-width: 400px;
 	height: auto;
-	max-height: 77vh;
 	background-color: var(--element-background-color);
 
 	h1 {

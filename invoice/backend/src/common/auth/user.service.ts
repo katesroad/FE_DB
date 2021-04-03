@@ -1,6 +1,6 @@
 import { InternalServerErrorException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { UserDoc, User } from 'mongo';
+import { UserDoc, User } from 'common/mongo';
 import { Model } from 'mongoose';
 import { CryptoService } from './crypto/crypto.service';
 import { RegisterDto } from './dto/register.dto';

@@ -7,7 +7,7 @@ import { LocalStrategy } from './strategies/local.strategy';
 import { UserService } from './user.service';
 import { HelperService } from './helper.service';
 import { CryptoModule } from './crypto/crypto.module';
-import { MongoModule } from 'mongo';
+import { MongoModule } from 'common/mongo';
 import { ACCESS_NAME } from 'config';
 
 @Global()
@@ -20,7 +20,7 @@ import { ACCESS_NAME } from 'config';
       inject: [ConfigService],
       useFactory: (conf: ConfigService) => {
         const { secret, expiresIn } = conf.get(ACCESS_NAME);
-        return { secret, signOptions: { expiresIn: `${expiresIn}s` } };
+        return { secret, signOptions: { expiresIn: `${expiresIn}` } };
       },
     }),
   ],

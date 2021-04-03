@@ -52,7 +52,7 @@ function AuthForm({ onSubmit, type }) {
 								label="User Name"
 								name="username"
 								type="text"
-								placeholder="username"
+								placeholder="user name"
 							/>
 						)}
 						<Field label="Email" name="email" type="text" placeholder="email" />

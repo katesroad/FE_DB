@@ -17,7 +17,7 @@ export class HelperService {
 
   /**
    * Sign user with given user data
-   * @params {IUser}
+   * @params {IUser}  the user data to be signed
    * @returns {IAutheUser} user data with authentication information(access token and refresh token)
    */
   async signUser(user: IUser): Promise<IAutheUser> {
@@ -58,24 +58,23 @@ export class HelperService {
   /**
    * Get authentication cookie.
    * @params {TokenType} the token type, etiher be "token" or "refresh"
-   * @params {string} the token value
-   * @param {boolean} isClean  boolean type, providing true value means clean the cookie
+   * @params {string} value the token value
+   * @param {bool} default false, providing true value means clean the cookie
    * @returns {<Record<string, string>}
-   * with expiration time as zeo
    */
   private getTokenCookie(
     type: TokenType,
     value: string,
     doClean?: boolean,
   ): Record<string, string> {
-    let { name, expiresIn } = this.confService.get(`app.auth.${type}`);
+    let { name, expiration } = this.confService.get(`app.auth.${type}`);
     let cookieValue = value;
     if (doClean) {
-      expiresIn = 0;
+      expiration = 0;
       cookieValue = '';
     }
     const isProd = process.env.NODE_ENV === 'production';
-    let cookie = `${name}=${cookieValue};HttpOnly=true;Path=/;Max-Age=${expiresIn};`;
+    let cookie = `${name}=${cookieValue};HttpOnly=true;Path=/;Max-Age=${expiration};`;
     if (isProd) {
       cookie += 'Secure=true;SameSite=None';
     }

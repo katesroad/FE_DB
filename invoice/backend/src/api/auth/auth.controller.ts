@@ -68,7 +68,7 @@ export class AuthController {
 
     res.setHeader('Set-Cookie', [access.value, token.value]);
 
-    const resData = doClean ? null : user;
-    res.json(resData);
+    const data = doClean ? null : user;
+    res.json({ data });
   }
 }

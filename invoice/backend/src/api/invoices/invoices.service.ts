@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Invoice, InvoiceDoc } from 'mongo';
-import { Model, Mongoose } from 'mongoose';
+import { Invoice, InvoiceDoc } from 'common/mongo';
+import { Model } from 'mongoose';
 import { HelperService } from './helper.service';
 
 @Injectable()
@@ -60,16 +60,19 @@ export class InvoicesService {
       update = { ...update, ...this.calcTotal(items) };
     }
     return this.invoiceModel
-      .findOneAndUpdate({ _id: id, author: userId }, update)
+      .findOneAndUpdate({ _id: id, author: userId }, update, {
+        returnOriginal: false, // returns the new version of doc after updating
+      })
       .then((doc) => {
         if (doc) return this.cleanDoc(doc);
-        else
+        else {
           throw new BadRequestException(`Can't find invoice#${id} for user.`);
+        }
       });
   }
 
   deleteInvoice(userId: string, id: string) {
-    return this.invoiceModel.findOneAndDelete({ _id: id });
+    return this.invoiceModel.findOneAndDelete({ _id: id, author: userId });
   }
 
   private cleanDoc(doc) {
