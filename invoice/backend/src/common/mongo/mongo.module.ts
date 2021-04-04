@@ -1,27 +1,20 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Invoice, InvoiceSchema } from './schemas/invoice.schema';
-import { ConfigService } from '@nestjs/config';
+import { Invoice, InvoiceSchema, User, UserSchema } from './schemas';
 
+@Global()
 @Module({
   imports: [
-    MongooseModule.forRootAsync({
-      inject: [ConfigService],
-      useFactory: (config: ConfigService) => {
-        const mongoConf = config.get('db.Mongo');
-        return {
-          ...mongoConf,
-          useUnifiedTopology: true,
-          useNewUrlParser: true,
-          useCreateIndex: true,
-          useFindAndModify: false,
-        };
-      },
-    }),
-    MongooseModule.forFeature([{ name: Invoice.name, schema: InvoiceSchema }]),
+    MongooseModule.forFeature([
+      { name: Invoice.name, schema: InvoiceSchema },
+      { name: User.name, schema: UserSchema },
+    ]),
   ],
   exports: [
-    MongooseModule.forFeature([{ name: Invoice.name, schema: InvoiceSchema }]),
+    MongooseModule.forFeature([
+      { name: Invoice.name, schema: InvoiceSchema },
+      { name: User.name, schema: UserSchema },
+    ]),
   ],
 })
 export class MongoModule {}

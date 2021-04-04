@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
-import { MongoModule } from './mongo/mongo.module';
+import { AuthModule } from './auth/auth.module';
+import { MongoModule } from './mongo';
 
 @Module({
-  imports: [MongoModule],
+  imports: [AuthModule, MongoModule],
 })
 export class CommonModule {}

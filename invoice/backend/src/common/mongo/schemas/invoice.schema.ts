@@ -1,5 +1,7 @@
+import * as mongoose from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Mongoose } from 'mongoose';
+import { User } from './user.schema';
 
 export type InvoiceDoc = Invoice & Document;
 
@@ -20,6 +22,8 @@ class Item {
 type Status = 'paid' | 'pending' | 'draft';
 @Schema({ versionKey: false, timestamps: true })
 export class Invoice {
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: User.name })
+  author: string;
   // coordindate id in data
   @Prop({ required: true, unique: true })
   tag: string;

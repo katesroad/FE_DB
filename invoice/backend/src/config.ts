@@ -10,3 +10,6 @@ const YAML_CONFIG_FILENAME =
 export default () => {
   return yaml.load(readFileSync(join(__dirname, YAML_CONFIG_FILENAME), 'utf8'));
 };
+
+export const ACCESS_NAME = 'app.auth.access';
+export const TOKEN_NAME = 'app.auth.token';

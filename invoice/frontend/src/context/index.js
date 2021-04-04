@@ -4,28 +4,27 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ThemeProvider } from "./theme.context";
 import { NotificationProvider } from "./notification.context";
 import GlobalStyles from "components/GlobalStyles";
-import { AppHeader, AppMain } from "components/layout";
+import { AuthProvider } from "./auth.context";
 
 const queryClient = new QueryClient({
-  cacheTime: 2500,
-  staleTime: 2000,
+	cacheTime: 2500,
+	staleTime: 2000,
 });
 export default function AppProvider({ children }) {
-  return (
-    <>
-      <GlobalStyles />
-      <QueryClientProvider client={queryClient}>
-        <NotificationProvider>
-          <ThemeProvider>
-            <AppHeader />
-            <AppMain>
-              <BrowserRouter>
-                <>{children}</>
-              </BrowserRouter>
-            </AppMain>
-          </ThemeProvider>
-        </NotificationProvider>
-      </QueryClientProvider>
-    </>
-  );
+	return (
+		<>
+			<GlobalStyles />
+			<QueryClientProvider client={queryClient}>
+				<NotificationProvider>
+					<AuthProvider>
+						<ThemeProvider>
+							<BrowserRouter>
+								<>{children}</>
+							</BrowserRouter>
+						</ThemeProvider>
+					</AuthProvider>
+				</NotificationProvider>
+			</QueryClientProvider>
+		</>
+	);
 }
