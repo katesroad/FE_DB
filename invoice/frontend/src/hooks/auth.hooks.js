@@ -1,4 +1,5 @@
 import axios from "utils/axios";
+import { useHistory } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 
 const conf = {
@@ -8,11 +9,10 @@ const conf = {
 };
 
 export function useGetUser() {
+	const queryClient = useQueryClient();
 	return useQuery(["user"], () => axios.get("auth/token").catch((e) => null), {
 		...conf,
-		onError: () => {
-			window.location.reload();
-		},
+		onError: () => queryClient.setQueryData(["user"], null),
 	});
 }
 
@@ -26,10 +26,11 @@ export function useLogin() {
 
 export function useLogout() {
 	const queryClient = useQueryClient();
+	const history = useHistory();
 	return useMutation(() => axios.get("auth/logout").catch((e) => null), {
-		...conf,
-		onSuccess: (data) => {
-			queryClient.setQueryData(["user"], null);
+		onSuccess: () => (window.location.href = "/login"),
+		onError: async () => {
+			await queryClient.refetchQueries(["user"]);
 		},
 	});
 }
