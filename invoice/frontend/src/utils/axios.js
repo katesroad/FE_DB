@@ -4,7 +4,27 @@ axios.defaults.withCredentials = true;
 axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
 axios.interceptors.response.use(
 	(res) => res.data?.data,
-	(error) => Promise.reject(error)
+	(error) => {
+		const { url } = error.config;
+		if (url.indexOf("invoices") === -1) return Promise.reject(error);
+		return new Promise(async (resolve, reject) => {
+			const originalRequest = error.config;
+			if (
+				error.response &&
+				error.response.status === 401 &&
+				error.config &&
+				!error.config.__isRetryRequest
+			) {
+				originalRequest._retry = true;
+				await axios
+					.get("auth/token")
+					.then(() => axios(originalRequest))
+					.then((res) => resolve(res))
+					.catch((e) => reject(error));
+			}
+			return Promise.reject(error);
+		});
+	}
 );
 
 axios.interceptors.request.use((conf) => {
