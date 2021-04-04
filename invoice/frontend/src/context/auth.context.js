@@ -1,46 +1,30 @@
 // eslint-disable-next-line
 import styled from "styled-components/macro";
-import { useQuery } from "react-query";
 import { Content } from "components/lib";
 import * as React from "react";
-import * as auth from "utils/auth";
+import { useQueryClient } from "react-query";
+import { useGetUser } from "hooks/auth.hooks";
 
 const AuthContext = React.createContext();
 AuthContext.displayName = "AuthContext";
 
 export function AuthProvider(props) {
-	const { data, status } = useQuery({
-		queryKey: ["user"],
-		queryFn: auth.getUser,
+	const queryClient = useQueryClient();
+	const { data, status, error } = useGetUser();
+	const [user, setUser] = React.useState(() => {
+		try {
+			return queryClient.getQueryData(["user"]);
+		} catch (e) {
+			console.log(e);
+			return null;
+		}
 	});
-	const [user, setUser] = React.useState(auth.getCachedUser);
+
 	React.useEffect(() => {
-		if (status === "success" && data) setUser(data);
+		if (status === "success") {
+			setUser(data);
+		}
 	}, [status, data]);
-
-	// when data changes, we store the user data in localstorage
-	React.useEffect(() => {
-		if (user) auth.storeUser(user);
-		return auth.cleanUser;
-	}, [user]);
-
-	// user register function
-	const register = React.useCallback(
-		(form) => auth.register(form).then((data) => setUser(data)),
-		[setUser]
-	);
-
-	// user login function
-	const login = React.useCallback(
-		(form) => auth.login(form).then((data) => setUser(data)),
-		[setUser]
-	);
-
-	// user logout function
-	const logout = React.useCallback(
-		() => auth.logout().then(() => setUser(null)),
-		[setUser]
-	);
 
 	if (["loading", "idle"].includes(status)) {
 		return (
@@ -62,7 +46,11 @@ export function AuthProvider(props) {
 		);
 	}
 
-	const value = { user, register, login, logout };
+	if (status === "error") {
+		console.log(error);
+	}
+
+	const value = { user, setUser };
 	return <AuthContext.Provider value={value} {...props} />;
 }
 

@@ -1,13 +1,12 @@
 import * as React from "react";
 import AuthForm from "components/AuthForm";
-import { useAuth } from "context/auth.context";
+import { useLogin } from "hooks/auth.hooks";
 
 export default function LoginScreen() {
 	React.useEffect(() => {
 		document.title = "Login";
-		return () => (document.title = "Invoice App");
+		return () => (document.title = "FEM Invoice");
 	}, []);
-	const { login } = useAuth();
-	const handleSubmit = (values) => login(values);
-	return <AuthForm type="login" onSubmit={handleSubmit} />;
+	const mutation = useLogin();
+	return <AuthForm type="login" mutation={mutation} />;
 }

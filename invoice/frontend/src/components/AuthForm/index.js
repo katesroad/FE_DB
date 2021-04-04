@@ -8,6 +8,7 @@ import { Formik, Form } from "formik";
 import { Link } from "react-router-dom";
 import { initialValues, AuthSchema } from "./auth.helper";
 import { Wrapper, RedirectWrap, ErrorWrap } from "./styles";
+import { useAuth } from "context/auth.context";
 
 function ErrorMsg({ isSubmitting, errMsg, onClearMsg }) {
 	React.useEffect(() => {
@@ -16,22 +17,31 @@ function ErrorMsg({ isSubmitting, errMsg, onClearMsg }) {
 				clearTimeout(t1);
 				t1 = null;
 				onClearMsg();
-			}, 3000);
+			}, 5000);
 		}
 	}, [errMsg, onClearMsg]);
 	if (!isSubmitting) return null;
 	return <ErrorWrap>{errMsg.toString()}</ErrorWrap>;
 }
 
-function AuthForm({ onSubmit, type }) {
+function AuthForm({ mutation, type }) {
 	const [errMsg, setErrMsg] = React.useState("");
+	const { setUser } = useAuth();
 	const handleSubmit = (values) => {
-		onSubmit(values).catch((errMsg) => setErrMsg(errMsg));
+		mutation.mutateAsync(values).catch((e) => {
+			if (type === "login") setErrMsg("Invalid email or password");
+			else setErrMsg("Account has been registered");
+		});
 	};
 	const getClearErrorHandler = (props) => () => {
 		props.setSubmitting(false);
 		setErrMsg("");
 	};
+	React.useEffect(() => {
+		if (mutation.status === "success") {
+			setUser(mutation.data);
+		}
+	}, [mutation.status, mutation.data, setUser]);
 
 	return (
 		<Wrapper>
@@ -93,7 +103,7 @@ function AuthForm({ onSubmit, type }) {
 }
 
 AuthForm.propTypes = {
-	onSubmit: PropTypes.func.isRequired,
+	mutation: PropTypes.object.isRequired, // react query mutation
 	type: PropTypes.oneOf(["login", "register"]).isRequired,
 };
 export default AuthForm;
