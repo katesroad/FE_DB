@@ -53,6 +53,7 @@ export const Avatar = styled.div`
 	span {
 		display: block;
 		font-size: 14px;
+		text-align: center;
 	}
 	img {
 		width: 20px;
