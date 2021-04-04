@@ -7,8 +7,11 @@ import GlobalStyles from "components/GlobalStyles";
 import { AuthProvider } from "./auth.context";
 
 const queryClient = new QueryClient({
-	cacheTime: 2500,
-	staleTime: 2000,
+	defaultOptions: {
+		staleTime: 5 * 60 * 1000,
+		cacheTime: 5 * 60 * 1000,
+		retry: 2,
+	},
 });
 export default function AppProvider({ children }) {
 	return (
