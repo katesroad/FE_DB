@@ -1,5 +1,10 @@
 # Summary for frontend
 
+## Use third-party lib or UI
+
+Directly rewrite the styling(using sass) of the third-party component is more convinient than wrapping the component with
+_styled-component_.
+
 ## Formik
 
 - You don't have to have a input/checkbox field for form validation purpose.
