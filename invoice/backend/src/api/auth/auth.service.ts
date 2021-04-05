@@ -7,7 +7,7 @@ import {
   RegisterDto,
   UserService,
   CryptoService,
-} from '../../common/auth';
+} from 'common/auth';
 
 @Injectable()
 export class AuthService {
