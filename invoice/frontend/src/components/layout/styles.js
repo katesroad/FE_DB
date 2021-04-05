@@ -54,6 +54,7 @@ export const Avatar = styled.div`
 		display: block;
 		font-size: 14px;
 		text-align: center;
+		cursor: pointer;
 	}
 	img {
 		width: 20px;

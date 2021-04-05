@@ -1,5 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
+import { useQueryClient } from "react-query";
 import InvoiceStatus from "components/InvoiceStatus";
 import { Card, Spinner, Error } from "components/lib";
 import {
@@ -15,6 +16,8 @@ import {
   Text,
   EmptyImage,
 } from "./styles";
+import { getInvoice } from "hooks/invoice.hooks";
+import { getUser } from "hooks/auth.hooks";
 
 export const InvoiceShape = {
   tag: PropTypes.string.isRequired,
@@ -49,6 +52,23 @@ const Invoice = React.memo(({ ...invoice }) => {
 Invoice.propTypes = InvoiceShape;
 
 function InvoiceList({ invoices, status }) {
+  const queryClient = useQueryClient();
+  const getPrefetchHandler = (invoice) => {
+    return async () => {
+      await queryClient.prefetchQuery(
+        ["invoice", invoice.id],
+        () => getInvoice(invoice.id),
+        {
+          staleTime: 30 * 60 * 1000,
+          cacheTime: 50 * 1000,
+          retry: 1,
+          onError: async () => {
+            await queryClient.refetchQueries(["user"], getUser, { retry: 0 });
+          },
+        }
+      );
+    };
+  };
   if (["idle", "loading"].includes(status))
     return <Spinner className="size-large" />;
   if (status === "error")
@@ -61,7 +81,7 @@ function InvoiceList({ invoices, status }) {
     return (
       <ul>
         {invoices.map((invoice) => (
-          <li key={invoice.id}>
+          <li key={invoice.id} onMouseEnter={getPrefetchHandler(invoice)}>
             <Invoice {...invoice} />
           </li>
         ))}

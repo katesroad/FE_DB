@@ -2,7 +2,7 @@ import * as React from "react";
 // eslint-disable-next-line
 import styled from "styled-components/macro";
 import * as mediaQueries from "styles/media-queries";
-import { useInvoices } from "hooks/useGetInvoices";
+import { useInvoices } from "hooks/invoices.hooks";
 import SuspenseErrorBoundary, {
   ErrorFallback,
 } from "components/SuspenseBoundary";
