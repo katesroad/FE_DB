@@ -1,5 +1,7 @@
 # README
 
+**Online version preview**: https://kate-invoice.netlify.app/
+
 **ABOUT**: Invoice challenge frontend code.
 **SETUP**: copy `.env.example` as `.env` and config the API path based on your need.
 
