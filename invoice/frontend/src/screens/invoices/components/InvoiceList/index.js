@@ -17,6 +17,7 @@ import {
 	EmptyImage,
 } from "./styles";
 import { getInvoice } from "hooks/invoice.hooks";
+import { getUser } from "hooks/auth.hooks";
 
 export const InvoiceShape = {
 	tag: PropTypes.string.isRequired,
@@ -53,11 +54,18 @@ Invoice.propTypes = InvoiceShape;
 function InvoiceList({ invoices, status }) {
 	const queryClient = useQueryClient();
 	const getPrefetchHandler = (invoice) => {
-		return () => {
-			queryClient.prefetchQuery(
+		return async () => {
+			await queryClient.prefetchQuery(
 				["invoice", invoice.id],
 				() => getInvoice(invoice.id),
-				{ staleTime: 30 * 60 * 1000, cacheTime: 50 * 1000, retry: 1 }
+				{
+					staleTime: 30 * 60 * 1000,
+					cacheTime: 50 * 1000,
+					retry: 1,
+					onError: async () => {
+						await queryClient.refetchQueries(["user"], getUser, { retry: 0 });
+					},
+				}
 			);
 		};
 	};

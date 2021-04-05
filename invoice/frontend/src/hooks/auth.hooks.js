@@ -9,9 +9,13 @@ const conf = {
 	retry: 0,
 };
 
+export function getUser() {
+	return axios.get("auth/token");
+}
+
 export function useGetUser() {
 	const queryClient = useQueryClient();
-	return useQuery(["user"], () => axios.get("auth/token").catch((e) => null), {
+	return useQuery(["user"], getUser, {
 		...conf,
 		onError: () => queryClient.setQueryData(["user"], null),
 	});
