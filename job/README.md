@@ -1,4 +1,6 @@
-# README
+# README]
+
+**Online version preview**: https://kate-job-api.netlify.app/
 
 **ABOUT**: The job api challenge code.
 **SETUP**: copy `.env.example` as `.env` and config the API path based on your need.
