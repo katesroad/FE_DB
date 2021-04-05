@@ -67,6 +67,11 @@ export class AuthController {
       : this.helperService.getAuthCookies(user);
 
     res.setHeader('Set-Cookie', [access.value, token.value]);
+    res.setHeader('Access-Controll-Origin', '*');
+    res.setHeader(
+      'Access-Controll-Allowed-Headers',
+      'Origin, X-Request-Width, Content-Type, Accept',
+    );
 
     const data = doClean ? null : user;
     res.json({ data });
