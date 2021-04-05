@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 import * as React from "react";
 import { Button } from "components/lib";
 import InvoiceForm from "components/InvoiceForm";
-import { useUpdateInvoice } from "hooks/invoice-hooks";
+import { useUpdateInvoice } from "hooks/invoice.hooks";
 import SideModal, { ModalCloseBtn } from "components/SideModal";
 
 export default function EditInvoice({ invoice }) {

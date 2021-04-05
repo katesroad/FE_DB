@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Button } from "components/lib";
 import PropTypes from "prop-types";
-import { useUpdateInvoice } from "hooks/invoice-hooks";
+import { useUpdateInvoice } from "hooks/invoice.hooks";
 import SuspenseBoundary, { ErrorFallback } from "components/SuspenseBoundary";
 
 const EditInvoice = React.lazy(() => import("../EditInvoice"));

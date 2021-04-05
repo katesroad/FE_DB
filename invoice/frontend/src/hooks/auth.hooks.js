@@ -2,9 +2,10 @@ import axios from "utils/axios";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 
 // please make sure to be identical with the access token expiration time
+const accessTokenExpiration = +process.env.REACT_APP_JWT_KEY_EXPIRATION;
 const conf = {
-	staleTime: 29 * 60 * 1000, //milliseconds,
-	cacheTime: 30 * 60 * 1000,
+	staleTime: accessTokenExpiration - 2 * 60 * 1000, //milliseconds,
+	cacheTime: accessTokenExpiration,
 	retry: 0,
 };
 

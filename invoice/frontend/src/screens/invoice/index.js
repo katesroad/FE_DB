@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 import styled from "styled-components/macro";
 import * as React from "react";
-import { useGetInvoice } from "hooks/invoice-hooks";
+import { useGetInvoice } from "hooks/invoice.hooks";
 import { Link, useParams } from "react-router-dom";
 import { Spinner, Error, Card } from "components/lib";
 import GobackBtn from "components/GobackBtn";

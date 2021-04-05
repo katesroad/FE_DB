@@ -2,7 +2,7 @@
 import styled from "styled-components/macro";
 import * as React from "react";
 import PropTypes from "prop-types";
-import { useDeleteInvoice } from "hooks/invoice-hooks";
+import { useDeleteInvoice } from "hooks/invoice.hooks";
 import {
   Modal,
   ModalContent,

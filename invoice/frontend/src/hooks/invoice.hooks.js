@@ -16,6 +16,7 @@ function useInvoiceMutation(queryFn, conf = {}) {
 			queryClient.refetchQueries(["invoices"]);
 			onSuccess && onSuccess(data, { tag, id }, ctx);
 		},
+		retry: 1,
 	});
 	const [, dispatch] = useNotification();
 	React.useEffect(() => {
@@ -46,11 +47,15 @@ export function useCreateInvoice() {
 	});
 }
 
+export function getInvoice(id) {
+	return axios.get(`invoices/${id}`);
+}
 //Get invoice by invoice's id
 export function useGetInvoice(id) {
-	return useQuery(["invoice", id], () => axios.get(`invoices/${id}`), {
+	return useQuery(["invoice", id], () => getInvoice(id), {
 		staleTime: 30 * 60 * 1000,
 		cacheTime: 50 * 1000,
+		retry: 1,
 	});
 }
 
