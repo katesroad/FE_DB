@@ -12,49 +12,49 @@ import Footer from "./components/Footer";
 
 // Invoice detail page
 export default function InvoiceScreen() {
-  const { id } = useParams();
-  const { status, data: invoice, error } = useGetInvoice(id);
-  React.useEffect(() => {
-    if (invoice?.tag) {
-      document.title = `Fem Invoice#${invoice.tag}`;
-    }
-    return () => (document.title = "Fem Invoice");
-  }, [invoice]);
-  return (
-    <>
-      <Link to="/">
-        <GobackBtn />
-      </Link>
-      <StatusPanel status={status} invoice={invoice}>
-        <Operations invoice={invoice} />
-      </StatusPanel>
-      {status === "success" ? (
-        <>
-          <InvoiceInfo {...invoice} />
-          <Footer>
-            <Operations invoice={invoice} />
-          </Footer>
-        </>
-      ) : (
-        <Card
-          css={`
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 24px;
-            height: 42vh;
-            .error {
-              font-size: 200%;
-            }
-          `}
-        >
-          {status === "error" ? (
-            <Error className="error">{error?.message}</Error>
-          ) : (
-            <Spinner className="size-large" />
-          )}
-        </Card>
-      )}
-    </>
-  );
+	const { id } = useParams();
+	const { status, data: invoice, error } = useGetInvoice(id);
+	React.useEffect(() => {
+		if (invoice?.tag) {
+			document.title = `FEM Invoice#${invoice.tag}`;
+		}
+		return () => (document.title = "FEM Invoice");
+	}, [invoice]);
+	return (
+		<>
+			<Link to="/">
+				<GobackBtn />
+			</Link>
+			<StatusPanel status={status} invoice={invoice}>
+				<Operations invoice={invoice} />
+			</StatusPanel>
+			{status === "success" ? (
+				<>
+					<InvoiceInfo {...invoice} />
+					<Footer>
+						<Operations invoice={invoice} />
+					</Footer>
+				</>
+			) : (
+				<Card
+					css={`
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						margin-top: 24px;
+						height: 42vh;
+						.error {
+							font-size: 200%;
+						}
+					`}
+				>
+					{status === "error" ? (
+						<Error className="error">{error?.message}</Error>
+					) : (
+						<Spinner className="size-large" />
+					)}
+				</Card>
+			)}
+		</>
+	);
 }
