@@ -2,7 +2,7 @@
 
 ## Final preview
 
-https://chinonso-countries-list.netlify.app/
+https://kate-job-api.netlify.app/
 
 ## Instruction
 
