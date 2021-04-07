@@ -2,7 +2,7 @@
 
 ## Final preview
 
-https://kate-job-api.netlify.app/
+https://kate-country-list.netlify.app/
 
 ## Instruction
 
