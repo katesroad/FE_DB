@@ -1,5 +1,11 @@
-# Readme
+# README
 
-Next.js project using styled-components as styling solution.
+Source code for some frontendmentor challenges.
 
-Code format supported
+## Online preview list
+
+- https://kate-job-api.netlify.app
+- https://kate-pay-api.netlify.app
+- https://kate-country-list.netlify.app
+- https://kate-invoice.netlify.app/login
+- https://kate-photonap.netlify.app/stories
