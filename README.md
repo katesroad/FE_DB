@@ -2,10 +2,20 @@
 
 Source code for some frontendmentor challenges.
 
-## Online preview list
+## Rreview list and codebase
 
-- https://kate-job-api.netlify.app
-- https://kate-pay-api.netlify.app
-- https://kate-country-list.netlify.app
-- https://kate-invoice.netlify.app/login
-- https://kate-photonap.netlify.app/stories
+- Invoice mamangment application
+  - Preview: https://kate-invoice.netlify.app/login
+  - Code: [invoice](./invoice)
+- Job API challenge
+  - Preview: https://kate-job-api.netlify.app
+  - Code: [job](./job/src)
+- Payment company marketing site
+  - Preview: https://kate-pay-api.netlify.app
+  - Code: [pay](./pay)
+- Countries Restful API
+  - Preview:
+  - Code: [Country-list](./country-list/src)
+- Photonap marketing site
+  - Preview: https://kate-photonap.netlify.app/stories
+  - Code: [photonap](./photonap)
