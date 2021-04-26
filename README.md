@@ -14,7 +14,7 @@ Source code for some frontendmentor challenges.
   - Preview: https://kate-pay-api.netlify.app
   - Code: [pay](./pay)
 - Countries Restful API
-  - Preview:
+  - Preview: https://kate-country-list.netlify.app/
   - Code: [Country-list](./country-list/src)
 - Photonap marketing site
   - Preview: https://kate-photonap.netlify.app/stories
