@@ -8,7 +8,6 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     line-height: 1;
     box-sizing: border-box;
-    transition: all .25s ease;
   }
   html {
    height:100%;
