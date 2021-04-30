@@ -67,29 +67,28 @@ export const OuterLink = styled("a").attrs(() => ({
 
 // the container to render markdown  content
 export const MdContent = styled.div`
-	h1,
-	h2,
-	h4,
-	h5,
-	h6,
-	strong {
-		display: block;
-		padding-top: 2rem;
-	  padding-bottom: 2rem;
-		&:first-child {
-			padding-top: 0;
-		}
-	}
-	}
-	p,
-	li {
-		line-height: 26px;
-	}
-	a {
-		font-weight: bold;
-		word-break: break-all;
-		text-decoration: underline;
-	}
+  h1,
+  h2,
+  h4,
+  h5,
+  h6,
+  strong {
+    display: block;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    &:first-child {
+      padding-top: 0;
+    }
+  }
+  p,
+  li {
+    line-height: 26px;
+  }
+  a {
+    font-weight: bold;
+    word-break: break-all;
+    text-decoration: underline;
+  }
 `;
 
 /*--------------------------About company section---------------------------------*/

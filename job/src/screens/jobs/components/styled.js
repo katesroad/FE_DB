@@ -20,12 +20,12 @@ export const Main = styled(Content).attrs(() => ({ as: "main" }))`
     right: 0;
     width: 100%;
     height: 100%;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
   }
   .spinner {
     font-size: 4rem;
-    color: #5964E0;
+    color: #5964e0;
   }
 `;
