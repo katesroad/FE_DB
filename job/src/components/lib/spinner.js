@@ -14,6 +14,8 @@ export const Spinner = styled(FaSpinner)`
 	animation: ${spin} 1s linear infinite;
 `;
 Spinner.defaultProps = {
-	"aria-label": "loading",
+  "aria-label": "loading",
+  className: 'spinner',
 };
 Spinner.displayName = "Spinner";
+

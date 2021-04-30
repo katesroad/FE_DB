@@ -5,33 +5,37 @@ import * as mediaQueries from "styles/media-queries";
 export * from "./typography";
 export * from "./button";
 export * from "./modal";
-// export * from "./spinner";
+export * from "./spinner";
 
 export const cardStyle = css`
-	padding: 24px;
-	border-radius: 6px;
-	color: inherit;
-	background: var(--element-background);
+  padding: 24px;
+  border-radius: 6px;
+  color: inherit;
+  background: var(--element-background);
 `;
 export const Card = styled.div`
-	${cardStyle}
+  ${cardStyle}
 `;
 
 export const Content = styled.div`
-	padding-left: 12px;
-	padding-right: 12px;
-	${mediaQueries.iphone} {
-		width: 89%;
-		padding-left: 0;
-		padding-right: 0;
-		margin-left: auto;
-		margin-right: auto;
-	}
-	${mediaQueries.xlarge} {
-		max-width: 1100px;
-	}
+  padding-left: 12px;
+  padding-right: 12px;
+  ${mediaQueries.iphone} {
+    width: 89%;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  ${mediaQueries.xlarge} {
+    max-width: 1100px;
+  }
 `;
 
 export const LinkCard = styled(Link)`
-	${cardStyle}
+  ${cardStyle}
+`;
+
+export const Error = styled.div`
+  color: red;
 `;
