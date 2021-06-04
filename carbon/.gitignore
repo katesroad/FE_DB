@@ -1,0 +1,17 @@
+# node modules
+node_modules
+
+# error for using yarn
+yarn-error.log
+
+# build file
+dist
+
+# enviroment file
+.env
+
+# to do list
+todo.txt
+
+# cypress example file
+cypress/integration/examples

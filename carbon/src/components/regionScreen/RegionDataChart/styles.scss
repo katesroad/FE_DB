@@ -1,0 +1,62 @@
+@import 'styles/_var.scss';
+
+.region-chart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: calc(2rem + 1vw);
+
+  .filter {
+    display: flex;
+    align-items: center;
+    margin-bottom: calc(0.75rem + 1vw);
+    &-label {
+      margin-right: calc(0.75rem + 1vw);
+    }
+    @media screen and (min-width: $breakpoint-medium) {
+      margin: 1rem;
+      &-label {
+        margin-right: 1rem;
+      }
+    }
+  }
+
+  &__filter {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__overall {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+
+    span {
+      margin-right: 0.5rem;
+    }
+    // the loading spinner imprted from react-icons
+    svg {
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      transform: translateY(2px);
+    }
+  }
+
+  .range-intensity {
+    position: relative;
+    min-height: 10rem;
+    width: 100%;
+    max-width: 48rem;
+    margin-top: calc(1rem + 1vw);
+
+    .ui-spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import 'styles/_var.scss';
+
+.home-page {
+  & > div {
+    padding: 1rem;
+    margin-bottom: calc(1rem + 2vw);
+  }
+  .national-today > h4,
+  .regions-carbon > h4 {
+    padding-bottom: 1rem;
+  }
+
+  @media screen and (min-width: $breakpoint-large) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .quick-view {
+      width: 100%;
+    }
+    .national-today {
+      width: 60%;
+    }
+    .regions-carbon {
+      width: calc(40% - 1.5rem);
+    }
+  }
+}

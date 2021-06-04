@@ -1,0 +1,49 @@
+@import 'styles/_var.scss';
+
+.quick-view {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  h2 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    @media screen and (min-width: 460px) {
+      margin-bottom: 0;
+    }
+    .ui-spinner {
+      margin-left: 1rem;
+    }
+  }
+
+  &__data {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 0.875rem;
+    strong {
+      margin-right: 0.5rem;
+      font-weight: 500;
+    }
+    span {
+      display: flex;
+      align-items: center;
+      .ui-unit {
+        margin-left: 0.5rem;
+        transform: translate(0, 2px);
+      }
+    }
+    p {
+      display: flex;
+      align-items: baseline;
+      margin-right: 1rem;
+    }
+  }
+
+  .ui-error {
+    font-size: 0.875rem;
+    padding: 1rem 0;
+  }
+}

@@ -1,0 +1,106 @@
+@import 'styles/_var.scss';
+
+.region-panel {
+  position: relative;
+
+  .MuiDialog-paperWidthSm {
+    width: 80vw;
+    max-width: 1024px;
+  }
+
+  // icons imported from react-icons
+  svg {
+    margin-left: 0.25rem;
+    transform: translateY(2px);
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    line-height: 1.75rem;
+    border-radius: 50%;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: calc(2.5rem - 1.25vw);
+
+    a {
+      display: flex;
+      align-items: center;
+      font-size: 0.875rem;
+      text-decoration: underline;
+      &:hover {
+        color: var(--colors-fancy);
+      }
+      svg {
+        color: inherit;
+      }
+    }
+  }
+
+  &__intensity {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+    font-size: 0.85rem;
+
+    .ui-unit {
+      display: none;
+      @media screen and(min-width: 375px) {
+        display: inline;
+      }
+    }
+
+    // label
+    span {
+      margin-right: 0.5rem;
+    }
+
+    p {
+      display: flex;
+      align-items: baseline;
+      margin-right: 1.5rem;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column-reverse;
+    @media screen and (min-width: $breakpoint-large) {
+      flex-direction: row;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+    h6 {
+      margin-top: calc(1rem + 1vw);
+      margin-bottom: calc(1rem + 1vw);
+      text-align: center;
+      @media screen and (min-width: $breakpoint-large) {
+        margin: 1.25rem auto;
+      }
+    }
+  }
+  &__mix {
+    display: none;
+    max-width: 18rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: calc(3rem + 1vw);
+    @media screen and (min-width: $breakpoint-large) {
+      display: block;
+      max-width: 40%;
+    }
+  }
+  &__history {
+    @media screen and (min-width: $breakpoint-large) {
+      width: 60%;
+    }
+  }
+}

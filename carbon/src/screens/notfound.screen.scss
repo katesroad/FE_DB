@@ -1,0 +1,16 @@
+.not-found-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56vh;
+  text-align: center;
+
+  .unhappy-icon {
+    font-size: 12rem;
+  }
+  p {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+}

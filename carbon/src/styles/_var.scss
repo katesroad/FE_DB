@@ -1,0 +1,42 @@
+/* ************************************************** !!
+/* SCSS variables --------------------------------------
+--------------------------------------------------------
+--| Responsive breakpoints
+--| color variables for light and dark theme
+--------------------------------------------------------
+----------------------------------------------------- */
+
+/*
+============Responsive breakpoints(followed bootstrap version 5)================
+*/
+$breakpoint-small: 576px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 992px;
+$breakpoint-xlarge: 1200px;
+$breakpoint-exlarge: 1400px;
+
+/*
+ *================== light & dark theme==========================================
+*/
+
+$light-shadow: hsl(0, 0%, 90%);
+$light-colors-text: hsl(200, 15%, 8%);
+$light-elements-background: hsl(0, 0%, 100%);
+$light-colors-border: hsl(0, 0%, 90%);
+$lightbackground-color: white;
+$light-body-color: hsl(200, 15%, 8%);
+
+$dark-shadow: hsl(0, 0%, 10%);
+$dark-elements-background: hsl(209, 23%, 22%);
+$dark-colors-text: hsl(0, 0%, 100%);
+$dark-colors-border: #9c9c9c;
+$dark-background-color: hsl(207, 26%, 17%);
+$dark-body-color: hsl(0, 0%, 100%);
+
+/*
+ *================== color used for both light & dark mode ==========================================
+*/
+
+$color-red: red;
+$color-fancy: rgb(80, 100, 224);
+$color-white: #fff;

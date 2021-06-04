@@ -1,0 +1,13 @@
+.national-today {
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 10rem;
+  }
+  h2 {
+    small {
+      font-size: x-small;
+    }
+  }
+}

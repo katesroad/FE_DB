@@ -1,0 +1,101 @@
+@keyframes sk-cubeGridScaleDelay {
+  0%,
+  70%,
+  100% {
+    -webkit-transform: scale3D(1, 1, 1);
+    transform: scale3D(1, 1, 1);
+  }
+  35% {
+    -webkit-transform: scale3D(0, 0, 1);
+    transform: scale3D(0, 0, 1);
+  }
+}
+
+.ui-spinner {
+  &--small {
+    .sk-cube-grid {
+      width: 24px !important;
+      height: 24px !important;
+    }
+  }
+  &--medium {
+    .sk-cube-grid {
+      width: 48px !important;
+      height: 48px !important;
+    }
+  }
+  &--large {
+    .sk-cube-grid {
+      width: 96px !important;
+      height: 96px !important;
+    }
+  }
+  &--fullscreen {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index: 1999;
+  }
+
+  .sk-cube-grid {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    z-index: 2000;
+    .sk-cube {
+      display: block;
+      width: 33%;
+      height: 33%;
+      background-color: var(--colors-fancy);
+      animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+    }
+    .sk-cube1 {
+      -webkit-animation-delay: 0.2s;
+      animation-delay: 0.2s;
+    }
+    .sk-cube2 {
+      -webkit-animation-delay: 0.3s;
+      animation-delay: 0.3s;
+    }
+    .sk-cube3 {
+      -webkit-animation-delay: 0.4s;
+      animation-delay: 0.4s;
+    }
+    .sk-cube4 {
+      -webkit-animation-delay: 0.1s;
+      animation-delay: 0.1s;
+    }
+    .sk-cube5 {
+      -webkit-animation-delay: 0.2s;
+      animation-delay: 0.2s;
+    }
+    .sk-cube6 {
+      -webkit-animation-delay: 0.3s;
+      animation-delay: 0.3s;
+    }
+    .sk-cube7 {
+      -webkit-animation-delay: 0s;
+      animation-delay: 0s;
+    }
+    .sk-cube8 {
+      -webkit-animation-delay: 0.1s;
+      animation-delay: 0.1s;
+    }
+    .sk-cube9 {
+      -webkit-animation-delay: 0.2s;
+      animation-delay: 0.2s;
+    }
+  }
+}

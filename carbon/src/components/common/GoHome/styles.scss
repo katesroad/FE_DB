@@ -1,0 +1,23 @@
+.ui-go-home {
+  display: block;
+  max-width: 8rem;
+  text-decoration: none !important;
+  text-transform: capitalize;
+
+  span {
+    display: flex;
+    align-items: center;
+    transition: all 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+    &:hover {
+      color: var(--colors-fancy) !important;
+      transform: translateX(-1rem);
+      svg {
+        transform: translateX(-1rem);
+      }
+    }
+    svg {
+      transform: translateX(-0.5rem);
+      transition: all 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+  }
+}

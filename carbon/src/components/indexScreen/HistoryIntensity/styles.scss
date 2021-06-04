@@ -1,0 +1,27 @@
+.history-intensity {
+  position: relative;
+  min-height: 20rem;
+
+  // make the loading spinner to be centered
+  .ui-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  strong {
+    font-size: var(--font-weight-bolder);
+  }
+
+  .range-switcher {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+
+    .ui-switcher {
+      margin: 0 0.5rem;
+    }
+  }
+}

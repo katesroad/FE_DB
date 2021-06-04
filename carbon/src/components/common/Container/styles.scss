@@ -1,0 +1,24 @@
+@import 'styles/_var.scss';
+
+.ui-container {
+  position: relative;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  @media screen and(min-width: $breakpoint-small) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  @media screen and(min-width: $breakpoint-medium) {
+    width: 89.5%;
+    padding-right: 0;
+    padding-left: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media screen and(min-width: $breakpoint-large) {
+    width: 92%;
+  }
+  @media screen and (min-width: 1560px) {
+    width: 80%;
+  }
+}

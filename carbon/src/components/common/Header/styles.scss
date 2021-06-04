@@ -1,0 +1,44 @@
+@import 'styles/_var.scss';
+
+.header {
+  padding: 0.5rem 0;
+  margin-bottom: calc(2rem + 2vw);
+  box-shadow: 0 2px 5px var(--shadow);
+  text-transform: capitalize;
+
+  @media screen and (min-width: $breakpoint-medium) {
+    margin-bottom: calc(2rem + 1vw);
+  }
+
+  .ui-container {
+    display: flex;
+    align-items: bseline;
+    justify-content: space-between;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    cursor: pointer;
+    a {
+      margin-right: 1rem;
+    }
+  }
+
+  p {
+    display: flex;
+    align-items: center;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    color: var(--text-color);
+    background-color: transparent;
+    svg {
+      margin-right: 0.25rem;
+    }
+  }
+}

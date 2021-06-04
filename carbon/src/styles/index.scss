@@ -1,0 +1,63 @@
+@import './reset.scss';
+@import './_var.scss';
+
+/* ************************************************** !!
+/* CSS variables on body element and root element ----------------
+--------------------------------------------------------
+--------------------------------------------------------
+----------------------------------------------------- */
+
+:root {
+  --weight-normal: 400;
+  --weight-bold: 700;
+  --weight-bolder: 900;
+  --colors-red: red;
+  --colors-fancy: rgb(89, 100, 224);
+  --colors-white: #fff;
+}
+
+body[data-theme='light'] {
+  --shadow: hsl(0, 0%, 90%);
+  --colors-text: hsl(200, 15%, 8%);
+  --elements-background: hsl(0, 0%, 100%);
+  --colors-border: hsl(0, 0%, 90%);
+  background-color: white;
+  color: hsl(200, 15%, 8%);
+}
+body[data-theme='dark'] {
+  --shadow: hsl(0, 0%, 10%);
+  --elements-background: hsl(209, 23%, 22%);
+  --colors-text: hsl(0, 0%, 100%);
+  --colors-border: #9c9c9c;
+  background-color: hsl(207, 26%, 17%);
+  color: hsl(0, 0%, 100%);
+}
+
+/* ************************************************** !!
+/* Application styles----------------
+--------------------------------------------------------
+--------------------------------------------------------
+----------------------------------------------------- */
+body {
+  min-height: 100vh;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-weight: var(--weight-normal);
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  & > main {
+    flex-grow: 1;
+  }
+}
+
+/* ************************************************** !!
+/* Import UI styles----------------
+--------------------------------------------------------
+--------------------------------------------------------
+----------------------------------------------------- */
+
+@import './ui.scss';

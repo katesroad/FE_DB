@@ -1,0 +1,19 @@
+.error-boundary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pre {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    font-size: 1.3rem;
+  }
+  &__solution {
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+    button {
+      margin-left: 1rem;
+    }
+  }
+}

@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`use <ErrorBoundary /> at home page 1`] = `
+<div>
+  <div
+    class="error-boundary"
+  >
+    <div
+      class="ui-error"
+      role="alert"
+    >
+      <h2>
+        Something went wrong:
+      </h2>
+      <pre>
+        We have a bug!!!
+      </pre>
+      <p
+        class="error-boundary__solution"
+      >
+        <button
+          class="ui-button"
+        >
+          refresh
+        </button>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`use <ErrorBoundary /> at other pages 1`] = `
+<div>
+  <div
+    class="error-boundary"
+  >
+    <div
+      class="ui-error"
+      role="alert"
+    >
+      <h2>
+        Something went wrong:
+      </h2>
+      <pre>
+        We have a bug!!!
+      </pre>
+      <p
+        class="error-boundary__solution"
+      >
+        <a
+          class="ui-go-home"
+          href="/"
+        >
+          <span>
+            <svg
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              />
+            </svg>
+            <span>
+              Go To Home
+            </span>
+          </span>
+        </a>
+        <button
+          class="ui-button"
+        >
+          refresh
+        </button>
+      </p>
+    </div>
+  </div>
+</div>
+`;

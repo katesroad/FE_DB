@@ -1,0 +1,141 @@
+@import 'styles/_var.scss';
+
+.regions-carbon {
+  position: relative;
+  min-height: 22rem;
+
+  // global loading spinner for table
+  .ui-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  // data fetching error
+  .fetch-error {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.875rem;
+    p {
+      margin: 0.5rem auto;
+    }
+  }
+
+  // the table element
+  &__data-table {
+    width: 100%;
+
+    a {
+      transition: color 0.2s ease-out;
+      text-decoration: underline;
+      &:hover {
+        text-decoration: underline !important;
+        color: var(--colors-fancy);
+      }
+      @media screen and(min-width: $breakpoint-medium) {
+        text-decoration: none;
+      }
+    }
+
+    td {
+      padding: 0.3rem 0.5rem;
+      border: 1px solid hsl(0, 0%, 90%);
+
+      // show limited text content for region name on mobile devices
+      &:first-child {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 6rem;
+      }
+      // except the first td, other td has content to be centered
+      &:nth-child(n + 2) {
+        button {
+          margin-left: auto;
+          margin-right: auto;
+          svg {
+            display: none;
+          }
+        }
+        @media screen and(min-width: $breakpoint-medium) {
+          text-align: center;
+          button {
+            svg {
+              display: inline;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  thead {
+    padding: 1rem 0;
+    border: 1px solid var(--text-color);
+    background-color: var(--shadow);
+    text-transform: capitalize;
+
+    td {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      border: 1px solid var(--colors-fancy);
+      color: var(--colors-white);
+      background-color: var(--colors-fancy);
+      &:first-child {
+        text-align: center;
+      }
+    }
+
+    // the sort by intensity
+    [role='button'] {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg {
+        margin-left: 0.25rem;
+        transform: translateY(1px);
+      }
+    }
+  }
+
+  tbody {
+    &:empty {
+      display: none;
+    }
+
+    td {
+      border-bottom: 1px solid var(--colors-border);
+
+      &:nth-child(2n + 1) {
+        border-left: 1px solid var(--colors-border);
+        border-right: 1px solid var(--colors-border);
+      }
+      &:first-child {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 6rem;
+      }
+    }
+    // for carbon value
+    .carbon-value {
+      margin-right: calc(0.25rem + 1vw);
+
+      @media screen and(min-width: $breakpoint-medium) {
+        margin-right: 0.5rem;
+      }
+      @media screen and(min-width: $breakpoint-large) {
+        margin-right: 1rem;
+      }
+    }
+    .carbon-unit {
+      display: none;
+      @media screen and (min-width: 360px) {
+        display: inline;
+      }
+    }
+  }
+}
