@@ -19,3 +19,6 @@ Source code for some frontendmentor challenges.
 - Photonap marketing site
   - Preview: https://kate-photonap.netlify.app/stories
   - Code: [photonap](./photonap)
+- Carbon Project
+  - Preview: [https://lucid-carbon.netlify.app/](https://lucid-carbon.netlify.app/)
+  - Code: [Carbon](./carbon)
