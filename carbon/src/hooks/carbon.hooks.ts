@@ -43,7 +43,7 @@ export function useGetNationalTodayView(): {
   data: INationalTodayData
 } {
   const { data, status, isSuccess } = useGeNationalCarbonOfToday()
-  const [overview, setOverview] = React.useState<INationalTodayData>({
+  const [overviewData, setOverviewData] = React.useState<INationalTodayData>({
     forecast: [],
     actual: [],
     overall: 0,
@@ -71,13 +71,17 @@ export function useGetNationalTodayView(): {
           forecastHalf = forecast
         }
       })
-      setOverview({
+      setOverviewData({
         actual: actualArray,
         forecast: forecastArray,
         overall,
       })
     }
   }, [data, isSuccess])
+
+  const overview = React.useMemo(() => {
+    return overviewData
+  }, [overviewData])
 
   return { status, data: overview }
 }

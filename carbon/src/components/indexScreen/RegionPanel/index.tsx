@@ -41,7 +41,7 @@ export const RegionPanel: React.FC<RegionPanelProps> = ({
   const [isVisible, setIsVisible] = React.useState<boolean>(true)
   React.useEffect(() => {
     if (!isVisible) onClose()
-  }, [isVisible])
+  }, [isVisible, onClose])
 
   return (
     <Dialog
