@@ -88,7 +88,6 @@ const RegionsCarbon: React.FC = () => {
   const getClickHandler = ({ id, name }: RegionCarbonData) => {
     return () => {
       setActiveRegion({ id, name })
-      setIsAsc((isAsc) => !isAsc)
       return false
     }
   }
