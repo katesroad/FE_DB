@@ -24,10 +24,13 @@ const ThemeProvider: React.FC = (props) => {
     document.body.dataset.theme = mode
   }, [mode])
 
-  const toggleTheme = function () {
-    if (mode === THEME_MODE.dark) setMode(THEME_MODE.light)
-    else setMode(THEME_MODE.dark)
-  }
+  const toggleTheme = React.useCallback(
+    function () {
+      if (mode === THEME_MODE.dark) setMode(THEME_MODE.light)
+      else setMode(THEME_MODE.dark)
+    },
+    [mode]
+  )
 
   const value = React.useMemo(
     () => ({ mode, toggleTheme }),

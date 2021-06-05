@@ -51,7 +51,7 @@ export const RangeIntensity: React.FC<IntensityProps> = React.memo(
       if (status === 'success' && data) {
         const carbonData = data.data
         const store: Record<string, number[]> = {}
-        carbonData.forEach(({ intensity: { forecast }, from }) => {
+        carbonData?.forEach(({ intensity: { forecast }, from }) => {
           const date = new Date(from).toLocaleDateString()
           if (store[date]) {
             store[date].push(forecast)
@@ -81,7 +81,8 @@ export const RangeIntensity: React.FC<IntensityProps> = React.memo(
           ],
         })
       }
-    }, [status, data])
+      // eslint-disable-next-line
+    }, [status, data, type])
 
     return (
       <div className="range-intensity">

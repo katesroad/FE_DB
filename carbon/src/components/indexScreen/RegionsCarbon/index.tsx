@@ -32,54 +32,53 @@ const RegionsCarbon: React.FC = () => {
   const { status, data } = useGetRegionsCarbon({ from, to: now.toISOString() })
   const [isAsc, setIsAsc] = React.useState<boolean>(false)
 
-  // how many records have so far from midinight
-  const [recordSize, setRecordSize] = React.useState<number>(1)
-  const records = React.useMemo(() => {
-    // Data fetching has not been finished yet
-    if (status !== 'success' || !data || !data.length) return []
-
-    const regionsData: RegionCarbonData[] = []
-    data.forEach(({ regions }: { regions: any[] }) => {
-      regions.forEach(
-        ({
-          shortname: name,
-          regionid: id,
-          intensity,
-          dnoregion,
-        }: RegionItem) => {
-          const record = { id, intensity, name, dnoregion }
-          const recordInArray = regionsData[id - 1]
-          if (recordInArray) {
-            recordInArray.intensity.forecast += intensity.forecast
-          } else {
-            regionsData[id - 1] = record
-          }
-        }
-      )
-    })
-
-    setRecordSize(data.length)
-
-    // return data not sorted
-    if (!isClicked) return regionsData
-    // return data sorted
-    if (isAsc) {
-      return regionsData.sort(
-        (a, b) => a.intensity.forecast - b.intensity.forecast
-      )
-    } else {
-      return regionsData.sort(
-        (a, b) => b.intensity.forecast - a.intensity.forecast
-      )
-    }
-  }, [status, data, isAsc])
-
   const [isClicked, setisClicked] = React.useState<boolean>(false)
   const handleClickIntenisty = () => {
     setisClicked(true)
     setIsAsc((isAsc) => !isAsc)
     return false
   }
+
+  // how many records do we have so far from midinight
+  const [recordSize, setRecordSize] = React.useState<number>(1)
+  const [recordData, setRecordData] = React.useState<RegionCarbonData[]>([])
+  React.useEffect(() => {
+    // Data fetching has not been finished yet
+    if (status === 'success' && data && data.length) {
+      const regionsData: RegionCarbonData[] = []
+      data.forEach(({ regions }: { regions: any[] }) => {
+        regions.forEach(
+          ({
+            shortname: name,
+            regionid: id,
+            intensity,
+            dnoregion,
+          }: RegionItem) => {
+            const recordInArray = regionsData[id - 1]
+            if (recordInArray) {
+              recordInArray.intensity.forecast += intensity.forecast
+            } else {
+              regionsData[id - 1] = { id, intensity, name, dnoregion }
+            }
+          }
+        )
+        setRecordData(regionsData)
+        setRecordSize(data.length)
+      })
+    }
+  }, [status, data])
+
+  const records = React.useMemo(() => {
+    if (!isClicked) return recordData
+    if (isAsc) {
+      return recordData.sort((a, b) => {
+        return a.intensity.forecast - b.intensity.forecast
+      })
+    } else
+      return recordData.sort((a, b) => {
+        return b.intensity.forecast - a.intensity.forecast
+      })
+  }, [isAsc, recordData, isClicked])
 
   // to get selected region when clicking view button
   const [activeRegion, setActiveRegion] = React.useState({ name: '', id: 0 })
@@ -89,6 +88,7 @@ const RegionsCarbon: React.FC = () => {
   const getClickHandler = ({ id, name }: RegionCarbonData) => {
     return () => {
       setActiveRegion({ id, name })
+      setIsAsc((isAsc) => !isAsc)
       return false
     }
   }
@@ -122,8 +122,6 @@ const RegionsCarbon: React.FC = () => {
                 </Link>
               </td>
               <td>
-                {item.intensity.forecast}///
-                {recordSize}
                 <p>
                   {/* 24 hours contains 48 half-hours */}
                   <span className="carbon-value">

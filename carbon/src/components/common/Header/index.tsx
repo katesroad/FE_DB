@@ -32,11 +32,7 @@ export const Header: React.FC = () => {
 
         <p>
           {/* theme toggle button */}
-          <button
-            onClick={toggleTheme}
-            role="button"
-            aria-label="theme-switcher"
-          >
+          <button onClick={toggleTheme} aria-label="theme-switcher">
             {mode === THEME_MODE.light ? <FaMoon /> : <FaSun />}
             <span>
               {mode === THEME_MODE.light ? THEME_MODE.dark : THEME_MODE.light}

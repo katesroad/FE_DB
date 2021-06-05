@@ -12,7 +12,7 @@ const Switcher: React.FC<SwithcherProps> = ({
   defaultIsOn,
   className,
 }) => {
-  const [on, setIsOn] = React.useState<boolean>(defaultIsOn)
+  const [on, setIsOn] = React.useState<boolean>(!!defaultIsOn)
 
   // avoid the onChange to be called at the first time monunted
   const renderRef = React.useRef<number>(-1)
@@ -39,7 +39,7 @@ const Switcher: React.FC<SwithcherProps> = ({
     { 'ui-switcher--active': on },
     className
   )
-  
+
   return (
     <button aria-label="switcher" className={clsxName} onClick={handleClick}>
       <span></span>
